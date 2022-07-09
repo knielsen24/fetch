@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import {
    AppBar,
    Typography,
@@ -23,7 +24,8 @@ export default function NavBar() {
                   <Stack direction={"row"} spacing={4} alignItems={"center"}>
                      <div></div>
                      <Link
-                        component="button"
+                        component={RouterLink}
+                        to="/"
                         underline="never"
                         fontFamily={"sans-serif"}
                         color={"primary"}
@@ -42,7 +44,12 @@ export default function NavBar() {
                      </Link>
                   </Stack>
                   <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
-                     <Link component="button" underline="hover" color={"black"}>
+                     <Link
+                        component={RouterLink}
+                        to="/signin"
+                        underline="hover"
+                        color={"black"}
+                     >
                         Sign In
                      </Link>
                      <Divider orientation="vertical" />

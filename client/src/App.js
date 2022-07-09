@@ -13,9 +13,9 @@ function App() {
          <NavBar />
          <Routes>
 				<Route path="/" element={ <LandingPage /> } />
-				<Route path="/signin" element={ <SignIn /> } />
-				<Route path="/profile" />
-				<Route path="/findjobs/:jobListingId" />
+				<Route path="signin" element={ <SignIn /> } />
+				<Route path="profile" />
+				<Route path="findjobs/:jobListingId" />
 				<Route path="companyreviews" />
 			</Routes>
       </>
