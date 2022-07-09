@@ -1,6 +1,13 @@
+import NavBar from "./Component/NavBar";
+import LandingPage from "./Component/LandingPage";
 
 function App() {
-   return <div className="App"></div>;
+   return (
+      <>
+         <NavBar />
+         <LandingPage />
+      </>
+   );
 }
 
 export default App;
