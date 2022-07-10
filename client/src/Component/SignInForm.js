@@ -49,6 +49,7 @@ function SignInForm() {
             }}
             noValidate
             autoComplete="off"
+				onSubmit={handleSubmit}
          >
             <FormControl variant="standard">
                <InputLabel htmlFor="component-simple">Email Address</InputLabel>
