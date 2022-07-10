@@ -8,7 +8,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 
-function SignIn() {
+function SignInForm() {
    const initialSignInData = {
       email: "",
       password: "",
@@ -21,12 +21,23 @@ function SignIn() {
       setSignInData((signInData) => ({ ...signInData, [name]: value }));
    };
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		fetch("dummyurl", {
-			method: "POST"
-		})
-	}
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      // need to update route once backend routes are set
+      fetch("dummyurl", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(signInData),
+      }).then((resp) => {
+         if (resp.ok) {
+            // Need to update user state in App.js
+            // else render errors
+				// check lab "phase-4-rails-putting-it-all-together-auth"
+         }
+      });
+   };
 
    return (
       <>
@@ -67,4 +78,4 @@ function SignIn() {
    );
 }
 
-export default SignIn;
+export default SignInForm;

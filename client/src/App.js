@@ -1,7 +1,7 @@
 import NavBar from "./Component/NavBar";
 import LandingPage from "./Component/LandingPage";
 import { Routes, Route, Links, useParams, useNavigate } from "react-router-dom";
-import SignIn from "./Component/SignIn";
+import SignInForm from "./Component/SignInForm";
 
 function App() {
    let { jobListingId } = useParams();
@@ -12,7 +12,7 @@ function App() {
          <NavBar />
          <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="signin" element={<SignIn />} />
+            <Route path="signin" element={<SignInForm />} />
             <Route path="profile" />
             <Route path="findjobs/:jobListingId" />
             <Route path="companyreviews" />
