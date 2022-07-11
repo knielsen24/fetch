@@ -4,32 +4,49 @@ import Footer from "./Component/Footer";
 import LandingPage from "./Component/LandingPage";
 import { Routes, Route, Links, useParams, useNavigate } from "react-router-dom";
 import SignInForm from "./Component/SignInForm";
-import JobPage from './Component/JobsPage';
+import JobPage from "./Component/JobsPage";
 
 function App() {
    const [user, setUser] = useState(null);
 
-   // useEffect(() => {
-   //    fetch("/me").then((r) => {
-   //       if (r.ok) {
-   //          r.json().then((user) => setUser(user));
-   //       }
-   //    });
-   // }, []);
+   useEffect(() => {
+      fetch("/me").then((r) => {
+         if (r.ok) {
+            r.json().then((user) => setUser(user));
+         }
+      });
+   }, []);
+
+	const handleSignOut = () => {
+		fetch("/logout", {method: "DELETE"}).then((r) => {
+			if (r.ok) {
+				setUser(null)
+			}
+		}).then(navigate("/"));
+	}
+
 
    // if (!user) return <SignInForm setUser={setUser} />;
 
-   // let { jobListingId } = useParams();
-   // let navigate = useNavigate();
+   let { jobListingId } = useParams();
+   let navigate = useNavigate();
 
    return (
       <>
-         <NavBar user={user} />
+         <NavBar user={user} handleSignOut={handleSignOut}  />
          <Routes>
-            <Route path="/" element={<LandingPage setUser={setUser} />} />
-            <Route path="signin" element={<SignInForm onLogin={setUser} />} />
+            <Route
+               path="/"
+               element={user ? null : <LandingPage setUser={setUser} />}
+            />
+            <Route
+               path="signin"
+               element={user ? null : <SignInForm setUser={setUser} navigate={navigate} />}
+            />
             <Route path="profile" />
-            <Route path="findjobs" element={<JobPage />}/>
+            <Route path="findjobs" element={ user ? <JobPage /> : null} />
+				<Route path="myjobs" />
+				<Route path="myreviews" />
             <Route path="companyreviews" />
          </Routes>
          <Footer />

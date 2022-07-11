@@ -8,10 +8,20 @@ import {
    Divider,
    Link,
    Box,
+   Menu,
+   MenuItem,
 } from "@mui/material";
 
-export default function NavBar() {
+export default function NavBar({ user, handleSignOut }) {
    const [search, setSearch] = useState("");
+   const [anchorEl, setAnchorEl] = useState(false);
+
+   const open = Boolean(anchorEl);
+
+	const handleClick = (e) => {
+		setAnchorEl(e.currentTarget);
+   };
+   const handleClose = () => setAnchorEl(false);
 
    const changeHandler = (e) => {
       const name = e.target.name;
@@ -25,7 +35,55 @@ export default function NavBar() {
       fetch("http://localhost:3000");
    };
 
-   console.log(search);
+   // when the user is signed in it renders dropDownMenu
+   // when the user is signed out it renders signInLink
+   const dropDownMenu = (
+      <>
+         <Link
+            underline="hover"
+            color={"black"}
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+         >
+            {user ? user.first_name : null}
+         </Link>
+         <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+               "aria-labelledby": "basic-button",
+            }}
+         >
+
+            <MenuItem component={RouterLink} to="/profile">Profile</MenuItem>
+            <MenuItem component={RouterLink} to="/myjobs">My Jobs</MenuItem>
+            <MenuItem component={RouterLink} to="/myreviews">My Reviews</MenuItem>
+            {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
+            {/* css needs polishing */}
+            <Divider fullWidth />
+            <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
+         </Menu>
+      </>
+   );
+
+   const signInLink = (
+      <Link
+         component={RouterLink}
+         to="/signin"
+         underline="hover"
+         color={"black"}
+         aria-controls={open ? "basic-menu" : undefined}
+         aria-haspopup="true"
+         aria-expanded={open ? "true" : undefined}
+         onClick={handleClick}
+      >
+         Sign In
+      </Link>
+   );
 
    return (
       <>
@@ -38,7 +96,8 @@ export default function NavBar() {
                   marginTop={2}
                >
                   <Stack direction={"row"} spacing={4} alignItems={"center"}>
-                     <div></div>
+                     {/* div... has a purpose */}
+							<div></div>
                      <Link
                         component={RouterLink}
                         to="/"
@@ -50,10 +109,10 @@ export default function NavBar() {
                      >
                         fetch
                      </Link>
-                     <Link 
-                        component={RouterLink} 
-                        to= "/findjobs"
-                        underline="hover" 
+                     <Link
+                        component={RouterLink}
+                        to="/findjobs"
+                        underline="hover"
                         color={"black"}
                      >
                         Find Jobs
@@ -65,15 +124,9 @@ export default function NavBar() {
                         Find Salaries
                      </Link>
                   </Stack>
-                  <Stack direction={"row"} spacing={5} sx={{ mr: 2 }}>
-                     <Link
-                        component={RouterLink}
-                        to="/signin"
-                        underline="hover"
-                        color={"black"}
-                     >
-                        Sign In
-                     </Link>
+                  <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
+                     {/* conditional render on user state */}
+                     {user ? dropDownMenu : signInLink}
                      <Divider orientation="vertical" />
                      <Link component="button" underline="hover" color={"black"}>
                         Employers / Post Jobs
