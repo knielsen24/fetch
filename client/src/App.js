@@ -33,7 +33,7 @@ function App() {
 
    return (
       <>
-         <NavBar user={user} handleSignOut={handleSignOut} />
+         <NavBar user={user} handleSignOut={handleSignOut}  />
          <Routes>
             <Route
                path="/"
@@ -41,7 +41,7 @@ function App() {
             />
             <Route
                path="signin"
-               element={user ? null : <SignInForm setUser={setUser} />}
+               element={user ? null : <SignInForm setUser={setUser} navigate={navigate} />}
             />
             <Route path="profile" />
             <Route path="findjobs" element={ user ? <JobPage /> : null} />

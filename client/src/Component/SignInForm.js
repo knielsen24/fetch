@@ -5,7 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 
-function SignInForm({ setUser }) {
+function SignInForm({ setUser, navigate }) {
    const initialSignInData = {
       email: "",
       password: "",
@@ -28,9 +28,9 @@ function SignInForm({ setUser }) {
          body: JSON.stringify(signInData),
       }).then((r) => {
          if (r.ok) {
-            r.json().then((user) => setUser(user))
+            r.json().then((user) => setUser(user));
          }
-      });
+      }).then(navigate("findjobs"));
    };
 
    return (
