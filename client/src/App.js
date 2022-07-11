@@ -1,4 +1,5 @@
 import NavBar from "./Component/NavBar";
+import Footer from "./Component/Footer";
 import LandingPage from "./Component/LandingPage";
 import { Routes, Route, Links, useParams, useNavigate } from "react-router-dom";
 import SignInForm from "./Component/SignInForm";
@@ -17,6 +18,7 @@ function App() {
             <Route path="findjobs/:jobListingId" />
             <Route path="companyreviews" />
          </Routes>
+         <Footer />
       </>
    );
 }

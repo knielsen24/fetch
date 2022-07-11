@@ -15,11 +15,11 @@ export default function LandingPage() {
       
       
     }}/>
-      <Stack direction={'row'} spacing={12} sx={{position: 'absolute', top: 280, left: 40}}>
+      <Stack direction={'row'} alignItems={'center'} justifyContent={'space-evenly'} spacing={18} sx={{margin: 'auto', position: 'absolute', top: '14.5rem', left: '11vw'}}>
       <img style={{width: "223.92px", height: '294.4px'}} src="https://i.imgur.com/xYnM8Y6.png" alt="create an account"/>
       <img style={{width: "223.92px", height: '294.4px'}} src="https://i.imgur.com/1NjO9rf.png" alt="create an account"/>
       <img style={{width: "223.92px", height: '294.4px'}} src="https://i.imgur.com/PHXOSF9.png" alt="create an account"/>
-      <Box sx={{width: 350, height: 525, backgroundColor: 'white', position: 'relative', top: '-100px', borderRadius: '8px'}}>
+      <Box sx={{width: 350, height: 525, backgroundColor: 'white', borderRadius: '8px'}}>
 
       <Stack alignItems={'center'} justifyContent={'center'} >
       <Box sx={{width: 300, height: 400, backgroundColor: 'white'}}>

@@ -40,16 +40,20 @@ function SignInForm() {
 
    return (
       <>
+       <div style={{
+      backgroundImage: `linear-gradient(to top, rgba(0, 224, 255, 1), rgba(0, 133, 255, 1))`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'fixed',
+      height: '80vh',
+      
+      
+      
+    }}/>
    
-            <Box 
-               alignItems={'center'} 
-               justifyContent={'center'} 
-               sx={{
-               display: 'flex',
-               flexWrap: 'wrap',
-               mt: 5
-               }}
-            >
+           
+            <Stack spacing={12} sx={{position: 'absolute', top: '14.5rem', left: '38.5vw'}}>
+
             <form onChange={handleChange} onSubmit={handleSubmit}>
                <Paper variant="outlined" sx={{width: 400, height: 325}} >
                <Stack spacing={4} justifyContent='center' alignItems='center'>
@@ -82,15 +86,8 @@ function SignInForm() {
             
             </Paper>
             </form>
-            </Box>
-            <div style={{
-      backgroundImage: 'url("https://i.imgur.com/20FbvsI.png")',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      width: "100%"
-    }}></div>
-          
+         
+</Stack>           
             
             
     
