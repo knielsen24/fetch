@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
    AppBar,
@@ -7,10 +7,32 @@ import {
    TextField,
    Divider,
    Link,
+   Box
 } from "@mui/material";
-import { Box } from "@mui/system";
+
 
 export default function NavBar() {
+
+   const [search, setSearch] = useState("")
+
+   const changeHandler = (e) => {
+      const name = e.target.name
+      const value = e.target.value
+
+      setSearch(({[name]:value}))
+   }
+
+   const submitHandler = (e) => {
+      e.preventDefault()
+      fetch('http://localhost:3000',
+      )
+   }
+
+   console.log(search)
+
+
+
+
    return (
       <>
          <Stack direction={"column"} spacing={3}>
@@ -21,7 +43,10 @@ export default function NavBar() {
                   justifyContent={"space-between"}
                   marginTop={2}
                >
-                  <Stack direction={"row"} spacing={4} alignItems={"center"}>
+                  <Stack 
+                     direction={"row"} 
+                     spacing={4} 
+                     alignItems={"center"}>
                      <div></div>
                      <Link
                         component={RouterLink}
@@ -30,6 +55,7 @@ export default function NavBar() {
                         fontFamily={"sans-serif"}
                         color={"primary"}
                         fontSize={36}
+                        sx={{ textDecoration: 'none' }}
                      >
                         fetch
                      </Link>
@@ -58,26 +84,31 @@ export default function NavBar() {
                      </Link>
                   </Stack>
                </Stack>
+               <Divider fullWidth />
                <Stack
                   direction={"row"}
                   spacing={36}
                   alignItems={"center"}
                   justifyContent={"space-between"}
                >
-                  <Box sx={{ mb: 7 }} />
+                  <Box sx={{ mt: 7 }} />
                   <TextField
+                     onChange={changeHandler}
+                     onSubmit={submitHandler}
                      fullWidth
                      size="small"
                      id="filled-search"
                      label="...snag your dream job"
                      type="search"
+                     name="search"
                      variant="outlined"
                   />
                   <Box />
                </Stack>
             </AppBar>
-            <Divider fullWidth />
+          
          </Stack>
+         <Divider fullWidth />
       </>
    );
 }

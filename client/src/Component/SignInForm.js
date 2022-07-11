@@ -1,10 +1,7 @@
-import Box from "@mui/material/Box";
-import FilledInput from "@mui/material/FilledInput";
+import { Stack, TextField, Box, Typography, Paper } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 
@@ -39,42 +36,64 @@ function SignInForm() {
       });
    };
 
+   console.log(signInData)
+
    return (
       <>
-         {" "}
-         <Box
-            component="form"
-            sx={{
-               "& > :not(style)": { m: 1 },
-            }}
-            noValidate
-            autoComplete="off"
-				onSubmit={handleSubmit}
-         >
-            <FormControl variant="standard">
-               <InputLabel htmlFor="component-simple">Email Address</InputLabel>
-               <Input
+   
+            <Box 
+               alignItems={'center'} 
+               justifyContent={'center'} 
+               sx={{
+               display: 'flex',
+               flexWrap: 'wrap',
+               mt: 5
+               }}
+            >
+            <form onChange={handleChange} onSubmit={handleSubmit}>
+               <Paper variant="outlined" sx={{width: 400, height: 325}} >
+               <Stack spacing={4} justifyContent='center' alignItems='center'>
+               <div></div>
+               <Typography variant="h6" color={'primary'}>Sign In</Typography>
+               <Box sx={{width:350}}>
+                  <Stack spacing={4}>
+               <TextField
+                fullWidth
                   type="email"
                   id="email"
                   name="email"
                   value={signInData.email}
-                  onChange={handleChange}
+                  size={'small'}
                />
-            </FormControl>
-            <FormControl variant="standard">
-               <InputLabel htmlFor="component-simple">Password</InputLabel>
-               <Input
+               <TextField
+               fullWidth
                   type="password"
                   id="password"
                   name="password"
                   value={signInData.password}
-                  onChange={handleChange}
+                  size={'small'}
                />
-            </FormControl>
-            <Button variant="contained" size="small" type="submit">
+               </Stack>
+               </Box>
+                <Button variant="contained" size="small" type="submit" disableElevation>
                Submit
             </Button>
-         </Box>
+            </Stack>
+            
+            </Paper>
+            </form>
+            </Box>
+            <div style={{
+      backgroundImage: 'url("https://i.imgur.com/20FbvsI.png")',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      width: "100%"
+    }}></div>
+          
+            
+            
+    
       </>
    );
 }
