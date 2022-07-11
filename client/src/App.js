@@ -22,7 +22,7 @@ function App() {
 			if (r.ok) {
 				setUser(null)
 			}
-		})
+		}).then(navigate("/"));
 	}
 
 

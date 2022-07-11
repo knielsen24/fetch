@@ -14,15 +14,14 @@ import {
 
 export default function NavBar({ user, handleSignOut }) {
    const [search, setSearch] = useState("");
-   const [anchorEl, setAnchorEl] = useState(null);
+   const [anchorEl, setAnchorEl] = useState(false);
 
    const open = Boolean(anchorEl);
 
 	const handleClick = (e) => {
-      // console.log(e.target.value)
 		setAnchorEl(e.currentTarget);
    };
-   const handleClose = () => setAnchorEl(null);
+   const handleClose = () => setAnchorEl(false);
 
    const changeHandler = (e) => {
       const name = e.target.name;
@@ -59,7 +58,7 @@ export default function NavBar({ user, handleSignOut }) {
                "aria-labelledby": "basic-button",
             }}
          >
-            
+
             <MenuItem component={RouterLink} to="/profile">Profile</MenuItem>
             <MenuItem component={RouterLink} to="/myjobs">My Jobs</MenuItem>
             <MenuItem component={RouterLink} to="/myreviews">My Reviews</MenuItem>
