@@ -16,13 +16,13 @@ function App() {
       .then( data => setJobs(data))
   }, [])
 
-   useEffect(() => {
-      fetch("/me").then((r) => {
-         if (r.ok) {
-            r.json().then((user) => setUser(user));
-         }
-      });
-   }, []);
+   // useEffect(() => {
+   //    fetch("/me").then((r) => {
+   //       if (r.ok) {
+   //          r.json().then((user) => setUser(user));
+   //       }
+   //    });
+   // }, []);
 
 	const handleSignOut = () => {
 		fetch("/logout", {method: "DELETE"}).then((r) => {
@@ -51,7 +51,7 @@ function App() {
                element={user ? null : <SignInForm setUser={setUser} navigate={navigate} />}
             />
             <Route path="profile" />
-            <Route path="findjobs" element={ user ? <JobPage jobs={jobs}/> : null} />
+            <Route path="findjobs" element= {<JobPage jobs={jobs}/>}/>
 				<Route path="myjobs" />
 				<Route path="myreviews" />
             <Route path="companyreviews" />

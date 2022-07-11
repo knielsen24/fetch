@@ -21,7 +21,6 @@ export default function LandingPage({ setUser }) {
    };
 
    const [signUpData, setSignUpData] = useState(newUser);
-   console.log(signUpData);
 
    const handleChange = (e) => {
       const { name, value } = e.target;

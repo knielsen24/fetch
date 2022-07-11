@@ -9,7 +9,6 @@ export default function JobPage({ jobs }) {
    // });
 
   const renderJobCards = jobs.map(job => {
-    console.log(jobs)
     return <JobCard
       key = {job.id}
       {...job} />

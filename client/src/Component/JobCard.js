@@ -4,7 +4,7 @@ import { Stack, Card, CardContent, Typography } from '@mui/material'
 function JobCard({company, position, location, compensation, job_type, description, benefits}) {
   return (
     <div>
-        {/* <Stack>
+        <Stack>
             <Card>
                 <CardContent>
                   <Typography>
@@ -30,7 +30,7 @@ function JobCard({company, position, location, compensation, job_type, descripti
                   </Typography>
                 </CardContent>
             </Card>
-        </Stack> */}
+        </Stack>
     </div>
   )
 }
