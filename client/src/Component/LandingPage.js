@@ -8,6 +8,7 @@ import {
    Stack,
    Box,
    TextField,
+   Divider,
 } from "@mui/material";
 
 export default function LandingPage({ setUser }) {
