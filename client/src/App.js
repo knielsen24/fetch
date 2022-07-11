@@ -40,7 +40,7 @@ function App() {
 
    return (
       <>
-         <NavBar user={user} handleSignOut={handleSignOut}  />
+         <NavBar user={user} handleSignOut={handleSignOut} />
          <Routes>
             <Route
                path="/"
