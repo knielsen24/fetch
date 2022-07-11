@@ -16,13 +16,13 @@ function App() {
       .then( data => setJobs(data))
   }, [])
 
-   // useEffect(() => {
-   //    fetch("/me").then((r) => {
-   //       if (r.ok) {
-   //          r.json().then((user) => setUser(user));
-   //       }
-   //    });
-   // }, []);
+   useEffect(() => {
+      fetch("/me").then((r) => {
+         if (r.ok) {
+            r.json().then((user) => setUser(user));
+         }
+      });
+   }, []);
 
 	const handleSignOut = () => {
 		fetch("/logout", {method: "DELETE"}).then((r) => {

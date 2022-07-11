@@ -5,13 +5,12 @@ import JobFeature from "./JobFeature";
 
 export default function JobPage({ jobPostings }) {
 
-	console.log(jobPostings)
+	// console.log(jobPostings)
 
    let renderJobCards;
 
    if (jobPostings) {
       renderJobCards = jobPostings.map((post) => {
-         console.log(post.id)
 			return <JobCard key={post.id} {...post} />;
       });
    }
