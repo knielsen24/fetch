@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
    AppBar,
@@ -7,31 +7,25 @@ import {
    TextField,
    Divider,
    Link,
-   Box
+   Box,
 } from "@mui/material";
 
-
 export default function NavBar() {
-
-   const [search, setSearch] = useState("")
+   const [search, setSearch] = useState("");
 
    const changeHandler = (e) => {
-      const name = e.target.name
-      const value = e.target.value
+      const name = e.target.name;
+      const value = e.target.value;
 
-      setSearch(({[name]:value}))
-   }
+      setSearch({ [name]: value });
+   };
 
    const submitHandler = (e) => {
-      e.preventDefault()
-      fetch('http://localhost:3000',
-      )
-   }
+      e.preventDefault();
+      fetch("http://localhost:3000");
+   };
 
-   console.log(search)
-
-
-
+   console.log(search);
 
    return (
       <>
@@ -43,10 +37,7 @@ export default function NavBar() {
                   justifyContent={"space-between"}
                   marginTop={2}
                >
-                  <Stack 
-                     direction={"row"} 
-                     spacing={4} 
-                     alignItems={"center"}>
+                  <Stack direction={"row"} spacing={4} alignItems={"center"}>
                      <div></div>
                      <Link
                         component={RouterLink}
@@ -55,7 +46,7 @@ export default function NavBar() {
                         fontFamily={"sans-serif"}
                         color={"primary"}
                         fontSize={36}
-                        sx={{ textDecoration: 'none' }}
+                        sx={{ textDecoration: "none" }}
                      >
                         fetch
                      </Link>
@@ -111,7 +102,6 @@ export default function NavBar() {
                   <Box />
                </Stack>
             </AppBar>
-          
          </Stack>
          <Divider fullWidth />
       </>
