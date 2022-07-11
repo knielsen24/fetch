@@ -59,7 +59,12 @@ export default function NavBar() {
                      >
                         fetch
                      </Link>
-                     <Link component="button" underline="hover" color={"black"}>
+                     <Link 
+                        component={RouterLink} 
+                        to= "/findjobs"
+                        underline="hover" 
+                        color={"black"}
+                     >
                         Find Jobs
                      </Link>
                      <Link component="button" underline="hover" color={"black"}>
