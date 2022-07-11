@@ -21,7 +21,7 @@ export default function JobPage({ jobPostings }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            <JobFeature featuredJob={featuredJob}/>
+            {/* <JobFeature featuredJob={featuredJob}/> */}
         </Stack>
     </div>
   )

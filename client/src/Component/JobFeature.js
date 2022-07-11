@@ -4,6 +4,7 @@ export default function JobFeature({featuredJob}) {
 
   console.log(featuredJob)
   return (
-    <div>{featuredJob}</div>
+    // <div>{featuredJob}</div> 
+    'silly'
   )
 }
