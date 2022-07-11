@@ -5,7 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 
-function SignInForm() {
+function SignInForm({ onLogin }) {
    const initialSignInData = {
       email: "",
       password: "",
@@ -20,18 +20,15 @@ function SignInForm() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      // need to update route once backend routes are set
-      fetch("dummyurl", {
+      fetch("/login", {
          method: "POST",
          headers: {
             "Content-Type": "application/json",
          },
          body: JSON.stringify(signInData),
-      }).then((resp) => {
-         if (resp.ok) {
-            // Need to update user state in App.js
-            // else render errors
-            // check lab "phase-4-rails-putting-it-all-together-auth"
+      }).then((r) => {
+         if (r.ok) {
+            r.json().then((user) => onLogin(user))
          }
       });
    };
@@ -74,6 +71,7 @@ function SignInForm() {
                               name="email"
                               value={signInData.email}
                               size={"small"}
+                              placeholder="Email"
                            />
                            <TextField
                               fullWidth
@@ -82,6 +80,7 @@ function SignInForm() {
                               name="password"
                               value={signInData.password}
                               size={"small"}
+                              placeholder="Password"
                            />
                         </Stack>
                      </Box>
