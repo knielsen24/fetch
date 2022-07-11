@@ -96,7 +96,8 @@ export default function NavBar({ user, handleSignOut }) {
                   marginTop={2}
                >
                   <Stack direction={"row"} spacing={4} alignItems={"center"}>
-                     <div></div>
+                     {/* div... has a purpose */}
+							<div></div>
                      <Link
                         component={RouterLink}
                         to="/"
