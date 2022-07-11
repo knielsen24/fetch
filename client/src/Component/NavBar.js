@@ -8,10 +8,25 @@ import {
    Divider,
    Link,
    Box,
+   Button,
+   Menu,
+   MenuItem,
 } from "@mui/material";
+import UserDropDownMenu from "./UserDropDownMenu";
 
 export default function NavBar({ user }) {
    const [search, setSearch] = useState("");
+   const [anchorEl, setAnchorEl] = React.useState(null);
+
+   const open = Boolean(anchorEl);
+
+   const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+   };
+
+   const handleClose = () => {
+      setAnchorEl(null);
+   };
 
    const changeHandler = (e) => {
       const name = e.target.name;
@@ -25,7 +40,21 @@ export default function NavBar({ user }) {
       fetch("http://localhost:3000");
    };
 
-   console.log(search);
+   const dropDownMenu = (
+      <Menu
+         id="basic-menu"
+         anchorEl={anchorEl}
+         open={open}
+         onClose={handleClose}
+         MenuListProps={{
+            "aria-labelledby": "basic-button",
+         }}
+      >
+         <MenuItem onClick={handleClose}>Profile</MenuItem>
+         <MenuItem onClick={handleClose}>My account</MenuItem>
+         <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
+   );
 
    return (
       <>
@@ -52,7 +81,7 @@ export default function NavBar({ user }) {
                      </Link>
                      <Link
                         component={RouterLink}
-                        to= "/findjobs"
+                        to="/findjobs"
                         underline="hover"
                         color={"black"}
                      >
@@ -68,12 +97,18 @@ export default function NavBar({ user }) {
                   <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
                      <Link
                         component={RouterLink}
-                        to={ user ? "/profile" : "/signin"}
+                        to={user ? "/profile" : "/signin"}
                         underline="hover"
                         color={"black"}
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClick}
                      >
-                        { user ? user.first_name : "Sign In"}
+                        {user ? user.first_name : "Sign In"}
+                        {/* { user ? <UserDropDownMenu /> : "Sign In"} */}
                      </Link>
+							{dropDownMenu}
                      <Divider orientation="vertical" />
                      <Link component="button" underline="hover" color={"black"}>
                         Employers / Post Jobs
