@@ -4,10 +4,17 @@ import Footer from "./Component/Footer";
 import LandingPage from "./Component/LandingPage";
 import { Routes, Route, Links, useParams, useNavigate } from "react-router-dom";
 import SignInForm from "./Component/SignInForm";
-import JobPage from './Component/JobsPage';
+import JobPage from './Component/JobPage';
 
 function App() {
    const [user, setUser] = useState(null);
+   const [jobs, setJobs] = useState([])
+   
+   useEffect(() => {
+      fetch("http://localhost:4000/findjobs")
+      .then( r => r.json() )
+      .then( data => setJobs(data))
+  }, [])
 
    // useEffect(() => {
    //    fetch("/me").then((r) => {
@@ -29,7 +36,7 @@ function App() {
             <Route path="/" element={<LandingPage setUser={setUser} />} />
             <Route path="signin" element={<SignInForm onLogin={setUser} />} />
             <Route path="profile" />
-            <Route path="findjobs" element={<JobPage />}/>
+            <Route path="findjobs" element={<JobPage jobs={jobs} />}/>
             <Route path="companyreviews" />
          </Routes>
          <Footer />

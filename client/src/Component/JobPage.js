@@ -6,6 +6,7 @@ import JobFeature from './JobFeature'
 export default function JobPage({jobs}) {
 
   const renderJobCards = jobs.map(job => {
+    console.log(jobs)
     return <JobCard
       key = {job.id}
       {...job} />
@@ -14,12 +15,10 @@ export default function JobPage({jobs}) {
   return (
     <div>
         <Stack direction="row" spacing={10}>
-            <Stack>
+            <Stack style={{maxHeight: 700, overflow: 'auto'}}>
                 {renderJobCards}
             </Stack>
-            <Stack>
                 <JobFeature/>
-            </Stack>
         </Stack>
     </div>
   )
