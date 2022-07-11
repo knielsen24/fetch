@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :reviews
+  resources :applied_tos
+  resources :job_postings
+  resources :companies
   resources :users
 
   post "/", to: "users#create"

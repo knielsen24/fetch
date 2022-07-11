@@ -10,10 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_10_044851) do
+ActiveRecord::Schema.define(version: 2022_07_11_161825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applied_tos", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "job_posting_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_posting_id"], name: "index_applied_tos_on_job_posting_id"
+    t.index ["user_id"], name: "index_applied_tos_on_user_id"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.integer "num_of_employees"
+    t.string "phone"
+    t.string "address"
+    t.string "image"
+    t.string "password_digest"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "job_postings", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "position"
+    t.string "location"
+    t.string "compensation"
+    t.string "job_type"
+    t.text "description"
+    t.string "benefits"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_job_postings_on_company_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "user_id", null: false
+    t.float "stars"
+    t.text "review_text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_reviews_on_company_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -26,4 +71,9 @@ ActiveRecord::Schema.define(version: 2022_07_10_044851) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "applied_tos", "job_postings"
+  add_foreign_key "applied_tos", "users"
+  add_foreign_key "job_postings", "companies"
+  add_foreign_key "reviews", "companies"
+  add_foreign_key "reviews", "users"
 end
