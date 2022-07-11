@@ -1,12 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
 export default function JobPage({ jobs }) {
-   // const renderJobCards = jobs.map((job) => {
-   //    return <JobCard key={job.id} {...job} />;
-   // });
+
+  const [featuredJob, setFeaturedJob] = useState([jobs[0]])
 
   const renderJobCards = jobs.map(job => {
     return <JobCard
@@ -20,7 +19,7 @@ export default function JobPage({ jobs }) {
             <Stack style={{maxHeight: 700, overflow: 'auto'}}>
                 {renderJobCards}
             </Stack>
-                <JobFeature/>
+            <JobFeature featuredJob={featuredJob}/>
         </Stack>
     </div>
   )
