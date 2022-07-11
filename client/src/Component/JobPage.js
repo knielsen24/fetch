@@ -3,25 +3,27 @@ import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
-export default function JobPage({ jobs }) {
-   // const renderJobCards = jobs.map((job) => {
-   //    return <JobCard key={job.id} {...job} />;
-   // });
+export default function JobPage({ jobPostings }) {
 
-  const renderJobCards = jobs.map(job => {
-    return <JobCard
-      key = {job.id}
-      {...job} />
-  })
+	console.log(jobPostings)
 
-  return (
-    <div>
-        <Stack direction="row" spacing={10}>
-            <Stack style={{maxHeight: 700, overflow: 'auto'}}>
-                {renderJobCards}
+   let renderJobCards;
+
+   if (jobPostings) {
+      renderJobCards = jobPostings.map((post) => {
+         console.log(post.id)
+			return <JobCard key={post.id} {...post} />;
+      });
+   }
+
+   return (
+      <div>
+         <Stack direction="row" spacing={10}>
+            <Stack style={{ maxHeight: 700, overflow: "auto" }}>
+               {renderJobCards}
             </Stack>
-                <JobFeature/>
-        </Stack>
-    </div>
-  )
+            <JobFeature />
+         </Stack>
+      </div>
+   );
 }

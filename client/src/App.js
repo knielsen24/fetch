@@ -9,9 +9,9 @@ import JobPage from './Component/JobPage';
 function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([])
-   
+
    useEffect(() => {
-      fetch("http://localhost:4000/findjobs")
+      fetch("/findjobs")
       .then( r => r.json() )
       .then( data => setJobs(data))
   }, [])
@@ -51,7 +51,7 @@ function App() {
                element={user ? null : <SignInForm setUser={setUser} navigate={navigate} />}
             />
             <Route path="profile" />
-            <Route path="findjobs" element= {<JobPage jobs={jobs}/>}/>
+            <Route path="findjobs" element= {<JobPage jobPostings={jobs}/>}/>
 				<Route path="myjobs" />
 				<Route path="myreviews" />
             <Route path="companyreviews" />
