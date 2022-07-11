@@ -5,7 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 
-function SignInForm({ onLogin }) {
+function SignInForm({ setUser }) {
    const initialSignInData = {
       email: "",
       password: "",
@@ -28,12 +28,10 @@ function SignInForm({ onLogin }) {
          body: JSON.stringify(signInData),
       }).then((r) => {
          if (r.ok) {
-            r.json().then((user) => onLogin(user))
+            r.json().then((user) => setUser(user))
          }
       });
    };
-
-   console.log(signInData);
 
    return (
       <>

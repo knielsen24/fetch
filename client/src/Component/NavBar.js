@@ -10,7 +10,7 @@ import {
    Box,
 } from "@mui/material";
 
-export default function NavBar() {
+export default function NavBar({ user }) {
    const [search, setSearch] = useState("");
 
    const changeHandler = (e) => {
@@ -50,10 +50,10 @@ export default function NavBar() {
                      >
                         fetch
                      </Link>
-                     <Link 
-                        component={RouterLink} 
+                     <Link
+                        component={RouterLink}
                         to= "/findjobs"
-                        underline="hover" 
+                        underline="hover"
                         color={"black"}
                      >
                         Find Jobs
@@ -68,11 +68,11 @@ export default function NavBar() {
                   <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
                      <Link
                         component={RouterLink}
-                        to="/signin"
+                        to={ user ? "/profile" : "/signin"}
                         underline="hover"
                         color={"black"}
                      >
-                        Sign In
+                        { user ? user.first_name : "Sign In"}
                      </Link>
                      <Divider orientation="vertical" />
                      <Link component="button" underline="hover" color={"black"}>
