@@ -12,21 +12,16 @@ import {
    Menu,
    MenuItem,
 } from "@mui/material";
-import UserDropDownMenu from "./UserDropDownMenu";
 
 export default function NavBar({ user }) {
    const [search, setSearch] = useState("");
-   const [anchorEl, setAnchorEl] = React.useState(null);
+   const [anchorEl, setAnchorEl] = useState(null);
 
    const open = Boolean(anchorEl);
 
-   const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-   };
+   const handleClick = (event) => setAnchorEl(event.currentTarget);
 
-   const handleClose = () => {
-      setAnchorEl(null);
-   };
+   const handleClose = () => setAnchorEl(null);
 
    const changeHandler = (e) => {
       const name = e.target.name;
@@ -40,20 +35,53 @@ export default function NavBar({ user }) {
       fetch("http://localhost:3000");
    };
 
+   // when the user is signed in it renders dropDownMenu
+   // when the user is signed out it renders signInLink
    const dropDownMenu = (
-      <Menu
-         id="basic-menu"
-         anchorEl={anchorEl}
-         open={open}
-         onClose={handleClose}
-         MenuListProps={{
-            "aria-labelledby": "basic-button",
-         }}
+      <>
+         <Link
+            component={RouterLink}
+            to="/signin"
+            underline="hover"
+            color={"black"}
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+         >
+            {user.first_name}
+         </Link>
+         <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+               "aria-labelledby": "basic-button",
+            }}
+         >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My Jobs</MenuItem>
+            <MenuItem onClick={handleClose}>My Reviews</MenuItem>
+            <MenuItem onClick={handleClose}>Settings</MenuItem>
+            <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+         </Menu>
+      </>
+   );
+
+   const signInLink = (
+      <Link
+         component={RouterLink}
+         to="/signin"
+         underline="hover"
+         color={"black"}
+         aria-controls={open ? "basic-menu" : undefined}
+         aria-haspopup="true"
+         aria-expanded={open ? "true" : undefined}
+         onClick={handleClick}
       >
-         <MenuItem onClick={handleClose}>Profile</MenuItem>
-         <MenuItem onClick={handleClose}>My account</MenuItem>
-         <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+         Sign In
+      </Link>
    );
 
    return (
@@ -95,20 +123,8 @@ export default function NavBar({ user }) {
                      </Link>
                   </Stack>
                   <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
-                     <Link
-                        component={RouterLink}
-                        to={user ? "/profile" : "/signin"}
-                        underline="hover"
-                        color={"black"}
-                        aria-controls={open ? "basic-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        onClick={handleClick}
-                     >
-                        {user ? user.first_name : "Sign In"}
-                        {/* { user ? <UserDropDownMenu /> : "Sign In"} */}
-                     </Link>
-							{dropDownMenu}
+                     {/* conditional render on user state */}
+                     {user ? dropDownMenu : signInLink}
                      <Divider orientation="vertical" />
                      <Link component="button" underline="hover" color={"black"}>
                         Employers / Post Jobs
