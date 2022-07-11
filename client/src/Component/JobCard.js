@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Card } from '@mui/material'
+import { Stack, Card, CardContent, Typography } from '@mui/material'
 
 function JobCard({company, position, location, compensation, job_type, description, benefits}) {
   return (

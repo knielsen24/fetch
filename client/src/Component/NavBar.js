@@ -65,7 +65,7 @@ export default function NavBar() {
                         Find Salaries
                      </Link>
                   </Stack>
-                  <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
+                  <Stack direction={"row"} spacing={5} sx={{ mr: 2 }}>
                      <Link
                         component={RouterLink}
                         to="/signin"

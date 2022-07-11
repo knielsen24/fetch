@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import {
    Paper,
    FormControl,
-   Input,
+   
    InputLabel,
    Button,
    Stack,
    Box,
+   TextField,
 } from "@mui/material";
 
 export default function LandingPage({ setUser }) {
@@ -77,139 +78,87 @@ export default function LandingPage({ setUser }) {
                src="https://i.imgur.com/PHXOSF9.png"
                alt="create an account"
             />
-            <Box
-               sx={{
-                  width: 350,
-                  height: 525,
-                  backgroundColor: "white",
-                  borderRadius: "8px",
-               }}
-            >
-               <Stack alignItems={"center"} justifyContent={"center"}>
-                  <Box
-                     sx={{ width: 300, height: 400, backgroundColor: "white" }}
-                  >
-                     <Stack
-                        spacing={3}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                     >
-                        <Paper
-                           justifyContent={"center"}
-                           sx={{
-                              width: 350,
-                              height: 50,
-                              borderTopLeftRadius: "8px",
-                              borderTopRightRadius: "8px",
-                              borderBottomLeftRadius: "0px",
-                              borderBottomRightRadius: "0px",
-                           }}
-                        >
-                           <Stack
-                              alignItems={"center"}
-                              justifyContent={"center"}
-                           >
-                              <Paper
-                                 elevation={15}
-                                 style={{
-                                    padding: 20,
-                                    height: "50vh",
-                                    width: 280,
-                                    margin: "20px",
-                                 }}
-                              >
-                                 <form onSubmit={handleSubmit}>
-                                    create a new account
-                                    <FormControl variant="standard">
-                                       <InputLabel htmlFor="component-simple">
-                                          first name
-                                       </InputLabel>
-                                       <Input
-                                          type="first_name"
-                                          id="first_name"
-                                          name="first_name"
-                                          value={signUpData.first_name}
-                                          onChange={handleChange}
-                                       />
-                                    </FormControl>
-                                    <FormControl variant="standard">
-                                       <InputLabel htmlFor="component-simple">
-                                          last name
-                                       </InputLabel>
-                                       <Input
-                                          type="last_name"
-                                          id="last_name"
-                                          name="last_name"
-                                          value={signUpData.last_name}
-                                          onChange={handleChange}
-                                       />
-                                    </FormControl>
-                                    <FormControl variant="standard">
-                                       <InputLabel htmlFor="component-simple">
-                                          email
-                                       </InputLabel>
-                                       <Input
-                                          type="email"
-                                          id="email"
-                                          name="email"
-                                          value={signUpData.email}
-                                          onChange={handleChange}
-                                       />
-                                    </FormControl>
-                                    <FormControl variant="standard">
-                                       <InputLabel htmlFor="component-simple">
-                                          password
-                                       </InputLabel>
-                                       <Input
-                                          type="password"
-                                          id="password"
-                                          name="password"
-                                          value={signUpData.password}
-                                          onChange={handleChange}
-                                       />
-                                    </FormControl>
-                                    <FormControl variant="standard">
-                                       <InputLabel htmlFor="component-simple">
-                                          confirm password
-                                       </InputLabel>
-                                       <Input
-                                          type="password"
-                                          id="password_confirmation"
-                                          name="password_confirmation"
-                                          value={
-                                             signUpData.password_confirmation
-                                          }
-                                          onChange={handleChange}
-                                       />
-                                    </FormControl>
-                                    <FormControl variant="standard">
-                                       <Button
-                                          variant="contained"
-                                          size="small"
-                                          type="submit"
-                                       >
-                                          Sign Up
-                                       </Button>
-                                       <p>already have an account?</p>
-                                       <Button
-                                          variant="contained"
-                                          size="small"
-                                          type="click"
-                                       >
-                                          Sign In
-                                       </Button>
-                                    </FormControl>
-                                 </form>
-                              </Paper>
-                           </Stack>
-                        </Paper>
-                     </Stack>
+            
+            <Box sx={{ width: 350, height: 525, backgroundColor: "white", borderRadius: "8px",}}>
+                  <Box display={'flex'} alignItems={'center'}  justifyContent={'center'} sx={{ color: 'white', background: 'rgba(0, 224, 255, 1)', width: 350, height: 50, borderTopLeftRadius: "8px", borderTopRightRadius: "8px", borderBottomLeftRadius: "0px", borderBottomRightRadius: "0px", marginBottom: 3}}>
+                     <h3>Create An Account</h3>
                   </Box>
-               </Stack>
-
-               {/* <Paper backgroundColor='secondary'></Paper> */}
-            </Box>
-         </Stack>
+                     <form onSubmit={handleSubmit} onChange={handleChange}>
+                        <Box sx={{width: 300, margin:'auto'}}>
+                        <Stack spacing={2.5} alignItems={'center'} justifyContent={'center'} >
+                           <TextField
+                              size="small"
+                              fullWidth
+                                 type="first_name"
+                                 id="first_name"
+                                 name="first_name"
+                                 placeholder="First Name"
+                                 value={signUpData.first_name}
+                                 
+                              />
+                              <TextField
+                              size="small"
+                              fullWidth
+                                 type="last_name"
+                                 id="last_name"
+                                 name="last_name"
+                                 placeholder="Last Name"
+                                 value={signUpData.last_name}
+                              />
+                              <TextField
+                              size="small"
+                              fullWidth
+                                 type="email"
+                                 id="email"
+                                 name="email"
+                                 placeholder="Email"
+                                 value={signUpData.email}
+                              />
+                              <TextField
+                              size="small"
+                              fullWidth
+                                 type="password"
+                                 id="password"
+                                 name="password"
+                                 placeholder="Password"
+                                 value={signUpData.password}
+                              />
+                              <TextField
+                              size="small"
+                                 fullWidth
+                                 type="password"
+                                 id="password_confirmation"
+                                 name="password_confirmation"
+                                 placeholder="Confirm Password"
+                                 value={
+                                    signUpData.password_confirmation
+                                 }
+                              />
+                              <Button
+                              disableElevation
+                              fullWidth
+                                 variant="contained"
+                                 size="small"
+                                 type="submit"
+                              >
+                                 Sign Up
+                              </Button>
+                              <h8> Already Have An Account?</h8>
+                              <Button
+                              fullWidth
+                              disableElevation
+                                 variant="contained"
+                                 size="small"
+                                 type="click"
+                              >
+                                 Sign In
+                              </Button>
+                        </Stack>
+                        </Box>
+                     </form>
+                     
+                  </Box>
+          </Stack>
       </>
    );
 }
