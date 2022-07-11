@@ -24,7 +24,7 @@ function App() {
 
    return (
       <>
-         <NavBar />
+         <NavBar user = {user}/>
          <Routes>
             <Route path="/" element={<LandingPage setUser={setUser}/>} />
             <Route path="signin" element={<SignInForm />} />

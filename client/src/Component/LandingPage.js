@@ -81,7 +81,7 @@ export default function LandingPage({setUser}) {
                      <FormControl variant="standard">
                      <InputLabel htmlFor="component-simple">confirm password</InputLabel>
                      <Input
-                        type="password_confirmation"
+                        type="password"
                         id="password_confirmation"
                         name="password_confirmation"
                         value={signUpData.password_confirmation}
@@ -93,7 +93,7 @@ export default function LandingPage({setUser}) {
                      Sign Up
                      </Button>
                      <p>already have an account?</p>
-                     <Button variant="contained" size="small" type="submit">
+                     <Button variant="contained" size="small" type="click">
                      Sign In
                      </Button>
                      </FormControl>
