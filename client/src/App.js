@@ -45,6 +45,8 @@ function App() {
             />
             <Route path="profile" />
             <Route path="findjobs" element={ user ? <JobPage /> : null} />
+				<Route path="myjobs" />
+				<Route path="myreviews" />
             <Route path="companyreviews" />
          </Routes>
          <Footer />

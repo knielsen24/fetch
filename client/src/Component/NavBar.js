@@ -16,8 +16,12 @@ export default function NavBar({ user, handleSignOut }) {
    const [search, setSearch] = useState("");
    const [anchorEl, setAnchorEl] = useState(null);
 
-	const open = Boolean(anchorEl);
-	const handleClick = (event) => setAnchorEl(event.currentTarget);
+   const open = Boolean(anchorEl);
+
+	const handleClick = (e) => {
+      // console.log(e.target.value)
+		setAnchorEl(e.currentTarget);
+   };
    const handleClose = () => setAnchorEl(null);
 
    const changeHandler = (e) => {
@@ -31,7 +35,6 @@ export default function NavBar({ user, handleSignOut }) {
       e.preventDefault();
       fetch("http://localhost:3000");
    };
-
 
    // when the user is signed in it renders dropDownMenu
    // when the user is signed out it renders signInLink
@@ -56,16 +59,13 @@ export default function NavBar({ user, handleSignOut }) {
                "aria-labelledby": "basic-button",
             }}
          >
-            {/* <MenuItem component={RouterLink} to="/profile" onClick={handleClose}>Profile</MenuItem>
-            <MenuItem component={RouterLink} to="/myjobs" onClick={handleClose}>My Jobs</MenuItem>
-            <MenuItem component={RouterLink} to="/myreviews" onClick={handleClose}>My Reviews</MenuItem>
-            <MenuItem component={RouterLink} onClick={handleClose}>Settings</MenuItem> */}
-				<MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My Jobs</MenuItem>
-            <MenuItem onClick={handleClose}>My Reviews</MenuItem>
-            <MenuItem onClick={handleClose}>Settings</MenuItem>
-				{/* css needs polishing */}
-				<Divider fullWidth />
+            
+            <MenuItem component={RouterLink} to="/profile">Profile</MenuItem>
+            <MenuItem component={RouterLink} to="/myjobs">My Jobs</MenuItem>
+            <MenuItem component={RouterLink} to="/myreviews">My Reviews</MenuItem>
+            {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
+            {/* css needs polishing */}
+            <Divider fullWidth />
             <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
          </Menu>
       </>
