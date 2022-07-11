@@ -3,21 +3,23 @@ import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
-export default function JobPage({ jobs }) {
+  
+export default function JobPage({ jobPostings }) {
+    // const [featuredJob, setFeaturedJob] = useState([jobs[0]])
 
-  const [featuredJob, setFeaturedJob] = useState([jobs[0]])
+   let renderJobCards;
 
-  const renderJobCards = jobs.map(job => {
-    return <JobCard
-      key = {job.id}
-      {...job} />
-  })
+   if (jobPostings) {
+      renderJobCards = jobPostings.map((post) => {
+			return <JobCard key={post.id} {...post} />;
+      });
+   }
 
-  return (
-    <div>
-        <Stack direction="row" spacing={10}>
-            <Stack style={{maxHeight: 700, overflow: 'auto'}}>
-                {renderJobCards}
+   return (
+      <div>
+         <Stack direction="row" spacing={10}>
+            <Stack style={{ maxHeight: 700, overflow: "auto" }}>
+               {renderJobCards}
             </Stack>
             <JobFeature featuredJob={featuredJob}/>
         </Stack>
