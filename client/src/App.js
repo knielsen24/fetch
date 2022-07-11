@@ -17,6 +17,15 @@ function App() {
       });
    }, []);
 
+	const handleSignOut = () => {
+		fetch("/logout", {method: "DELETE"}).then((r) => {
+			if (r.ok) {
+				setUser(null)
+			}
+		})
+	}
+
+
    // if (!user) return <SignInForm setUser={setUser} />;
 
    let { jobListingId } = useParams();
@@ -24,7 +33,7 @@ function App() {
 
    return (
       <>
-         <NavBar user={user} />
+         <NavBar user={user} handleSignOut={handleSignOut} />
          <Routes>
             <Route
                path="/"

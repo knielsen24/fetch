@@ -8,19 +8,16 @@ import {
    Divider,
    Link,
    Box,
-   Button,
    Menu,
    MenuItem,
 } from "@mui/material";
 
-export default function NavBar({ user }) {
+export default function NavBar({ user, handleSignOut }) {
    const [search, setSearch] = useState("");
    const [anchorEl, setAnchorEl] = useState(null);
 
-   const open = Boolean(anchorEl);
-
-   const handleClick = (event) => setAnchorEl(event.currentTarget);
-
+	const open = Boolean(anchorEl);
+	const handleClick = (event) => setAnchorEl(event.currentTarget);
    const handleClose = () => setAnchorEl(null);
 
    const changeHandler = (e) => {
@@ -35,13 +32,12 @@ export default function NavBar({ user }) {
       fetch("http://localhost:3000");
    };
 
+
    // when the user is signed in it renders dropDownMenu
    // when the user is signed out it renders signInLink
    const dropDownMenu = (
       <>
          <Link
-            component={RouterLink}
-            to="/signin"
             underline="hover"
             color={"black"}
             aria-controls={open ? "basic-menu" : undefined}
@@ -49,7 +45,7 @@ export default function NavBar({ user }) {
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
          >
-            {user.first_name}
+            {user ? user.first_name : null}
          </Link>
          <Menu
             id="basic-menu"
@@ -60,11 +56,17 @@ export default function NavBar({ user }) {
                "aria-labelledby": "basic-button",
             }}
          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            {/* <MenuItem component={RouterLink} to="/profile" onClick={handleClose}>Profile</MenuItem>
+            <MenuItem component={RouterLink} to="/myjobs" onClick={handleClose}>My Jobs</MenuItem>
+            <MenuItem component={RouterLink} to="/myreviews" onClick={handleClose}>My Reviews</MenuItem>
+            <MenuItem component={RouterLink} onClick={handleClose}>Settings</MenuItem> */}
+				<MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My Jobs</MenuItem>
             <MenuItem onClick={handleClose}>My Reviews</MenuItem>
             <MenuItem onClick={handleClose}>Settings</MenuItem>
-            <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+				{/* css needs polishing */}
+				<Divider fullWidth />
+            <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
          </Menu>
       </>
    );
