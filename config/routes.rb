@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/findjobs", to: "job_postings#index"
 
 #   get "/applied_tos", to: "applied_tos#index"
-  get "/applied_tos/:id", to: "applied_tos#show"
+  get "/users/:id/applications", to: "users#index"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
