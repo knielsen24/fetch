@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
    AppBar,
-   Typography,
    Stack,
    TextField,
    Divider,
@@ -11,6 +10,9 @@ import {
    Menu,
    MenuItem,
 } from "@mui/material";
+
+// we should consider refactoring the dropdown menu as it's own component to clean up the navbar
+// If we refactor, user needs to be passed down as props
 
 export default function NavBar({ user, handleSignOut, handleProfilePage }) {
    const [search, setSearch] = useState("");

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
+import ProfileFeature from "./ProfileFeature";
 
-function ProfilePage({ jobPostings }) {
-   let renderJobCards;
+function ProfilePage({ jobPostings, user }) {
+
+	let renderJobCards;
 
    if (jobPostings) {
       renderJobCards = jobPostings.map((post) => {
@@ -17,7 +19,7 @@ function ProfilePage({ jobPostings }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            {/* <JobFeature featuredJob={featuredJob}/> */}
+            <ProfileFeature user={user} />
          </Stack>
       </div>
    );

@@ -68,6 +68,7 @@ function App() {
                path="profile"
                element={
                   <ProfilePage
+							user={user}
                      jobPostings={jobs}
                      handleProfilePage={handleProfilePage}
                   />
