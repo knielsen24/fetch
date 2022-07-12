@@ -63,6 +63,7 @@ function SignInForm({ setUser, navigate }) {
                      <Box sx={{ width: 350 }}>
                         <Stack spacing={4}>
                            <TextField
+                              required
                               fullWidth
                               type="email"
                               id="email"
@@ -72,6 +73,7 @@ function SignInForm({ setUser, navigate }) {
                               placeholder="Email"
                            />
                            <TextField
+                              required
                               fullWidth
                               type="password"
                               id="password"

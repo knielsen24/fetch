@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get "/users/:id/applications", to: "applied_tos#index"
 
+  get "/companies/:id", to: "companies#show"
+
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

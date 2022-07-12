@@ -8,12 +8,15 @@ import {
    Divider,
    Button,
    FormControl,
+   Link
 } from "@mui/material";
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import {Link as RouterLink} from "react-router-dom"
 
 export default function JobFeature({
+   id,
    company_name,
    position,
    location,
@@ -21,6 +24,7 @@ export default function JobFeature({
    job_type,
    description,
    benefits,
+   image
 }) {
    const [like, setLike] = useState(false);
    const handleLike = () => setLike(!like);
@@ -31,6 +35,19 @@ export default function JobFeature({
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
 
+   const [clickThrough, setClickThrough] = useState('')
+
+   const handleClickThrough = () => {
+      fetch(`/companies/${id}`)
+      .then((r) => {
+         if (r.ok) {
+            r.json().then((r) => setClickThrough(r));
+         }
+      });
+   }
+
+   console.log(clickThrough)
+
    return (
       <div>
          <Stack>
@@ -39,7 +56,16 @@ export default function JobFeature({
                   <Typography variant="h5" fontWeight={600}>
                      {position}
                   </Typography>
-                  <Typography>{company_name}</Typography>
+                  <Link 
+                        onClick={handleClickThrough}
+                        
+                        underline="never"
+                        fontFamily={"sans-serif"}
+                        color={"primary"}
+                        fontSize={36}
+                        sx={{ textDecoration: "none" }}>
+                        {company_name}
+                  </Link>
                   <Typography>{location}</Typography>
                   <Typography>${compensation}</Typography>
                   <Typography>{job_type}</Typography>
