@@ -5,6 +5,7 @@ import LandingPage from "./Component/LandingPage";
 import { Routes, Route, Links, useParams, useNavigate } from "react-router-dom";
 import SignInForm from "./Component/SignInForm";
 import JobPage from './Component/JobPage';
+import ReviewForm from "./Component/ReviewForm";
 
 function App() {
    const [user, setUser] = useState(null);
@@ -55,6 +56,7 @@ function App() {
 				<Route path="myjobs" />
 				<Route path="myreviews" />
             <Route path="companyreviews" />
+            <Route path='reviewform' element={<ReviewForm />} />
          </Routes>
          <Footer />
       </>
