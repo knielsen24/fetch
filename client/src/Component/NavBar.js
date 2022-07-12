@@ -112,10 +112,6 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
          to="/signin"
          underline="hover"
          color={"black"}
-         aria-controls={open ? "basic-menu" : undefined}
-         aria-haspopup="true"
-         aria-expanded={open ? "true" : undefined}
-         onClick={handleClick}
       >
          Sign In
       </Link>
