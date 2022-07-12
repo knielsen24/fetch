@@ -3,7 +3,7 @@ import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
-export default function JobPage({ jobPostings }) {
+export default function JobPage({ jobPostings, user }) {
    const [featuredJob, setFeaturedJob] = useState(jobPostings[0]);
    const handleClick = (id) => {
       const clickedJob = jobPostings.find((job) => job.id === id);
@@ -24,7 +24,7 @@ export default function JobPage({ jobPostings }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            <JobFeature {...featuredJob} />
+            <JobFeature {...featuredJob} user={user} />
          </Stack>
       </div>
    );

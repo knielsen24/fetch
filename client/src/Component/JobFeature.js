@@ -14,6 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function JobFeature({
    id,
+   user,
    company_name,
    position,
    location,
@@ -32,7 +33,17 @@ export default function JobFeature({
    const handleClose = () => setOpen(false);
 
    const handleCreateApplication = () => {
-      console.log("yes")
+    const application = {
+      job_posting_id: id,
+      user_id: user.id
+    }
+      fetch("http://localhost:4000/applied_tos", {
+        method: "POST",
+        headers: {
+           "Content-Type": "application/json",
+        },
+        body: JSON.stringify(application),
+      })
       handleClose();
    }
 

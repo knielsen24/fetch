@@ -7,14 +7,14 @@ class AppliedTosController < ApplicationController
     end
 
     def create
-        application = AppliedTo.create(application_params)
+        application = AppliedTo.create!(application_params)
         render json: application
     end
 
     private
 
     def application_params
-        params.permit(user_id: params[:user_id], job_posting_id: params[:job_posting_id])
+        params.permit(:user_id, :job_posting_id)
     end
 
 end

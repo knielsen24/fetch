@@ -83,7 +83,7 @@ function App() {
             >
 
 				</Route>
-            <Route path="findjobs" element={<JobPage jobPostings={jobs} />} />
+            <Route path="findjobs" element={<JobPage jobPostings={jobs} user={user}/>} />
             <Route path="myjobs" />
             <Route path="myreviews" />
             <Route path="companyreviews" />
