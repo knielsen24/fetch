@@ -6,9 +6,6 @@ class AppliedTosController < ApplicationController
    #      render json: applied_to
    #  end
 
-    def show
-        application = AppliedTo.where(user_id: params[:id])
-        render json: application
-    end
+    
 
 end
