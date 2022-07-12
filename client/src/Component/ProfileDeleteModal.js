@@ -15,10 +15,10 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
    const handleClose = () => setOpen(false);
 
    return (
-      <div>
+      <>
          <Button
-            variant="contained"
-            color="error"
+            disableElevation
+				variant="contained"
             fullwidth
             size="small"
             onClick={handleClickOpen}
@@ -44,17 +44,19 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
             <DialogActions>
                <Button onClick={handleClose}>Cancel</Button>
                <Button
-                  onClick={() => {
+
+                  autoFocus
+						color="error"
+						onClick={() => {
                      handleClose();
                      handleDeleteProfile(userId);
                   }}
-                  autoFocus
                >
-                  Confirm
+                  Yes, delete profile
                </Button>
             </DialogActions>
          </Dialog>
-      </div>
+      </>
    );
 }
 
