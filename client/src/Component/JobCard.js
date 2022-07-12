@@ -1,11 +1,13 @@
 import React from 'react'
 import { Stack, Card, CardContent, Typography } from '@mui/material'
 
-function JobCard({company, position, location, compensation, job_type, description, benefits}) {
+function JobCard({id, company, position, location, compensation, job_type, description, benefits, handleClick}) {
+
+
   return (
     <div>
-        <Stack>
-            <Card>
+        <Stack >
+            <Card onClick= {handleClick(id)}>
                 <CardContent>
                   <Typography>
                     {position}

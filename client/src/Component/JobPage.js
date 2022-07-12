@@ -5,13 +5,18 @@ import JobFeature from "./JobFeature";
 
 
 export default function JobPage({ jobPostings }) {
-    // const [featuredJob, setFeaturedJob] = useState([jobs[0]])
+
+  
+    const [featuredJob, setFeaturedJob] = useState({})
+    const handleClick = e => {
+      console.log(e.target)
+    }
 
    let renderJobCards;
 
    if (jobPostings) {
       renderJobCards = jobPostings.map((post) => {
-			return <JobCard key={post.id} {...post} />;
+			return <JobCard key={post.id} {...post} handleClick={handleClick}/>;
       }); 
    }
 
@@ -21,7 +26,7 @@ export default function JobPage({ jobPostings }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            {/* <JobFeature featuredJob={featuredJob}/> */}
+            <JobFeature featuredJob={featuredJob}/>
         </Stack>
     </div>
   )
