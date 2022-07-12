@@ -44,10 +44,10 @@ function App() {
    };
 
    const handleDeleteProfile = (id) => {
-      handleSignOut();
+
       fetch(`/users/${id}`, {
          method: "DELETE",
-      });
+      }).then(handleSignOut());
 		// render a 'Sorry to see you go message'
    };
 
