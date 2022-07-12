@@ -63,7 +63,7 @@ function ProfileFeature({
                   {/* Edit/Delete Modal*/}
                   <>
                      <ProfileEditForm
-                        id={id}
+                        userId={id}
                         first_name={first_name}
                         last_name={last_name}
                         email={email}

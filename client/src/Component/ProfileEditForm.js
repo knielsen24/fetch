@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 function ProfileEditForm({
-   id,
+   userId,
    first_name,
    last_name,
    email,
@@ -21,10 +21,10 @@ function ProfileEditForm({
    handleEditProfile,
 }) {
    const initialUserData = {
-      first_name: "",
-      last_name: "",
-      email: "",
-      image_url: "",
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      image_url: image_url,
    };
 
    const [updateUserData, setUpdateUserData] = useState(initialUserData);
@@ -40,19 +40,26 @@ function ProfileEditForm({
 
    function handleSubmit(e) {
       e.preventDefault();
-      fetch("http://localhost:4000/", {
-         method: "POST",
+      const updatedData = {
+         first_name: updateUserData.first_name,
+         last_name: updateUserData.last_name,
+         email: updateUserData.email,
+         image_url: updateUserData.image_url,
+      };
+
+      fetch(`/users/${userId}`, {
+         method: "PATCH",
          headers: {
             "Content-Type": "application/json",
          },
-         body: JSON.stringify(signUpData),
+         body: JSON.stringify(updatedData),
       })
          .then((r) => r.json())
-         .then((user) => setUser(user))
-         .then(navigate("findjobs"));
+         // .then((user) => setUser(user))
+         // .then(navigate("findjobs"));
       // add error handing
    }
-   
+
    return (
       <>
          <Button
@@ -85,7 +92,6 @@ function ProfileEditForm({
                            type="first_name"
                            id="first_name"
                            name="first_name"
-                           placeholder="First Name"
                            value={updateUserData.first_name}
                         />
                         <TextField
@@ -94,7 +100,6 @@ function ProfileEditForm({
                            type="last_name"
                            id="last_name"
                            name="last_name"
-                           placeholder="Last Name"
                            value={updateUserData.last_name}
                         />
                         <TextField
@@ -103,7 +108,6 @@ function ProfileEditForm({
                            type="email"
                            id="email"
                            name="email"
-                           placeholder="Email"
                            value={updateUserData.email}
                         />
                         <TextField
@@ -112,7 +116,6 @@ function ProfileEditForm({
                            type="password"
                            id="password"
                            name="password"
-                           placeholder="Password"
                            value={updateUserData.password}
                         />
                         <TextField
@@ -121,28 +124,8 @@ function ProfileEditForm({
                            type="password"
                            id="password_confirmation"
                            name="password_confirmation"
-                           placeholder="Confirm Password"
                            value={updateUserData.password_confirmation}
                         />
-                        <Button
-                           disableElevation
-                           fullWidth
-                           variant="contained"
-                           size="small"
-                           type="submit"
-                        >
-                           Sign Up
-                        </Button>
-                        <h8> Already Have An Account?</h8>
-                        <Button
-                           fullWidth
-                           disableElevation
-                           variant="contained"
-                           size="small"
-                           type="click"
-                        >
-                           Sign In
-                        </Button>
                      </Stack>
                   </Box>
                </form>
@@ -152,9 +135,10 @@ function ProfileEditForm({
                <Button
                   autoFocus
                   color="error"
+                  onSubmit={handleSubmit}
                   onClick={() => {
                      handleClose();
-                     handleEditProfile(id);
+                     handleEditProfile(userId);
                   }}
                >
                   Update Profile
