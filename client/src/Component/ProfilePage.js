@@ -19,7 +19,7 @@ function ProfilePage({ jobPostings, user }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            <ProfileFeature user={user} />
+            <ProfileFeature {...user} />
          </Stack>
       </div>
    );

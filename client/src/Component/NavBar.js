@@ -68,7 +68,7 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
                to="/profile"
                onClick={() => {
                   handleClose();
-                  handleProfilePage();
+                  handleProfilePage(user.id);
                }}
             >
                Profile

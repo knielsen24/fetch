@@ -37,13 +37,11 @@ function App() {
    };
 
    // How are we searching for list of jobs(user id)
-   const handleProfilePage = () => {
+   const handleProfilePage = (id) => {
       fetch("/findjobs")
          .then((r) => r.json())
          .then((data) => setJobs(data));
    };
-
-   // if (!user) return <SignInForm setUser={setUser} />;
 
    let { jobListingId } = useParams();
    let navigate = useNavigate();

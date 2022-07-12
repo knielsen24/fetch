@@ -1,7 +1,7 @@
 import { Button, Stack, Box, TextField, Divider } from "@mui/material";
 
-function ProfileFeature({ user }) {
-   // const { first_name, last_name, email, image_url, resume } = user;
+function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
+	
    return (
       <div>
          <Box
@@ -28,7 +28,7 @@ function ProfileFeature({ user }) {
                   marginBottom: 3,
                }}
             >
-               <h3>Create An Account</h3>
+               <h3>{first_name}</h3>
             </Box>
                <Box sx={{ width: 300, margin: "auto" }}>
                   <Stack
