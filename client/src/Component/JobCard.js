@@ -14,6 +14,7 @@ export default function JobCard({
       <div >
          <Stack>
             <Card elevation={3}>
+					{/* When on profile we do not want Click event handler */}
                <CardContent onClick={()=>handleClick(id)}>
                   <Typography>{position}</Typography>
                   <Typography>{company_name}</Typography>

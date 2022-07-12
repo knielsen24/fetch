@@ -38,6 +38,14 @@ function App() {
 
    // if (!user) return <SignInForm setUser={setUser} />;
 
+   const handleDeleteProfile = (id) => {
+
+      fetch(`/users/${id}`, {
+         method: "DELETE",
+      }).then(handleSignOut());
+		// render a 'Sorry to see you go message'
+   };
+
    let { jobListingId } = useParams();
    let navigate = useNavigate();
 
@@ -47,7 +55,7 @@ function App() {
          <Routes>
             <Route
                path="/"
-               element={user ? null : <LandingPage setUser={setUser} />}
+               element={user ? null : <LandingPage setUser={setUser} navigate={navigate} user={user} />}
             />
             <Route
                path="signin"
@@ -57,7 +65,19 @@ function App() {
                   )
                }
             />
-            <Route path="profile" element={<ProfilePage />} />
+            <Route
+               path="profile"
+               element={
+                  <ProfilePage
+                     user={user}
+                     jobPostings={jobs}
+                     handleProfilePage={handleProfilePage}
+                     handleDeleteProfile={handleDeleteProfile}
+                  />
+               }
+            >
+					
+				</Route>
             <Route path="findjobs" element={<JobPage jobPostings={jobs} />} />
             <Route path="myjobs" />
             <Route path="myreviews" />

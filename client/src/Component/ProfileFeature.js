@@ -1,7 +1,18 @@
-import { Button, Stack, Box, TextField, Divider } from "@mui/material";
+import { Button, Stack, Box, Typography, IconButton } from "@mui/material";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import ProfileDeleteModal from "./ProfileDeleteModal";
+import AccountBox from "@mui/icons-material/AccountBox";
 
-function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
-	
+function ProfileFeature({
+   id,
+   first_name,
+   last_name,
+   email,
+   image_url,
+   resume,
+   handleDeleteProfile,
+}) {
+   // set default profile picture to profile icon
    return (
       <div>
          <Box
@@ -28,35 +39,42 @@ function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
                   marginBottom: 3,
                }}
             >
-               <h3>{first_name}</h3>
+               <h3>{first_name + " " + last_name}</h3>
             </Box>
-               <Box sx={{ width: 300, margin: "auto" }}>
-                  <Stack
-                     spacing={2.5}
-                     alignItems={"center"}
-                     justifyContent={"center"}
+            <Box sx={{ width: 300, margin: "auto" }}>
+               <Stack
+                  spacing={2.5}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+               >
+                  <IconButton
+                     size="large"
+                     aria-label="account of current user"
+                     aria-controls="menu-appbar"
+                     aria-haspopup="true"
+                     // onClick={handleMenu}
+                     color="inherit"
                   >
-                     <TextField />
-                     <Button
-                        disableElevation
-                        fullWidth
-                        variant="contained"
-                        size="small"
-                        type="submit"
-                     >
-                        Edit Profile
-                     </Button>
-                     <Button
-                        fullWidth
-                        disableElevation
-                        variant="contained"
-                        size="small"
-                        type="click"
-                     >
-                        Delete
-                     </Button>
-                  </Stack>
-               </Box>
+                     <AccountBox fontSize="large" />
+                  </IconButton>
+                  <Typography>{image_url}</Typography>
+                  <Typography>{email}</Typography>
+                  <Typography>{resume}</Typography>
+                  <Button
+                     disableElevation
+                     fullWidth
+                     variant="contained"
+                     size="small"
+                     type="submit"
+                  >
+                     Edit Profile
+                  </Button>
+                  <ProfileDeleteModal
+                     handleDeleteProfile={handleDeleteProfile}
+                     userId={id}
+                  />
+               </Stack>
+            </Box>
          </Box>
       </div>
    );
