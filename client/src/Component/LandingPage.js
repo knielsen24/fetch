@@ -31,7 +31,7 @@ export default function LandingPage({ setUser, navigate }) {
          .then((r) => r.json())
          .then((user) => setUser(user))
 			.then(navigate("findjobs"));
-
+			// add error handing
    }
 
    return (

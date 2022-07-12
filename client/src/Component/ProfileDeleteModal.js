@@ -19,7 +19,7 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
          <Button
             disableElevation
 				variant="contained"
-            fullwidth
+            fullWidth
             size="small"
             onClick={handleClickOpen}
          >
@@ -46,8 +46,7 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
             <DialogActions>
                <Button onClick={handleClose}>Cancel</Button>
                <Button
-
-                  autoFocus
+						autoFocus
 						color="error"
 						onClick={() => {
                      handleClose();

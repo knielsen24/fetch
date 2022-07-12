@@ -2,8 +2,8 @@ import React from "react";
 
 function ProfileUpdate() {
 
-	const [updateUserData, setupdateUserData] = useState(updateUser)
-	
+	const [updateUserData, setUpdateUserData] = useState(updateUser)
+
 	const updateUser = {
       first_name: "",
       last_name: "",

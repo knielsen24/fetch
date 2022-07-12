@@ -80,7 +80,9 @@ function App() {
                      handleDeleteProfile={handleDeleteProfile}
                   />
                }
-            />
+            >
+					
+				</Route>
             <Route path="findjobs" element={<JobPage jobPostings={jobs} />} />
             <Route path="myjobs" />
             <Route path="myreviews" />
