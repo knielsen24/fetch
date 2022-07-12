@@ -23,12 +23,14 @@ function SignInForm({ setUser, navigate }) {
             "Content-Type": "application/json",
          },
          body: JSON.stringify(signInData),
-      }).then((r) => {
-         if (r.ok) {
-				// need to add an error message if not authorized
-            r.json().then((user) => setUser(user));
-         }
-      }).then(navigate("findjobs"));
+      })
+         .then((r) => {
+            if (r.ok) {
+               // need to add an error message if not authorized
+               r.json().then((user) => setUser(user));
+            }
+         })
+         .then(navigate("findjobs"));
    };
 
    return (

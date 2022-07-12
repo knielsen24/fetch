@@ -4,8 +4,7 @@ import JobCard from "./JobCard";
 import ProfileFeature from "./ProfileFeature";
 
 function ProfilePage({ jobPostings, user, handleDeleteProfile }) {
-
-	let renderJobCards;
+   let renderJobCards;
 
    if (jobPostings) {
       renderJobCards = jobPostings.map((post) => {
@@ -19,17 +18,19 @@ function ProfilePage({ jobPostings, user, handleDeleteProfile }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            <ProfileFeature handleDeleteProfile={handleDeleteProfile} {...user} />
+            <ProfileFeature
+               handleDeleteProfile={handleDeleteProfile}
+               {...user}
+            />
          </Stack>
       </div>
    );
 }
 
-
 export default ProfilePage;
 
 // Jobcard tile is used in jobpage and profile page
-	// Pass jobcard inside of jobpage, will reuse job index on initial useeffect
-	// Profilepage reuses jobcard tile, with different get request to applied to table
-	// Set state in fetch request for rendering jobcard tile list for logged in user
-	// Once user applies to a job (post request to applied to), update state
+// Pass jobcard inside of jobpage, will reuse job index on initial useeffect
+// Profilepage reuses jobcard tile, with different get request to applied to table
+// Set state in fetch request for rendering jobcard tile list for logged in user
+// Once user applies to a job (post request to applied to), update state

@@ -8,14 +8,14 @@ export default function JobCard({
    location,
    compensation,
    job_type,
-   handleClick
+   handleClick,
 }) {
    return (
-      <div >
+      <div>
          <Stack>
             <Card elevation={3}>
-					{/* When on profile we do not want Click event handler */}
-               <CardContent onClick={()=>handleClick(id)}>
+               {/* When on profile we do not want Click event handler */}
+               <CardContent onClick={() => handleClick(id)}>
                   <Typography>{position}</Typography>
                   <Typography>{company_name}</Typography>
                   <Typography>{location}</Typography>
@@ -27,4 +27,3 @@ export default function JobCard({
       </div>
    );
 }
-

@@ -18,7 +18,7 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
       <>
          <Button
             disableElevation
-				variant="contained"
+            variant="contained"
             fullWidth
             size="small"
             onClick={handleClickOpen}
@@ -36,19 +36,19 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
             </DialogTitle>
             <DialogContent>
                <DialogContentText id="alert-dialog-description">
-                  Deleting your profile will permanently remove any associated information and your account will not be recoverable.
-						<br />
-						<br />
-						Click cancel to go back
-                  to your profile.
+                  Deleting your profile will permanently remove any associated
+                  information and your account will not be recoverable.
+                  <br />
+                  <br />
+                  Click cancel to go back to your profile.
                </DialogContentText>
             </DialogContent>
             <DialogActions>
                <Button onClick={handleClose}>Cancel</Button>
                <Button
-						autoFocus
-						color="error"
-						onClick={() => {
+                  autoFocus
+                  color="error"
+                  onClick={() => {
                      handleClose();
                      handleDeleteProfile(userId);
                   }}

@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Button, Stack, Box, TextField, Divider } from "@mui/material";
 
 export default function LandingPage({ setUser, navigate }) {
-
-	const newUser = {
+   const newUser = {
       first_name: "",
       last_name: "",
       email: "",
       password: "",
       password_confirmation: "",
-		image_url: "",
+      image_url: "",
    };
 
    const [signUpData, setSignUpData] = useState(newUser);
@@ -30,8 +29,8 @@ export default function LandingPage({ setUser, navigate }) {
       })
          .then((r) => r.json())
          .then((user) => setUser(user))
-			.then(navigate("findjobs"));
-			// add error handing
+         .then(navigate("findjobs"));
+      // add error handing
    }
 
    return (

@@ -1,66 +1,123 @@
-import React, {useState} from 'react'
-import { Stack, Card, CardContent, CardActions, Typography, Divider, Button, FormControl} from '@mui/material'
-import { Dialog, DialogTitle, IconButton } from '@mui/material'
-import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import React, { useState } from "react";
+import {
+   Stack,
+   Card,
+   CardContent,
+   CardActions,
+   Typography,
+   Divider,
+   Button,
+   FormControl,
+} from "@mui/material";
+import { Dialog, DialogTitle, IconButton } from "@mui/material";
+import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function JobFeature({
-  company_name,
-  position,
-  location,
-  compensation,
-  job_type,
-  description,
-  benefits,
+   company_name,
+   position,
+   location,
+   compensation,
+   job_type,
+   description,
+   benefits,
 }) {
+   const [like, setLike] = useState(false);
+   const handleLike = () => setLike(!like);
 
-  const [like, setLike] = useState(false)
-  const handleLike = () => setLike(!like)
+   const renderLikeIcon = like ? <FavoriteIcon /> : <FavoriteBorderSharpIcon />;
 
-  const renderLikeIcon = like ? <FavoriteIcon/> : <FavoriteBorderSharpIcon/>
-  
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+   const [open, setOpen] = useState(false);
+   const handleOpen = () => setOpen(true);
+   const handleClose = () => setOpen(false);
 
-  return (
-    <div>
-      <Stack>
+   return (
+      <div>
+         <Stack>
             <Card>
                <CardContent>
-                  <Typography variant= 'h5' fontWeight={600}>{position}</Typography>
+                  <Typography variant="h5" fontWeight={600}>
+                     {position}
+                  </Typography>
                   <Typography>{company_name}</Typography>
                   <Typography>{location}</Typography>
                   <Typography>${compensation}</Typography>
                   <Typography>{job_type}</Typography>
-                    <CardActions>
-                      <Button onClick = {handleOpen} variant= 'contained'>Apply Now</Button>
-                      <Dialog open={open} onClose={handleClose}>
-                        <DialogTitle style={{textAlign: "center"}}> Apply for the {position} position at {company_name}!</DialogTitle>
-                        <Divider/>
+                  <CardActions>
+                     <Button onClick={handleOpen} variant="contained">
+                        Apply Now
+                     </Button>
+                     <Dialog open={open} onClose={handleClose}>
+                        <DialogTitle style={{ textAlign: "center" }}>
+                           {" "}
+                           Apply for the {position} position at {company_name}!
+                        </DialogTitle>
+                        <Divider />
                         <FormControl>
-                          <Button type="submit" onClick={handleClose} variant= 'contained' size="small"> Submit Application </Button>
+                           <Button
+                              type="submit"
+                              onClick={handleClose}
+                              variant="contained"
+                              size="small"
+                           >
+                              {" "}
+                              Submit Application{" "}
+                           </Button>
                         </FormControl>
-                      </Dialog>
-                      <IconButton onClick={handleLike}>
+                     </Dialog>
+                     <IconButton onClick={handleLike}>
                         {renderLikeIcon}
-                      </IconButton>
-                    </CardActions>
-                  <Divider/>
-                  <Typography variant= 'h6' fontWeight={600} padding= '3px'>Job details</Typography>
-                  <Typography variant= 'h8' fontWeight={600} display="block" padding= '2px'>Compensation</Typography>
-                  <Typography variant= 'h8' display="block" padding= '3px'>${compensation} a year</Typography>
-                  <Typography variant= 'h8' fontWeight={600} display="block" padding= '2px'>Job Type</Typography>
-                  <Typography variant= 'h8' display="block" padding= '5px'>{job_type}</Typography>
-                  <Divider/>
-                  <Typography variant= 'h7' fontWeight={600} display="block" padding= '5px'>Benefits</Typography>
-                  <Typography padding= '5px'>{benefits}</Typography>
-                  <Divider/>
-                  <Typography variant= 'h7' fontWeight={600} display="block" padding= '5px'>Full Job Description</Typography>
-                  <Typography padding= '5px'>{description}</Typography>
+                     </IconButton>
+                  </CardActions>
+                  <Divider />
+                  <Typography variant="h6" fontWeight={600} padding="3px">
+                     Job details
+                  </Typography>
+                  <Typography
+                     variant="h8"
+                     fontWeight={600}
+                     display="block"
+                     padding="2px"
+                  >
+                     Compensation
+                  </Typography>
+                  <Typography variant="h8" display="block" padding="3px">
+                     ${compensation} a year
+                  </Typography>
+                  <Typography
+                     variant="h8"
+                     fontWeight={600}
+                     display="block"
+                     padding="2px"
+                  >
+                     Job Type
+                  </Typography>
+                  <Typography variant="h8" display="block" padding="5px">
+                     {job_type}
+                  </Typography>
+                  <Divider />
+                  <Typography
+                     variant="h7"
+                     fontWeight={600}
+                     display="block"
+                     padding="5px"
+                  >
+                     Benefits
+                  </Typography>
+                  <Typography padding="5px">{benefits}</Typography>
+                  <Divider />
+                  <Typography
+                     variant="h7"
+                     fontWeight={600}
+                     display="block"
+                     padding="5px"
+                  >
+                     Full Job Description
+                  </Typography>
+                  <Typography padding="5px">{description}</Typography>
                </CardContent>
             </Card>
          </Stack>
-    </div> 
-  )
+      </div>
+   );
 }
