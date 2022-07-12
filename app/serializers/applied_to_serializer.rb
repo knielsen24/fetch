@@ -1,5 +1,10 @@
 class AppliedToSerializer < ActiveModel::Serializer
-  attributes :id
-  has_one :user
+  # attributes :company
   has_one :job_posting
+
+
+  def company 
+    object.job_posting.company
+  end
+  
 end

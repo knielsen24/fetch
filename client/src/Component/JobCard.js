@@ -2,7 +2,7 @@ import React from "react";
 import { Stack, Card, CardContent, Typography } from "@mui/material";
 
 function JobCard({
-   company,
+   company_name,
    position,
    location,
    compensation,
@@ -16,7 +16,7 @@ function JobCard({
             <Card>
                <CardContent>
                   <Typography>{position}</Typography>
-                  <Typography>{company}</Typography>
+                  <Typography>{company_name}</Typography>
                   <Typography>{location}</Typography>
                   <Typography>{compensation}</Typography>
                   <Typography>{job_type}</Typography>
