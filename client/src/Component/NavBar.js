@@ -12,7 +12,7 @@ import {
    MenuItem,
 } from "@mui/material";
 
-export default function NavBar({ user, handleSignOut }) {
+export default function NavBar({ user, handleSignOut, handleProfilePage }) {
    const [search, setSearch] = useState("");
    const [anchorEl, setAnchorEl] = useState(false);
 
@@ -61,7 +61,7 @@ export default function NavBar({ user, handleSignOut }) {
                "aria-labelledby": "basic-button",
             }}
          >
-            <MenuItem component={RouterLink} to="/profile">
+            <MenuItem component={RouterLink} to="/profile" onClick={handleProfilePage} >
                Profile
             </MenuItem>
             <MenuItem component={RouterLink} to="/myjobs">

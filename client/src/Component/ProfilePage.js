@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { Box, Stack } from "@mui/material";
+import JobCard from "./JobCard";
 
-function ProfilePage() {
+function ProfilePage({ jobPostings }) {
+   let renderJobCards;
 
-	return <div>Profile</div>;
+   if (jobPostings) {
+      renderJobCards = jobPostings.map((post) => {
+         return <JobCard key={post.id} {...post} />;
+      });
+   }
+
+   return (
+      <div>
+         <Stack direction="row" spacing={10}>
+            <Stack style={{ maxHeight: 700, overflow: "auto" }}>
+               {renderJobCards}
+            </Stack>
+            {/* <JobFeature featuredJob={featuredJob}/> */}
+         </Stack>
+      </div>
+   );
 }
 
 

@@ -36,6 +36,13 @@ function App() {
          .then(navigate("/"));
    };
 
+	// How are we searching for list of jobs(user id)
+	const handleProfilePage = () => {
+		fetch("/findjobs")
+         .then((r) => r.json())
+         .then((data) => setJobs(data));
+	}
+
    // if (!user) return <SignInForm setUser={setUser} />;
 
    let { jobListingId } = useParams();
@@ -57,7 +64,7 @@ function App() {
                   )
                }
             />
-            <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile" element={<ProfilePage jobPostings={jobs} handleProfilePage={handleProfilePage} />} />
             <Route path="findjobs" element={<JobPage jobPostings={jobs} />} />
             <Route path="myjobs" />
             <Route path="myreviews" />
