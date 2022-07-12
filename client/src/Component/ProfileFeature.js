@@ -2,10 +2,8 @@ import { Button, Stack, Box, TextField, Divider } from "@mui/material";
 
 function ProfileFeature({ user }) {
    // const { first_name, last_name, email, image_url, resume } = user;
-
    return (
       <div>
-
          <Box
             sx={{
                width: 350,
@@ -39,7 +37,6 @@ function ProfileFeature({ user }) {
                      justifyContent={"center"}
                   >
                      <TextField />
-
                      <Button
                         disableElevation
                         fullWidth
