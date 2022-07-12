@@ -43,21 +43,16 @@ function App() {
          .then((data) => setJobs(data));
    };
 
-	const handleDeleteProfile = (id) => {
-		fetch(`/me/${id}`, {
+   const handleDeleteProfile = (id) => {
+      handleSignOut();
+      fetch(`/users/${id}`, {
          method: "DELETE",
-      })
-         .then((resp) => resp.json())
-         .then(() => {
-            setUser(null)
-         })
-         .then(navigate("/"));
+      });
+		// render a 'Sorry to see you go message'
    };
 
-
-	let { jobListingId } = useParams();
+   let { jobListingId } = useParams();
    let navigate = useNavigate();
-
 
    return (
       <>
@@ -79,10 +74,10 @@ function App() {
                path="profile"
                element={
                   <ProfilePage
-							user={user}
+                     user={user}
                      jobPostings={jobs}
                      handleProfilePage={handleProfilePage}
-							handleDeleteProfile={handleDeleteProfile}
+                     handleDeleteProfile={handleDeleteProfile}
                   />
                }
             />
