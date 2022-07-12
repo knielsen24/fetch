@@ -1,7 +1,7 @@
 import { Button, Stack, Box, Typography, Divider } from "@mui/material";
 import ProfileDeleteModal from "./ProfileDeleteModal";
 
-function ProfileFeature({ id, first_name, last_name, email, image_url, resume }) {
+function ProfileFeature({ id, first_name, last_name, email, image_url, resume, handleDeleteProfile }) {
 
    return (
       <div>
@@ -49,7 +49,7 @@ function ProfileFeature({ id, first_name, last_name, email, image_url, resume })
                      >
                         Edit Profile
                      </Button>
-                   <ProfileDeleteModal userId={id} />
+                   <ProfileDeleteModal handleDeleteProfile={handleDeleteProfile} userId={id} />
                   </Stack>
                </Box>
          </Box>

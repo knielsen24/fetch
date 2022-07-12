@@ -44,7 +44,7 @@ function App() {
    };
 
 	const handleDeleteProfile = (id) => {
-		fetch(`http://localhost:9292/users/${id}`, {
+		fetch(`/me/${id}`, {
          method: "DELETE",
       })
          .then((resp) => resp.json())

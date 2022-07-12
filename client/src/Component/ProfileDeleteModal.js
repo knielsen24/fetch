@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import {
    Button,
    Dialog,
@@ -21,7 +21,13 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
 
    return (
       <div>
-         <Button variant="contained" color="error" fullwidth size="small" onClick={handleClickOpen}>
+         <Button
+            variant="contained"
+            color="error"
+            fullwidth
+            size="small"
+            onClick={handleClickOpen}
+         >
             Delete Profile
          </Button>
          <Dialog
@@ -36,14 +42,19 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
             <DialogContent>
                <DialogContentText id="alert-dialog-description">
                   By clicking confirm, this will permanently delete your profile
-						and your data will not be recoverable.
-						Click cancel to go back to your profile.
+                  and your data will not be recoverable. Click cancel to go back
+                  to your profile.
                </DialogContentText>
             </DialogContent>
             <DialogActions>
                <Button onClick={handleClose}>Cancel</Button>
-               <Button onClick={() => {handleClose()
-					handleDeleteProfile(userId)}} autoFocus>
+               <Button
+                  onClick={() => {
+                     handleClose();
+                     handleDeleteProfile(userId);
+                  }}
+                  autoFocus
+               >
                   Confirm
                </Button>
             </DialogActions>
