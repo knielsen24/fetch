@@ -1,6 +1,5 @@
 import { Stack, TextField, Box } from "@mui/material";
 import React from "react";
-import RightContainer from "./RightContainer";
 
 export default function ReviewPage() {
    return (
@@ -20,9 +19,8 @@ export default function ReviewPage() {
                justifyContent={"center"}
                spacing={10}
             >
-               <RightContainer>
                   <Box sx={{ width: 500, height: 500 }} />
-               </RightContainer>
+
             </Stack>
          </div>
       </>

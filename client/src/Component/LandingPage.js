@@ -106,6 +106,7 @@ export default function LandingPage({ setUser, navigate }) {
                         justifyContent={"center"}
                      >
                         <TextField
+                           required
                            size="small"
                            fullWidth
                            type="first_name"
@@ -115,6 +116,7 @@ export default function LandingPage({ setUser, navigate }) {
                            value={signUpData.first_name}
                         />
                         <TextField
+                           required
                            size="small"
                            fullWidth
                            type="last_name"
@@ -124,6 +126,7 @@ export default function LandingPage({ setUser, navigate }) {
                            value={signUpData.last_name}
                         />
                         <TextField
+                           required
                            size="small"
                            fullWidth
                            type="email"
@@ -133,6 +136,7 @@ export default function LandingPage({ setUser, navigate }) {
                            value={signUpData.email}
                         />
                         <TextField
+                           required
                            size="small"
                            fullWidth
                            type="password"
@@ -142,6 +146,7 @@ export default function LandingPage({ setUser, navigate }) {
                            value={signUpData.password}
                         />
                         <TextField
+                           required
                            size="small"
                            fullWidth
                            type="password"

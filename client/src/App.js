@@ -4,13 +4,14 @@ import Footer from "./Component/Footer";
 import LandingPage from "./Component/LandingPage";
 import { Routes, Route, Links, useParams, useNavigate } from "react-router-dom";
 import SignInForm from "./Component/SignInForm";
-import JobPage from './Component/JobPage';
-import ReviewForm from "./Component/ReviewForm";
+import JobPage from "./Component/JobPage";
 import ProfilePage from "./Component/ProfilePage";
+import CompanyPage from "./Component/CompanyPage";
 
 function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
+   const [renderCompany, setRenderCompany] = useState();
 
    useEffect(() => {
       fetch("/findjobs")
@@ -36,19 +37,22 @@ function App() {
          .then(navigate("/"));
    };
 
-    // How are we searching for list of jobs(user id)
-	 const handleProfilePage = (id) => {
+   // How are we searching for list of jobs(user id)
+   const handleProfilePage = (id) => {
       fetch("/findjobs")
          .then((r) => r.json())
          .then((data) => setJobs(data));
    };
 
    const handleDeleteProfile = (id) => {
-
       fetch(`/users/${id}`, {
          method: "DELETE",
       }).then(handleSignOut());
-		// render a 'Sorry to see you go message'
+      // render a 'Sorry to see you go message'
+   };
+
+   const onRenderCompany = (company) => {
+      setRenderCompany(company);
    };
 
    let { jobListingId } = useParams();
@@ -60,7 +64,15 @@ function App() {
          <Routes>
             <Route
                path="/"
-               element={user ? null : <LandingPage setUser={setUser} navigate={navigate} user={user} />}
+               element={
+                  user ? null : (
+                     <LandingPage
+                        setUser={setUser}
+                        navigate={navigate}
+                        user={user}
+                     />
+                  )
+               }
             />
             <Route
                path="signin"
@@ -80,14 +92,24 @@ function App() {
                      handleDeleteProfile={handleDeleteProfile}
                   />
                }
-            >
-
-				</Route>
-            <Route path="findjobs" element={<JobPage jobPostings={jobs} user={user}/>} />
+            ></Route>
+            <Route
+               path="findjobs"
+               element={
+                  <JobPage
+                     jobPostings={jobs}
+                     onRenderCompany={onRenderCompany}
+                     user={user}
+                  />
+               }
+            />
             <Route path="myjobs" />
             <Route path="myreviews" />
             <Route path="companyreviews" />
-            <Route path='reviewform' element={<ReviewForm />} />
+            <Route
+               path="company"
+               element={<CompanyPage renderCompany={renderCompany} />}
+            />
          </Routes>
          <Footer />
       </>
