@@ -38,26 +38,29 @@ function ProfileEditForm({
       setUpdateUserData({ ...updateUserData, [name]: value });
    };
 
+   // console.log(updateUserData)
+
    function handleSubmit(e) {
       e.preventDefault();
-      const updatedData = {
-         first_name: updateUserData.first_name,
-         last_name: updateUserData.last_name,
-         email: updateUserData.email,
-         image_url: updateUserData.image_url,
-      };
+      // const updatedData = {
+      //    first_name: updateUserData.first_name,
+      //    last_name: updateUserData.last_name,
+      //    email: updateUserData.email,
+      //    image_url: updateUserData.image_url,
+      // };
+      console.log(updateUserData)
 
-      fetch(`/users/${userId}`, {
-         method: "PATCH",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(updatedData),
-      })
-         .then((r) => r.json())
-         // .then((user) => setUser(user))
-         // .then(navigate("findjobs"));
-      // add error handing
+      // fetch(`/users/${userId}`, {
+      //    method: "PATCH",
+      //    headers: {
+      //       "Content-Type": "application/json",
+      //    },
+      //    body: JSON.stringify(updateUserData),
+      // })
+      //    .then((r) => r.json())
+      //    // .then((user) => setUser(user))
+      //    // .then(navigate("findjobs"));
+      // // add error handing
    }
 
    return (
@@ -110,22 +113,7 @@ function ProfileEditForm({
                            name="email"
                            value={updateUserData.email}
                         />
-                        <TextField
-                           size="small"
-                           fullWidth
-                           type="password"
-                           id="password"
-                           name="password"
-                           value={updateUserData.password}
-                        />
-                        <TextField
-                           size="small"
-                           fullWidth
-                           type="password"
-                           id="password_confirmation"
-                           name="password_confirmation"
-                           value={updateUserData.password_confirmation}
-                        />
+
                      </Stack>
                   </Box>
                </form>
@@ -138,7 +126,7 @@ function ProfileEditForm({
                   onSubmit={handleSubmit}
                   onClick={() => {
                      handleClose();
-                     handleEditProfile(userId);
+                     // handleEditProfile(userId);
                   }}
                >
                   Update Profile
