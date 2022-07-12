@@ -60,7 +60,7 @@ function App() {
          <Routes>
             <Route
                path="/"
-               element={user ? null : <LandingPage setUser={setUser} navigate={navigate} />}
+               element={user ? null : <LandingPage setUser={setUser} navigate={navigate} user={user} />}
             />
             <Route
                path="signin"

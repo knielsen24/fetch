@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Button, Stack, Box, TextField, Divider } from "@mui/material";
 
 export default function LandingPage({ setUser, navigate }) {
-   const newUser = {
+
+	const newUser = {
       first_name: "",
       last_name: "",
       email: "",
       password: "",
       password_confirmation: "",
+		image_url: "",
    };
 
    const [signUpData, setSignUpData] = useState(newUser);

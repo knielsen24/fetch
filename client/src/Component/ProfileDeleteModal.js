@@ -36,8 +36,10 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
             </DialogTitle>
             <DialogContent>
                <DialogContentText id="alert-dialog-description">
-                  By clicking confirm, this will permanently delete your profile
-                  and your data will not be recoverable. Click cancel to go back
+                  Deleting your profile will permanently remove any associated information and your account will not be recoverable.
+						<br />
+						<br />
+						Click cancel to go back
                   to your profile.
                </DialogContentText>
             </DialogContent>
