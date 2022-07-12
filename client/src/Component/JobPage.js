@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
-
 
 export default function JobPage({ jobPostings }) {
 
