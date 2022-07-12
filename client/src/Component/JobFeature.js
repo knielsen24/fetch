@@ -1,8 +1,10 @@
-import React from 'react'
-import { Stack, Card, CardContent, CardActions, Typography, Divider, Button} from '@mui/material'
+import React, {useState} from 'react'
+import { Stack, Card, CardContent, CardActions, Typography, Divider, Button, FormControl} from '@mui/material'
+import { Dialog, DialogTitle, IconButton } from '@mui/material'
+import FavoriteBorderSharpIcon from '@mui/icons-material/FavoriteBorderSharp';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function JobFeature({
-  id,
   company_name,
   position,
   location,
@@ -11,6 +13,16 @@ export default function JobFeature({
   description,
   benefits,
 }) {
+
+  const [like, setLike] = useState(true)
+  const handleLike = () => setLike(!like)
+
+  const renderLikeIcon = like ? <FavoriteBorderSharpIcon/> : <FavoriteIcon/>
+  
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div>
       <Stack>
@@ -22,21 +34,30 @@ export default function JobFeature({
                   <Typography>${compensation}</Typography>
                   <Typography>{job_type}</Typography>
                     <CardActions>
-                      <Button>Apply Now</Button>
-                      <Button>Like</Button>
+                      <Button onClick = {handleOpen} variant= 'contained'>Apply Now</Button>
+                      <Dialog open={open} onClose={handleClose}>
+                        <DialogTitle style={{textAlign: "center"}}> Apply for the {position} position at {company_name}!</DialogTitle>
+                        <Divider/>
+                        <FormControl>
+                          <Button type="submit" onClick={handleClose} variant= 'contained' size="small"> Submit Application </Button>
+                        </FormControl>
+                      </Dialog>
+                      <IconButton onClick={handleLike}>
+                        {renderLikeIcon}
+                      </IconButton>
                     </CardActions>
                   <Divider/>
-                  <Typography variant= 'h6' fontWeight={600}>Job details</Typography>
-                  <Typography variant= 'h8' fontWeight={600} display="block">Compensation</Typography>
-                  <Typography variant= 'h8' display="block">${compensation} a year</Typography>
-                  <Typography variant= 'h8' fontWeight={600} display="block">Job Type</Typography>
-                  <Typography variant= 'h8' display="block">{job_type}</Typography>
+                  <Typography variant= 'h6' fontWeight={600} padding= '3px'>Job details</Typography>
+                  <Typography variant= 'h8' fontWeight={600} display="block" padding= '2px'>Compensation</Typography>
+                  <Typography variant= 'h8' display="block" padding= '3px'>${compensation} a year</Typography>
+                  <Typography variant= 'h8' fontWeight={600} display="block" padding= '2px'>Job Type</Typography>
+                  <Typography variant= 'h8' display="block" padding= '5px'>{job_type}</Typography>
                   <Divider/>
-                  
-
-                  <Typography>{benefits}</Typography>
-                  <Typography>{description}</Typography>
-
+                  <Typography variant= 'h7' fontWeight={600} display="block" padding= '5px'>Benefits</Typography>
+                  <Typography padding= '5px'>{benefits}</Typography>
+                  <Divider/>
+                  <Typography variant= 'h7' fontWeight={600} display="block" padding= '5px'>Full Job Description</Typography>
+                  <Typography padding= '5px'>{description}</Typography>
                </CardContent>
             </Card>
          </Stack>

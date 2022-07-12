@@ -8,8 +8,6 @@ export default function JobCard({
    location,
    compensation,
    job_type,
-   description,
-   benefits,
    handleClick
 }) {
    return (
@@ -22,8 +20,6 @@ export default function JobCard({
                   <Typography>{location}</Typography>
                   <Typography>${compensation}</Typography>
                   <Typography>{job_type}</Typography>
-                  <Typography>{description}</Typography>
-                  <Typography>{benefits}</Typography>
                </CardContent>
             </Card>
          </Stack>
