@@ -14,7 +14,7 @@ import {
 
 export default function NavBar({ user, handleSignOut, handleProfilePage }) {
    const [search, setSearch] = useState("");
-   const [anchorEl, setAnchorEl] = useState(false);
+   const [anchorEl, setAnchorEl] = useState(null);
 
    const open = Boolean(anchorEl);
 
@@ -61,19 +61,45 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
                "aria-labelledby": "basic-button",
             }}
          >
-            <MenuItem component={RouterLink} to="/profile" onClick={handleProfilePage} >
+            <MenuItem
+               component={RouterLink}
+               to="/profile"
+               onClick={() => {
+                  handleClose();
+                  handleProfilePage();
+               }}
+            >
                Profile
             </MenuItem>
-            <MenuItem component={RouterLink} to="/myjobs">
+            <MenuItem
+               component={RouterLink}
+               to="/myjobs"
+               onClick={() => {
+                  handleClose();
+               }}
+            >
                My Jobs
             </MenuItem>
-            <MenuItem component={RouterLink} to="/myreviews">
+            <MenuItem
+               component={RouterLink}
+               to="/myreviews"
+               onClick={() => {
+                  handleClose();
+               }}
+            >
                My Reviews
             </MenuItem>
             {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
             {/* css needs polishing */}
             <Divider fullWidth />
-            <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
+            <MenuItem
+               onClick={() => {
+                  handleSignOut();
+                  handleClose();
+               }}
+            >
+               Sign Out
+            </MenuItem>
          </Menu>
       </>
    );
