@@ -1,7 +1,7 @@
-import { Button, Stack, Box, TextField, Divider } from "@mui/material";
+import { Button, Stack, Box, Typography, Divider } from "@mui/material";
 
 function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
-	
+
    return (
       <div>
          <Box
@@ -28,7 +28,7 @@ function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
                   marginBottom: 3,
                }}
             >
-               <h3>{first_name}</h3>
+               <h3>{first_name + " " + last_name}</h3>
             </Box>
                <Box sx={{ width: 300, margin: "auto" }}>
                   <Stack
@@ -36,7 +36,8 @@ function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
                      alignItems={"center"}
                      justifyContent={"center"}
                   >
-                     <TextField />
+                     <Typography>{image_url}</Typography>
+							<Typography>{email}</Typography>
                      <Button
                         disableElevation
                         fullWidth
