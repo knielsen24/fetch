@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
    AppBar,
-   Typography,
    Stack,
    TextField,
    Divider,
@@ -12,9 +11,12 @@ import {
    MenuItem,
 } from "@mui/material";
 
-export default function NavBar({ user, handleSignOut }) {
+// we should consider refactoring the dropdown menu as it's own component to clean up the navbar
+// If we refactor, user needs to be passed down as props
+
+export default function NavBar({ user, handleSignOut, handleProfilePage }) {
    const [search, setSearch] = useState("");
-   const [anchorEl, setAnchorEl] = useState(false);
+   const [anchorEl, setAnchorEl] = useState(null);
 
    const open = Boolean(anchorEl);
 
@@ -61,19 +63,45 @@ export default function NavBar({ user, handleSignOut }) {
                "aria-labelledby": "basic-button",
             }}
          >
-            <MenuItem component={RouterLink} to="/profile">
+            <MenuItem
+               component={RouterLink}
+               to="/profile"
+               onClick={() => {
+                  handleClose();
+                  handleProfilePage(user.id);
+               }}
+            >
                Profile
             </MenuItem>
-            <MenuItem component={RouterLink} to="/myjobs">
+            <MenuItem
+               component={RouterLink}
+               to="/myjobs"
+               onClick={() => {
+                  handleClose();
+               }}
+            >
                My Jobs
             </MenuItem>
-            <MenuItem component={RouterLink} to="/myreviews">
+            <MenuItem
+               component={RouterLink}
+               to="/myreviews"
+               onClick={() => {
+                  handleClose();
+               }}
+            >
                My Reviews
             </MenuItem>
             {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
             {/* css needs polishing */}
             <Divider fullWidth />
-            <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
+            <MenuItem
+               onClick={() => {
+                  handleSignOut();
+                  handleClose();
+               }}
+            >
+               Sign Out
+            </MenuItem>
          </Menu>
       </>
    );
