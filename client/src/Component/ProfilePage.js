@@ -26,7 +26,6 @@ function ProfilePage({ jobPostings, user }) {
 }
 
 
-
 export default ProfilePage;
 
 // Jobcard tile is used in jobpage and profile page
