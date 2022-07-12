@@ -62,7 +62,14 @@ function ProfileFeature({
                   <Typography>{resume}</Typography>
                   {/* Edit/Delete Modal*/}
                   <>
-                     <ProfileEditForm />
+                     <ProfileEditForm
+                        id={id}
+                        first_name={first_name}
+                        last_name={last_name}
+                        email={email}
+                        image_url={image_url}
+                        resume={resume}
+                     />
                      <ProfileDeleteModal
                         handleDeleteProfile={handleDeleteProfile}
                         userId={id}
