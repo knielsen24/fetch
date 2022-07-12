@@ -14,10 +14,10 @@ export default function JobFeature({
   benefits,
 }) {
 
-  const [like, setLike] = useState(true)
+  const [like, setLike] = useState(false)
   const handleLike = () => setLike(!like)
 
-  const renderLikeIcon = like ? <FavoriteBorderSharpIcon/> : <FavoriteIcon/>
+  const renderLikeIcon = like ? <FavoriteIcon/> : <FavoriteBorderSharpIcon/>
   
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
