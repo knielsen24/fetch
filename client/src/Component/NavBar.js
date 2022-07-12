@@ -11,6 +11,7 @@ import {
    MenuItem,
 } from "@mui/material";
 
+// add responsiveness to navbar to have menu bar
 // we should consider refactoring the dropdown menu as it's own component to clean up the navbar
 // If we refactor, user needs to be passed down as props
 
@@ -20,9 +21,7 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
 
    const open = Boolean(anchorEl);
 
-   const handleClick = (e) => {
-      setAnchorEl(e.currentTarget);
-   };
+   const handleClick = (e) => setAnchorEl(e.currentTarget);
    const handleClose = () => setAnchorEl(false);
 
    const changeHandler = (e) => {
@@ -112,10 +111,6 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
          to="/signin"
          underline="hover"
          color={"black"}
-         aria-controls={open ? "basic-menu" : undefined}
-         aria-haspopup="true"
-         aria-expanded={open ? "true" : undefined}
-         onClick={handleClick}
       >
          Sign In
       </Link>
