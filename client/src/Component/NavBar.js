@@ -18,8 +18,8 @@ export default function NavBar({ user, handleSignOut }) {
 
    const open = Boolean(anchorEl);
 
-	const handleClick = (e) => {
-		setAnchorEl(e.currentTarget);
+   const handleClick = (e) => {
+      setAnchorEl(e.currentTarget);
    };
    const handleClose = () => setAnchorEl(false);
 
@@ -35,6 +35,9 @@ export default function NavBar({ user, handleSignOut }) {
       fetch("http://localhost:3000");
    };
 
+   const capFirstLetter = (firstName) =>
+      firstName[0].toUpperCase() + firstName.slice(1);
+
    // when the user is signed in it renders dropDownMenu
    // when the user is signed out it renders signInLink
    const dropDownMenu = (
@@ -47,7 +50,7 @@ export default function NavBar({ user, handleSignOut }) {
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
          >
-            {user ? user.first_name : null}
+            {user ? capFirstLetter(user.first_name) : null}
          </Link>
          <Menu
             id="basic-menu"
@@ -58,10 +61,15 @@ export default function NavBar({ user, handleSignOut }) {
                "aria-labelledby": "basic-button",
             }}
          >
-
-            <MenuItem component={RouterLink} to="/profile">Profile</MenuItem>
-            <MenuItem component={RouterLink} to="/myjobs">My Jobs</MenuItem>
-            <MenuItem component={RouterLink} to="/myreviews">My Reviews</MenuItem>
+            <MenuItem component={RouterLink} to="/profile">
+               Profile
+            </MenuItem>
+            <MenuItem component={RouterLink} to="/myjobs">
+               My Jobs
+            </MenuItem>
+            <MenuItem component={RouterLink} to="/myreviews">
+               My Reviews
+            </MenuItem>
             {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
             {/* css needs polishing */}
             <Divider fullWidth />
@@ -97,7 +105,7 @@ export default function NavBar({ user, handleSignOut }) {
                >
                   <Stack direction={"row"} spacing={4} alignItems={"center"}>
                      {/* div... has a purpose */}
-							<div></div>
+                     <div></div>
                      <Link
                         component={RouterLink}
                         to="/"
