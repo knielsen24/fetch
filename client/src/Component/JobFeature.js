@@ -8,12 +8,15 @@ import {
    Divider,
    Button,
    FormControl,
+   Link,
 } from "@mui/material";
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function JobFeature({
+   id,
    company_name,
    position,
    location,
@@ -21,6 +24,8 @@ export default function JobFeature({
    job_type,
    description,
    benefits,
+   image,
+   user,
 }) {
    const [like, setLike] = useState(false);
    const handleLike = () => setLike(!like);
@@ -31,6 +36,21 @@ export default function JobFeature({
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
 
+   const handleCreateApplication = () => {
+      const application = {
+         job_posting_id: id,
+         user_id: user.id,
+      };
+      fetch("http://localhost:4000/applied_tos", {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(application),
+      });
+      handleClose();
+   };
+
    return (
       <div>
          <Stack>
@@ -39,7 +59,17 @@ export default function JobFeature({
                   <Typography variant="h5" fontWeight={600}>
                      {position}
                   </Typography>
-                  <Typography>{company_name}</Typography>
+                  <Link
+                     // onClick={handleClickThrough}
+
+                     underline="never"
+                     fontFamily={"sans-serif"}
+                     color={"primary"}
+                     fontSize={36}
+                     sx={{ textDecoration: "none" }}
+                  >
+                     {company_name}
+                  </Link>
                   <Typography>{location}</Typography>
                   <Typography>${compensation}</Typography>
                   <Typography>{job_type}</Typography>
@@ -53,17 +83,15 @@ export default function JobFeature({
                            Apply for the {position} position at {company_name}!
                         </DialogTitle>
                         <Divider />
-                        <FormControl>
-                           <Button
-                              type="submit"
-                              onClick={handleClose}
-                              variant="contained"
-                              size="small"
-                           >
-                              {" "}
-                              Submit Application{" "}
-                           </Button>
-                        </FormControl>
+                        <Button
+                           type="click"
+                           onClick={handleCreateApplication}
+                           variant="contained"
+                           size="small"
+                        >
+                           {" "}
+                           Submit Application{" "}
+                        </Button>
                      </Dialog>
                      <IconButton onClick={handleLike}>
                         {renderLikeIcon}

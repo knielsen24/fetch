@@ -7,10 +7,12 @@ import SignInForm from "./Component/SignInForm";
 import JobPage from "./Component/JobPage";
 import ReviewForm from "./Component/ReviewForm";
 import ProfilePage from "./Component/ProfilePage";
+import CompanyPage from "./Component/CompanyPage";
 
 function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
+   const [renderCompany, setRenderCompany] = useState();
 
    useEffect(() => {
       fetch("/findjobs")
@@ -48,6 +50,10 @@ function App() {
          method: "DELETE",
       }).then(handleSignOut());
       // render a 'Sorry to see you go message'
+   };
+
+   const onRenderCompany = (company) => {
+      setRenderCompany(company);
    };
 
    let { jobListingId } = useParams();
@@ -88,11 +94,23 @@ function App() {
                   />
                }
             ></Route>
-            <Route path="findjobs" element={<JobPage jobPostings={jobs} />} />
+            <Route
+               path="findjobs"
+               element={
+                  <JobPage
+                     jobPostings={jobs}
+                     onRenderCompany={onRenderCompany}
+                     user={user}
+                  />
+               }
+            />
             <Route path="myjobs" />
             <Route path="myreviews" />
             <Route path="companyreviews" />
-            <Route path="reviewform" element={<ReviewForm />} />
+            <Route
+               path="company"
+               element={<CompanyPage renderCompany={renderCompany} />}
+            />
          </Routes>
          <Footer />
       </>
