@@ -7,13 +7,13 @@ import {
    Typography,
    Divider,
    Button,
-   FormControl,
 } from "@mui/material";
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function JobFeature({
+   id,
    company_name,
    position,
    location,
@@ -30,6 +30,11 @@ export default function JobFeature({
    const [open, setOpen] = useState(false);
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
+
+   const handleCreateApplication = () => {
+      console.log("yes")
+      handleClose();
+   }
 
    return (
       <div>
@@ -53,17 +58,14 @@ export default function JobFeature({
                            Apply for the {position} position at {company_name}!
                         </DialogTitle>
                         <Divider />
-                        <FormControl>
-                           <Button
-                              type="submit"
-                              onClick={handleClose}
+                        <Button
+                              type="click"
+                              onClick={handleCreateApplication}
                               variant="contained"
                               size="small"
                            >
-                              {" "}
-                              Submit Application{" "}
-                           </Button>
-                        </FormControl>
+                              {" "}Submit Application{" "}
+                        </Button>
                      </Dialog>
                      <IconButton onClick={handleLike}>
                         {renderLikeIcon}
