@@ -36,7 +36,12 @@ function App() {
          .then(navigate("/"));
    };
 
-   // if (!user) return <SignInForm setUser={setUser} />;
+    // How are we searching for list of jobs(user id)
+	 const handleProfilePage = (id) => {
+      fetch("/findjobs")
+         .then((r) => r.json())
+         .then((data) => setJobs(data));
+   };
 
    const handleDeleteProfile = (id) => {
 
@@ -76,7 +81,7 @@ function App() {
                   />
                }
             >
-					
+
 				</Route>
             <Route path="findjobs" element={<JobPage jobPostings={jobs} />} />
             <Route path="myjobs" />
