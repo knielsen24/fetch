@@ -43,8 +43,21 @@ function App() {
          .then((data) => setJobs(data));
    };
 
-   let { jobListingId } = useParams();
+	const handleDeleteProfile = (id) => {
+		fetch(`http://localhost:9292/users/${id}`, {
+         method: "DELETE",
+      })
+         .then((resp) => resp.json())
+         .then(() => {
+            setUser(null)
+         })
+         .then(navigate("/"));
+   };
+
+
+	let { jobListingId } = useParams();
    let navigate = useNavigate();
+
 
    return (
       <>
@@ -69,6 +82,7 @@ function App() {
 							user={user}
                      jobPostings={jobs}
                      handleProfilePage={handleProfilePage}
+							handleDeleteProfile={handleDeleteProfile}
                   />
                }
             />
