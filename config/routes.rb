@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/findjobs", to: "job_postings#index"
 
-#   get "/applied_tos", to: "applied_tos#index"
-  get "/users/:id/applications", to: "users#index"
+  get "/users/:id/applications", to: "applied_tos#index"
+
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

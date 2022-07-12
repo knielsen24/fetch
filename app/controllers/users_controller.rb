@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: [:create, :index]
 
-    def index
-        application = AppliedTo.where(user_id: params[:id])
-        render json: application
-    end
 
     def create
         user = User.create!(user_params)
@@ -15,6 +11,8 @@ class UsersController < ApplicationController
     def show
         render json: @current_user
     end
+
+
 
 	 def destroy
 		#   user = User.find(params[:id])
