@@ -3,7 +3,7 @@ import { Stack, Card, CardContent, Typography } from "@mui/material";
 
 export default function JobCard({
    id,
-   company,
+   company_name,
    position,
    location,
    compensation,
@@ -15,12 +15,12 @@ export default function JobCard({
    return (
       <div >
          <Stack>
-            <Card>
+            <Card elevation={3}>
                <CardContent onClick={()=>handleClick(id)}>
                   <Typography>{position}</Typography>
-                  <Typography>{company}</Typography>
+                  <Typography>{company_name}</Typography>
                   <Typography>{location}</Typography>
-                  <Typography>{compensation}</Typography>
+                  <Typography>${compensation}</Typography>
                   <Typography>{job_type}</Typography>
                   <Typography>{description}</Typography>
                   <Typography>{benefits}</Typography>
