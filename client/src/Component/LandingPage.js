@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Stack, Box, TextField, Divider } from "@mui/material";
 
-export default function LandingPage({ setUser }) {
+export default function LandingPage({ setUser, navigate }) {
    const newUser = {
       first_name: "",
       last_name: "",
@@ -27,7 +27,9 @@ export default function LandingPage({ setUser }) {
          body: JSON.stringify(signUpData),
       })
          .then((r) => r.json())
-         .then((user) => setUser(user));
+         .then((user) => setUser(user))
+			.then(navigate("findjobs"));
+
    }
 
    return (
