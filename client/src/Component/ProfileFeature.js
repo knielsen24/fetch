@@ -1,7 +1,7 @@
-import { Button, Stack, Box, Typography, IconButton } from "@mui/material";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { Stack, Box, Typography, IconButton } from "@mui/material";
 import ProfileDeleteModal from "./ProfileDeleteModal";
 import AccountBox from "@mui/icons-material/AccountBox";
+import ProfileEditForm from "./ProfileEditForm";
 
 function ProfileFeature({
    id,
@@ -60,19 +60,14 @@ function ProfileFeature({
                   <Typography>{image_url}</Typography>
                   <Typography>{email}</Typography>
                   <Typography>{resume}</Typography>
-                  <Button
-                     disableElevation
-                     fullWidth
-                     variant="contained"
-                     size="small"
-                     type="submit"
-                  >
-                     Edit Profile
-                  </Button>
-                  <ProfileDeleteModal
-                     handleDeleteProfile={handleDeleteProfile}
-                     userId={id}
-                  />
+                  {/* Edit/Delete Modal*/}
+                  <>
+                     <ProfileEditForm />
+                     <ProfileDeleteModal
+                        handleDeleteProfile={handleDeleteProfile}
+                        userId={id}
+                     />
+                  </>
                </Stack>
             </Box>
          </Box>
