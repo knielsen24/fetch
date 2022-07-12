@@ -1,7 +1,6 @@
 import { Button, Stack, Box, Typography, Divider } from "@mui/material";
 
 function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
-
    return (
       <div>
          <Box
@@ -30,34 +29,36 @@ function ProfileFeature({ first_name, last_name, email, image_url, resume }) {
             >
                <h3>{first_name + " " + last_name}</h3>
             </Box>
-               <Box sx={{ width: 300, margin: "auto" }}>
-                  <Stack
-                     spacing={2.5}
-                     alignItems={"center"}
-                     justifyContent={"center"}
+            <Box sx={{ width: 300, margin: "auto" }}>
+               <Stack
+                  spacing={2.5}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+               >
+                  <Typography>{image_url}</Typography>
+                  <Typography>{email}</Typography>
+                  <Typography>{resume}</Typography>
+                  <Button
+                     disableElevation
+                     fullWidth
+                     variant="contained"
+                     size="small"
+                     type="submit"
                   >
-                     <Typography>{image_url}</Typography>
-							<Typography>{email}</Typography>
-                     <Button
-                        disableElevation
-                        fullWidth
-                        variant="contained"
-                        size="small"
-                        type="submit"
-                     >
-                        Edit Profile
-                     </Button>
-                     <Button
-                        fullWidth
-                        disableElevation
-                        variant="contained"
-                        size="small"
-                        type="click"
-                     >
-                        Delete
-                     </Button>
-                  </Stack>
-               </Box>
+                     Edit Profile
+                  </Button>
+                  {/* add modul for delete profile with message... are you sure you want to delete */}
+                  <Button
+                     fullWidth
+                     disableElevation
+                     variant="error"
+                     size="small"
+                     type="click"
+                  >
+                     Delete Profile
+                  </Button>
+               </Stack>
+            </Box>
          </Box>
       </div>
    );
