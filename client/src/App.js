@@ -4,7 +4,7 @@ import Footer from "./Component/Footer";
 import LandingPage from "./Component/LandingPage";
 import { Routes, Route, Links, useParams, useNavigate } from "react-router-dom";
 import SignInForm from "./Component/SignInForm";
-import JobPage from './Component/JobPage';
+import JobPage from "./Component/JobPage";
 import ReviewForm from "./Component/ReviewForm";
 import ProfilePage from "./Component/ProfilePage";
 
@@ -36,7 +36,12 @@ function App() {
          .then(navigate("/"));
    };
 
-   // if (!user) return <SignInForm setUser={setUser} />;
+   // How are we searching for list of jobs(user id)
+   const handleProfilePage = (id) => {
+      fetch("/findjobs")
+         .then((r) => r.json())
+         .then((data) => setJobs(data));
+   };
 
    let { jobListingId } = useParams();
    let navigate = useNavigate();
@@ -57,12 +62,21 @@ function App() {
                   )
                }
             />
-            <Route path="profile" element={<ProfilePage />} />
+            <Route
+               path="profile"
+               element={
+                  <ProfilePage
+							user={user}
+                     jobPostings={jobs}
+                     handleProfilePage={handleProfilePage}
+                  />
+               }
+            />
             <Route path="findjobs" element={<JobPage jobPostings={jobs} />} />
             <Route path="myjobs" />
             <Route path="myreviews" />
             <Route path="companyreviews" />
-            <Route path='reviewform' element={<ReviewForm />} />
+            <Route path="reviewform" element={<ReviewForm />} />
          </Routes>
          <Footer />
       </>
