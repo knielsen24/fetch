@@ -1,7 +1,8 @@
 import React from "react";
 import { Stack, Card, CardContent, Typography } from "@mui/material";
 
-function JobCard({
+export default function JobCard({
+   id,
    company,
    position,
    location,
@@ -9,12 +10,13 @@ function JobCard({
    job_type,
    description,
    benefits,
+   handleClick
 }) {
    return (
-      <div>
+      <div >
          <Stack>
             <Card>
-               <CardContent>
+               <CardContent onClick={()=>handleClick(id)}>
                   <Typography>{position}</Typography>
                   <Typography>{company}</Typography>
                   <Typography>{location}</Typography>
@@ -29,4 +31,3 @@ function JobCard({
    );
 }
 
-export default JobCard;

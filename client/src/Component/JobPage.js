@@ -7,9 +7,11 @@ export default function JobPage({ jobPostings }) {
 
   
     const [featuredJob, setFeaturedJob] = useState({})
-    const handleClick = e => {
-      console.log(e.target)
+    const handleClick = id => {
+      const clickedJob = jobPostings.find(job => job.id === id);
+      setFeaturedJob(clickedJob)
     }
+
 
    let renderJobCards;
 
@@ -25,7 +27,7 @@ export default function JobPage({ jobPostings }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            <JobFeature featuredJob={featuredJob}/>
+            <JobFeature key={featuredJob.id} {...featuredJob}/>
         </Stack>
     </div>
   )
