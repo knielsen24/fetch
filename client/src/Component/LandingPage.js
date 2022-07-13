@@ -177,11 +177,11 @@ export default function LandingPage({ setUser, navigate }) {
                            Sign Up
                         </Button>
                         {errors.length > 0 && (
-                           <ul style={{ color: "red" }}>
+                           <div style={{ color: "red", listStyleType: "none", textAlign: "center" }}>
                               {errors.map((error) => (
-                                 <li key={error}>{error}</li>
+                                 <p key={error}>{error}</p>
                               ))}
-                           </ul>
+                           </div>
                         )}
                         <h8> Already Have An Account?</h8>
                         <Button

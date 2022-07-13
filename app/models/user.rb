@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+
     has_secure_password
 
     has_many :reviews
@@ -9,6 +10,8 @@ class User < ApplicationRecord
 
 	validates :email, :first_name, :last_name, presence: true
 	validates :email, uniqueness: true
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+
     validates :password, length: { in: 4..12 }
     validate :password_uppercase
     validate :password_special_char

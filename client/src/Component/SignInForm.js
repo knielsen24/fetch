@@ -89,9 +89,9 @@ console.log(error)
                         </Stack>
                      </Box>
                      {error.length > 0 && (
-                        <ul style={{ color: "red" }}>
-                              <li >{error}</li>
-                        </ul>
+                        <div style={{ color: "red", listStyleType: "none", textAlign: "center"}}>
+                              <p>{error}</p>
+                        </div>
                      )}
                      <Button
                         variant="contained"
