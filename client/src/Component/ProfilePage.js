@@ -3,7 +3,7 @@ import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
 import ProfileFeature from "./ProfileFeature";
 
-function ProfilePage({ jobPostings, user, handleDeleteProfile }) {
+function ProfilePage({ jobPostings, user, handleDeleteProfile, onSetUser }) {
    let renderJobCards;
 
    if (jobPostings) {
@@ -20,7 +20,8 @@ function ProfilePage({ jobPostings, user, handleDeleteProfile }) {
             </Stack>
             <ProfileFeature
                handleDeleteProfile={handleDeleteProfile}
-               {...user}
+               user={user}
+               onSetUser={onSetUser}
             />
          </Stack>
       </div>

@@ -11,6 +11,12 @@ class AppliedTosController < ApplicationController
         render json: application
     end
 
+   #  def destroy
+   #      application = AppliedTo.find(params[:id])
+   #      application.delete
+   #      head :no_content
+   #  end
+
     private
 
     def application_params

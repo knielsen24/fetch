@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :index]
+    skip_before_action :authorize, only: [:create, :index, :destroy]
 
 
     def create
@@ -12,11 +12,10 @@ class UsersController < ApplicationController
         render json: @current_user
     end
 
-
-
 	 def destroy
-		#   user = User.find(params[:id])
-		  @current_user.destroy
+		  user = User.find(params[:id])
+		  user.destroy
+      #   @current_user.delete
 		  head :no_content
 	 end
 

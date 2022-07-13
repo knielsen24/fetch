@@ -49,8 +49,8 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
                   autoFocus
                   color="error"
                   onClick={() => {
-                     handleClose();
                      handleDeleteProfile(userId);
+                     handleClose();
                   }}
                >
                   Yes, delete profile

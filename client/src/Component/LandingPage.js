@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Stack, Box, TextField, Divider } from "@mui/material";
 
-export default function LandingPage({ setUser, navigate }) {
+export default function LandingPage({ onSetUser, navigate }) {
    const newUser = {
       first_name: "",
       last_name: "",
@@ -30,15 +30,15 @@ export default function LandingPage({ setUser, navigate }) {
       })
          .then((r) => {
             if (r.ok) {
-               r.json().then((user) => setUser(user))
+               r.json().then((user) => onSetUser(user))
                .then(navigate("findjobs"))
             } else {
                r.json().then((errorData) => setErrors(errorData.errors))
             }
          })
-         
-         
-         
+
+
+
          // r.json())
          // .then((user) => setUser(user))
          // .then(navigate("findjobs"));

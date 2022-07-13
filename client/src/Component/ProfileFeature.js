@@ -1,18 +1,11 @@
-import { Button, Stack, Box, Typography, IconButton } from "@mui/material";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { Stack, Box, Typography, IconButton } from "@mui/material";
 import ProfileDeleteModal from "./ProfileDeleteModal";
 import AccountBox from "@mui/icons-material/AccountBox";
+import ProfileEditForm from "./ProfileEditForm";
 
-function ProfileFeature({
-   id,
-   first_name,
-   last_name,
-   email,
-   image_url,
-   resume,
-   handleDeleteProfile,
-}) {
+function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
    // set default profile picture to profile icon
+
    return (
       <div>
          <Box
@@ -39,7 +32,7 @@ function ProfileFeature({
                   marginBottom: 3,
                }}
             >
-               <h3>{first_name + " " + last_name}</h3>
+               <h3>{user.first_name + " " + user.last_name}</h3>
             </Box>
             <Box sx={{ width: 300, margin: "auto" }}>
                <Stack
@@ -57,21 +50,15 @@ function ProfileFeature({
                   >
                      <AccountBox fontSize="large" />
                   </IconButton>
-                  <Typography>{image_url}</Typography>
-                  <Typography>{email}</Typography>
-                  <Typography>{resume}</Typography>
-                  <Button
-                     disableElevation
-                     fullWidth
-                     variant="contained"
-                     size="small"
-                     type="submit"
-                  >
-                     Edit Profile
-                  </Button>
+                  <Typography>{user.image_url}</Typography>
+                  <Typography>{user.email}</Typography>
+                  <Typography>{user.resume}</Typography>
+                  {/* Edit/Delete Modal*/}
+
+                  <ProfileEditForm {...user} onSetUser={onSetUser}/>
                   <ProfileDeleteModal
                      handleDeleteProfile={handleDeleteProfile}
-                     userId={id}
+                     userId={user.id}
                   />
                </Stack>
             </Box>
