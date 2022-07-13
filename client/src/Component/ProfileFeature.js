@@ -3,16 +3,9 @@ import ProfileDeleteModal from "./ProfileDeleteModal";
 import AccountBox from "@mui/icons-material/AccountBox";
 import ProfileEditForm from "./ProfileEditForm";
 
-function ProfileFeature({
-   id,
-   first_name,
-   last_name,
-   email,
-   image_url,
-   resume,
-   handleDeleteProfile,
-}) {
+function ProfileFeature({ user, handleDeleteProfile }) {
    // set default profile picture to profile icon
+
    return (
       <div>
          <Box
@@ -39,7 +32,7 @@ function ProfileFeature({
                   marginBottom: 3,
                }}
             >
-               <h3>{first_name + " " + last_name}</h3>
+               <h3>{user.first_name + " " + user.last_name}</h3>
             </Box>
             <Box sx={{ width: 300, margin: "auto" }}>
                <Stack
@@ -57,22 +50,17 @@ function ProfileFeature({
                   >
                      <AccountBox fontSize="large" />
                   </IconButton>
-                  <Typography>{image_url}</Typography>
-                  <Typography>{email}</Typography>
-                  <Typography>{resume}</Typography>
+                  <Typography>{user.image_url}</Typography>
+                  <Typography>{user.email}</Typography>
+                  <Typography>{user.resume}</Typography>
                   {/* Edit/Delete Modal*/}
                   <>
                      <ProfileEditForm
-                        userId={id}
-                        first_name={first_name}
-                        last_name={last_name}
-                        email={email}
-                        image_url={image_url}
-                        resume={resume}
+                        {...user}
                      />
                      <ProfileDeleteModal
                         handleDeleteProfile={handleDeleteProfile}
-                        userId={id}
+                        // userId={id}
                      />
                   </>
                </Stack>

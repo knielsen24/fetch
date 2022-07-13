@@ -4,6 +4,9 @@ import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
 export default function JobPage({ jobPostings, user }) {
+
+   console.log(user)
+
    const [featuredJob, setFeaturedJob] = useState(jobPostings[0]);
    const handleClick = (id) => {
       const clickedJob = jobPostings.find((job) => job.id === id);

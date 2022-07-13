@@ -38,17 +38,11 @@ function ProfileEditForm({
       setUpdateUserData({ ...updateUserData, [name]: value });
    };
 
-   // console.log(updateUserData)
+   console.log(updateUserData);
 
    function handleSubmit(e) {
       e.preventDefault();
-      // const updatedData = {
-      //    first_name: updateUserData.first_name,
-      //    last_name: updateUserData.last_name,
-      //    email: updateUserData.email,
-      //    image_url: updateUserData.image_url,
-      // };
-      console.log(updateUserData)
+      console.log(updateUserData);
 
       // fetch(`/users/${userId}`, {
       //    method: "PATCH",
@@ -92,18 +86,16 @@ function ProfileEditForm({
                         <TextField
                            size="small"
                            fullWidth
-                           type="first_name"
                            id="first_name"
                            name="first_name"
-                           value={updateUserData.first_name}
+                           defaultValue={first_name}
                         />
                         <TextField
                            size="small"
                            fullWidth
-                           type="last_name"
                            id="last_name"
                            name="last_name"
-                           value={updateUserData.last_name}
+                           defaultValue={last_name}
                         />
                         <TextField
                            size="small"
@@ -111,27 +103,25 @@ function ProfileEditForm({
                            type="email"
                            id="email"
                            name="email"
-                           value={updateUserData.email}
+                           defaultValue={email}
                         />
-
                      </Stack>
                   </Box>
+                  <DialogActions>
+                     <Button onClick={handleClose}>Cancel</Button>
+                     <Button
+                        autoFocus
+                        color="error"
+                        onClick={() => {
+                           handleClose();
+                           // handleEditProfile(userId);
+                        }}
+                     >
+                        Update Profile
+                     </Button>
+                  </DialogActions>
                </form>
             </DialogContent>
-            <DialogActions>
-               <Button onClick={handleClose}>Cancel</Button>
-               <Button
-                  autoFocus
-                  color="error"
-                  onSubmit={handleSubmit}
-                  onClick={() => {
-                     handleClose();
-                     // handleEditProfile(userId);
-                  }}
-               >
-                  Update Profile
-               </Button>
-            </DialogActions>
          </Dialog>
       </>
    );

@@ -4,6 +4,7 @@ import JobCard from "./JobCard";
 import ProfileFeature from "./ProfileFeature";
 
 function ProfilePage({ jobPostings, user, handleDeleteProfile }) {
+
    let renderJobCards;
 
    if (jobPostings) {
@@ -20,7 +21,7 @@ function ProfilePage({ jobPostings, user, handleDeleteProfile }) {
             </Stack>
             <ProfileFeature
                handleDeleteProfile={handleDeleteProfile}
-               {...user}
+               user={user}
             />
          </Stack>
       </div>
