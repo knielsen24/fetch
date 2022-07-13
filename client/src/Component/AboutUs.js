@@ -10,7 +10,7 @@ export default function AboutUs() {
         <Avatar
           alt="Remy Sharp"
           src=""
-          sx={{ width: 150, height: 150 }}
+          sx={{ width: 200, height: 200 }}
         />
         <CardContent>
           <Typography>  Daniel Chan </Typography>
@@ -22,7 +22,7 @@ export default function AboutUs() {
         <Avatar
           alt="Remy Sharp"
           src=""
-          sx={{ width: 56, height: 56 }}
+          sx={{ width: 200, height: 200 }}
         />
         <CardContent>
           <Typography>  Christian Stringham </Typography>
@@ -34,10 +34,10 @@ export default function AboutUs() {
         <Avatar
           alt="Remy Sharp"
           src=""
-          sx={{ width: 56, height: 56 }}
+          sx={{ width: 200, height: 200 }}
         />
         <CardContent>
-          <Typography> Kevin Nielson </Typography>
+          <Typography> Kevin Nielsen </Typography>
           <Link display="block"> Github </Link>
           <Link> LinkedIn </Link>
         </CardContent>
