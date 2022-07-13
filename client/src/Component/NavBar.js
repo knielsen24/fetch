@@ -39,9 +39,9 @@ export default function NavBar({
 
    const handleSubmitSearch = (e) => {
       e.preventDefault();
-      const newSearch = {
-         position: search.position
-      }
+      const newSearch = search.position
+      
+      console.log(newSearch)
       fetch("/searchjobs", {
          method: "POST",
          headers: {
@@ -49,7 +49,7 @@ export default function NavBar({
          },
          body: JSON.stringify(newSearch),
       })
-         .then((r) => {r.json()})
+         .then((r) => r.json())
          .then((data)=> console.log(data))
       // onSubmit do we need to make another fetch request.
       // do we fitler on the frontend or backend...?

@@ -19,7 +19,6 @@ function App() {
       setRenderCompany(company);
    };
 
-   console.log(renderCompany)
 
    const onSetUser = (updateUser) => setUser(updateUser);
 
