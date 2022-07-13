@@ -9,7 +9,7 @@ function SignInForm({ onSetUser, navigate }) {
    };
 
    const [signInData, setSignInData] = useState(initialSignInData);
-   const [error, setError] = useState([])
+   const [error, setError] = useState([]);
 
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -24,18 +24,17 @@ function SignInForm({ onSetUser, navigate }) {
             "Content-Type": "application/json",
          },
          body: JSON.stringify(signInData),
-      })
-         .then((r) => {
-            if (r.ok) {
-               r.json().then((user) => onSetUser(user))
+      }).then((r) => {
+         if (r.ok) {
+            r.json()
+               .then((user) => onSetUser(user))
                .then(navigate("findjobs"));
-            } else {
-               r.json().then((errorData) => setError(errorData.error))
-            }
-         })
-      }
-         ;
-console.log(error)
+         } else {
+            r.json().then((errorData) => setError(errorData.error));
+         }
+      });
+   };
+   console.log(error);
 
    return (
       <>
@@ -89,8 +88,14 @@ console.log(error)
                         </Stack>
                      </Box>
                      {error.length > 0 && (
-                        <div style={{ color: "red", listStyleType: "none", textAlign: "center"}}>
-                              <p>{error}</p>
+                        <div
+                           style={{
+                              color: "red",
+                              listStyleType: "none",
+                              textAlign: "center",
+                           }}
+                        >
+                           <p>{error}</p>
                         </div>
                      )}
                      <Button

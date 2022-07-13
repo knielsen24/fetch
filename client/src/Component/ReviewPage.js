@@ -19,8 +19,7 @@ export default function ReviewPage() {
                justifyContent={"center"}
                spacing={10}
             >
-                  <Box sx={{ width: 500, height: 500 }} />
-
+               <Box sx={{ width: 500, height: 500 }} />
             </Stack>
          </div>
       </>
