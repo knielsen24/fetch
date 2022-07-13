@@ -9,31 +9,38 @@ import {
    Box,
    Menu,
    MenuItem,
+   Button,
 } from "@mui/material";
 
 // add responsiveness to navbar to have menu bar
 // we should consider refactoring the dropdown menu as it's own component to clean up the navbar
 // If we refactor, user needs to be passed down as props
 
-export default function NavBar({ user, handleSignOut, handleProfilePage }) {
-   const [search, setSearch] = useState("");
+export default function NavBar({
+   user,
+   handleSignOut,
+   handleProfilePage,
+   onSetSearch,
+}) {
    const [anchorEl, setAnchorEl] = useState(null);
+   const [search, setSearch] = useState("");
 
    const open = Boolean(anchorEl);
 
    const handleClick = (e) => setAnchorEl(e.currentTarget);
    const handleClose = () => setAnchorEl(false);
 
-   const changeHandler = (e) => {
-      const name = e.target.name;
-      const value = e.target.value;
-
-      setSearch({ [name]: value });
+   const handleChangeSearch = (e) => {
+      const { name, value } = e.target;
+      setSearch({ ...search, [name]: value });
    };
 
-   const submitHandler = (e) => {
+   const handleSubmitSearch = (e) => {
       e.preventDefault();
-      fetch("http://localhost:3000");
+      console.log(e.target.value)
+      // onSubmit do we need to make another fetch request.
+      // do we fitler on the frontend or backend...?
+      // create search controller using where method params[:name]
    };
 
    const capFirstLetter = (firstName) =>
@@ -172,17 +179,29 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
                   justifyContent={"space-between"}
                >
                   <Box sx={{ mt: 7 }} />
-                  <TextField
-                     onChange={changeHandler}
-                     onSubmit={submitHandler}
-                     fullWidth
-                     size="small"
-                     id="filled-search"
-                     label="...snag your dream job"
-                     type="search"
-                     name="search"
-                     variant="outlined"
-                  />
+                  <form
+                     onChange={handleChangeSearch}
+                     onSubmit={handleSubmitSearch}
+                  >
+                     <TextField
+                        fullWidth
+                        size="small"
+                        id="filled-search"
+                        label="...snag your dream job"
+                        type="search"
+                        name="search"
+                        variant="outlined"
+                     />
+                     <Button
+                        fullWidth
+                        disableElevation
+                        variant="contained"
+                        size="small"
+                        type="submit"
+                     >
+                        Fetch jobs
+                     </Button>
+                  </form>
                   <Box />
                </Stack>
             </AppBar>
