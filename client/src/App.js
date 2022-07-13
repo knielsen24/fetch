@@ -18,6 +18,8 @@ function App() {
       setRenderCompany(company);
    };
 
+   console.log(renderCompany)
+
    const onSetUser = (updateUser) => setUser(updateUser);
 
    useEffect(() => {
@@ -115,7 +117,7 @@ function App() {
             <Route path="companyreviews" />
             <Route
                path="company"
-               element={<CompanyPage renderCompany={renderCompany} />}
+               element={<CompanyPage {...renderCompany} />}
             />
          </Routes>
          <Footer />

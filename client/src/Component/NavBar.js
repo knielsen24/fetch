@@ -31,10 +31,9 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
       setSearch({ [name]: value });
    };
 
-   const submitHandler = (e) => {
-      e.preventDefault();
-      fetch("http://localhost:3000");
-   };
+   // const submitHandler = (e) => {
+   //    e.preventDefault();
+   // }
 
    const capFirstLetter = (firstName) =>
       firstName[0].toUpperCase() + firstName.slice(1);
@@ -174,7 +173,7 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
                   <Box sx={{ mt: 7 }} />
                   <TextField
                      onChange={changeHandler}
-                     onSubmit={submitHandler}
+                     // onSubmit={submitHandler}
                      fullWidth
                      size="small"
                      id="filled-search"
