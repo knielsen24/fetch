@@ -59,6 +59,10 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
+   const handleSearchFilter = () => {
+      
+   }
+
    let { jobListingId } = useParams();
    let navigate = useNavigate();
 
