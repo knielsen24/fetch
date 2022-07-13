@@ -26,10 +26,13 @@ export default function JobFeature({
    benefits,
    image,
    user,
+   company_id,
    onRenderCompany
 }) {
 
-   const naviagte = useNavigate()
+   console.log(company_id)
+
+   const navigate = useNavigate()
 
    const [like, setLike] = useState(false);
    const handleLike = () => setLike(!like);
@@ -41,12 +44,12 @@ export default function JobFeature({
    const handleClose = () => setOpen(false);
 
    const clickThroughHandler = () => {
-      
-      fetch(`/companies/${id}`)
+
+      fetch(`/companies/${company_id}`)
       .then(r => r.json())
       .then(r => onRenderCompany(r))
-      .then(naviagte("/company"))
-      
+      .then(navigate("/company"))
+
    }
 
    const handleCreateApplication = () => {
@@ -63,10 +66,6 @@ export default function JobFeature({
       });
       handleClose();
    };
-
-
-
-
 
    return (
       <div>

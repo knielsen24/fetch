@@ -35,13 +35,13 @@ export default function NavBar({
       setSearch({ ...search, [name]: value });
    };
 
-   console.log(search)
+   console.log(search);
 
    const handleSubmitSearch = (e) => {
       e.preventDefault();
-      const newSearch = search.position
-      
-      console.log(newSearch)
+      const newSearch = search.position;
+
+      console.log(newSearch);
       fetch("/searchjobs", {
          method: "POST",
          headers: {
@@ -50,7 +50,7 @@ export default function NavBar({
          body: JSON.stringify(newSearch),
       })
          .then((r) => r.json())
-         .then((data)=> console.log(data))
+         .then((data) => console.log(data));
       // onSubmit do we need to make another fetch request.
       // do we fitler on the frontend or backend...?
       // create search controller using where method params[:name]

@@ -11,9 +11,8 @@ export default function JobCard({
    user,
    handleClick,
 }) {
-
-// set conidtion for user.
-// if user ? null : handle
+   // set conidtion for user.
+   // if user ? null : handle
    return (
       <div>
          <Stack>

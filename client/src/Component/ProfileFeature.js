@@ -55,7 +55,7 @@ function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
                   <Typography>{user.resume}</Typography>
                   {/* Edit/Delete Modal*/}
 
-                  <ProfileEditForm {...user} onSetUser={onSetUser}/>
+                  <ProfileEditForm {...user} onSetUser={onSetUser} />
                   <ProfileDeleteModal
                      handleDeleteProfile={handleDeleteProfile}
                      userId={user.id}

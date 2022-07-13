@@ -27,10 +27,10 @@ function ProfileEditForm({
       image_url: image_url,
    };
 
-   console.log(id)
+   console.log(id);
    const [updateUserData, setUpdateUserData] = useState(initialUserData);
    const [open, setOpen] = useState(false);
-   const [error, setError] = useState([])
+   const [error, setError] = useState([]);
 
    const handleClickOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
@@ -55,14 +55,13 @@ function ProfileEditForm({
             "Content-Type": "application/json",
          },
          body: JSON.stringify(updateUserData),
-      })
-      .then((r) => {
+      }).then((r) => {
          if (r.ok) {
-            r.json().then((user) => onSetUser(user))
+            r.json().then((user) => onSetUser(user));
          } else {
-            r.json().then((errorData) => setError(errorData.error))
+            r.json().then((errorData) => setError(errorData.error));
          }
-      })
+      });
    }
 
    return (

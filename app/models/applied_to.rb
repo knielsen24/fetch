@@ -1,4 +1,4 @@
 class AppliedTo < ApplicationRecord
-  belongs_to :user
-  belongs_to :job_posting
+   belongs_to :user
+   belongs_to :job_posting
 end

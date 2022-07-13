@@ -4,7 +4,6 @@ import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
 export default function JobPage({ jobPostings, user, onRenderCompany }) {
-
    const [featuredJob, setFeaturedJob] = useState(jobPostings[0]);
    const handleClick = (id) => {
       const clickedJob = jobPostings.find((job) => job.id === id);
@@ -15,7 +14,14 @@ export default function JobPage({ jobPostings, user, onRenderCompany }) {
 
    if (jobPostings) {
       renderJobCards = jobPostings.map((post) => {
-         return <JobCard key={post.id} {...post} handleClick={handleClick} user={user} />;
+         return (
+            <JobCard
+               key={post.id}
+               {...post}
+               handleClick={handleClick}
+               user={user}
+            />
+         );
       });
    }
 
@@ -25,7 +31,11 @@ export default function JobPage({ jobPostings, user, onRenderCompany }) {
             <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
             </Stack>
-            <JobFeature {...featuredJob} user={user} onRenderCompany={onRenderCompany} />
+            <JobFeature
+               {...featuredJob}
+               user={user}
+               onRenderCompany={onRenderCompany}
+            />
          </Stack>
       </div>
    );

@@ -11,5 +11,4 @@ class SearchController < ApplicationController
    def job_posting_params
       params.permit(:position)
    end
-
 end

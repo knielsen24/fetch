@@ -15,11 +15,9 @@ function App() {
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
 
-
    const onRenderCompany = (company) => {
       setRenderCompany(company);
    };
-
 
    const onSetUser = (updateUser) => setUser(updateUser);
 
@@ -62,15 +60,16 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
+   const handleSearchFilter = () => {
+      
+   }
+
    let { jobListingId } = useParams();
    let navigate = useNavigate();
 
    return (
       <>
-         <NavBar
-            user={user}
-            handleSignOut={handleSignOut}
-         />
+         <NavBar user={user} handleSignOut={handleSignOut} />
          <Routes>
             <Route
                path="/"
