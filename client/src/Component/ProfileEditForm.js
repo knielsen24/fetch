@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 function ProfileEditForm({
-   userId,
+   id,
    first_name,
    last_name,
    email,
@@ -27,6 +27,7 @@ function ProfileEditForm({
       image_url: image_url,
    };
 
+   console.log(id)
    const [updateUserData, setUpdateUserData] = useState(initialUserData);
    const [open, setOpen] = useState(false);
    const [error, setError] = useState([])
@@ -48,9 +49,7 @@ function ProfileEditForm({
          image_url: updateUserData.image_url,
       };
 
-      console.log(newUserData);
-
-      fetch(`/users/${userId}`, {
+      fetch(`/users/${id}`, {
          method: "PATCH",
          headers: {
             "Content-Type": "application/json",

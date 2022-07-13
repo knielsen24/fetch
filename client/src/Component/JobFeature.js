@@ -13,7 +13,7 @@ import {
 import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 export default function JobFeature({
    id,
@@ -26,7 +26,11 @@ export default function JobFeature({
    benefits,
    image,
    user,
+   onRenderCompany
 }) {
+
+   const naviagte = useNavigate()
+
    const [like, setLike] = useState(false);
    const handleLike = () => setLike(!like);
 
@@ -35,6 +39,15 @@ export default function JobFeature({
    const [open, setOpen] = useState(false);
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
+
+   const clickThroughHandler = () => {
+      
+      fetch(`/companies/${id}`)
+      .then(r => r.json())
+      .then(r => onRenderCompany(r))
+      .then(naviagte("/company"))
+      
+   }
 
    const handleCreateApplication = () => {
       const application = {
@@ -51,6 +64,10 @@ export default function JobFeature({
       handleClose();
    };
 
+
+
+
+
    return (
       <div>
          <Stack>
@@ -60,8 +77,7 @@ export default function JobFeature({
                      {position}
                   </Typography>
                   <Link
-                     // onClick={handleClickThrough}
-
+                     onClick={clickThroughHandler}
                      underline="never"
                      fontFamily={"sans-serif"}
                      color={"primary"}

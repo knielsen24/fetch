@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
+  wrap_parameters false
 
   before_action :authorize
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
