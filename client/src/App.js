@@ -14,6 +14,7 @@ function App() {
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
 
+
    const onRenderCompany = (company) => {
       setRenderCompany(company);
    };
@@ -66,7 +67,10 @@ function App() {
 
    return (
       <>
-         <NavBar user={user} handleSignOut={handleSignOut} />
+         <NavBar
+            user={user}
+            handleSignOut={handleSignOut}
+         />
          <Routes>
             <Route
                path="/"
