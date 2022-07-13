@@ -29,6 +29,7 @@ function ProfileEditForm({
 
    const [updateUserData, setUpdateUserData] = useState(initialUserData);
    const [open, setOpen] = useState(false);
+   const [error, setError] = useState([])
 
    const handleClickOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
@@ -56,9 +57,13 @@ function ProfileEditForm({
          },
          body: JSON.stringify(updateUserData),
       })
-         .then((r) => r.json())
-         .then((user) => onSetUser(user))
-      // add error handing
+      .then((r) => {
+         if (r.ok) {
+            r.json().then((user) => onSetUser(user))
+         } else {
+            r.json().then((errorData) => setError(errorData.error))
+         }
+      })
    }
 
    return (
