@@ -5,4 +5,7 @@ class JobPostingSerializer < ActiveModel::Serializer
   def company_name
     object.company.name
   end
+
+  
+
 end
