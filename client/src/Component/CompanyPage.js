@@ -30,17 +30,19 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
             }}
          >
             <Stack direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}>
-                <Box sx={{width: '45vw', height: "80vh", bgcolor:'blanchedalmond', margin:'auto'}}>
+                <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto'}}>
                     <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto'}}>
 
                     </Box>
                 </Box>
-                <Box sx={{width: '45vw', height: "80vh", bgcolor:'blanchedalmond', margin:'auto'}}>
-                    <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto', borderRadius: '8px'}}>
-                        <Stack spacing={4} margin={'2vh'} alignItems={'center'} justifyContent={'center'} >
-                           <Paper elevation={0} sx={{borderTopRadius: '8px', borderBottomLeftRadius:0, borderBottomRightRadius:0, background:'blue', width:'40vw', height: '5vh', textAlign: 'center'}}>
-                             <Typography  color={'whitesmoke'} fontSize={24}>{name}</Typography> 
+                <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto'}}>
+                    <Box sx={{width: '40vw', height: "79vh", bgcolor:'white', position:'relative', margin:'auto', borderRadius: '8px'}}>
+                        <Stack spacing={0} margin={'2vh'} alignItems={'center'} justifyContent={'center'} >
+                           <Paper elevation={1} sx={{borderTopRadius: '8px', borderBottomLeftRadius:0, borderBottomRightRadius:0, background:'rgba(0, 133, 255, 1)', width:'40vw', height: '5vh', textAlign: 'center'}}>
+                             <Typography color={'whitesmoke'} variant='h4'>{name}</Typography> 
                              </Paper>
+                             <img src={image} />
+                             <Typography variant='h6'>Headquarters: {address}</Typography>
                         </Stack>
                     </Box>
                 </Box>

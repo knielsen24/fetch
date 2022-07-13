@@ -26,8 +26,11 @@ export default function JobFeature({
    benefits,
    image,
    user,
+   company_id,
    onRenderCompany
 }) {
+
+   console.log(company_id)
 
    const naviagte = useNavigate()
 
@@ -42,7 +45,7 @@ export default function JobFeature({
 
    const clickThroughHandler = () => {
       
-      fetch(`/companies/${id}`)
+      fetch(`/companies/${company_id}`)
       .then(r => r.json())
       .then(r => onRenderCompany(r))
       .then(naviagte("/company"))
