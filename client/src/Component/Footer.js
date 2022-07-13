@@ -29,7 +29,7 @@ export default function Footer() {
                </Link>
                <Link
                   component={RouterLink}
-                  to="/signin"
+                  to="/aboutus"
                   underline="hover"
                   color={"black"}
                >

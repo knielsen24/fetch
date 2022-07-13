@@ -18,8 +18,10 @@ class User < ApplicationRecord
     validate :password_contains_number
 
   def password_uppercase
+    if password
     return if !!password.match(/\p{Upper}/)
     errors.add :password, ' must contain at least 1 uppercase '
+    end
   end
 
   def password_special_char
@@ -30,7 +32,9 @@ class User < ApplicationRecord
   end
 
   def password_contains_number
+    if password
     return if password.count("0-9") > 0
     errors.add :password, ' must contain at least one number'
+    end
   end
 end
