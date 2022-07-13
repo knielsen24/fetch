@@ -10,10 +10,10 @@ class User < ApplicationRecord
       validates :email, uniqueness: true
       validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-      validates :password, length: { in: 4..12 }
-      validate :password_uppercase
-      validate :password_special_char
-      validate :password_contains_number
+      validates :password, length: { in: 4..12 }, if: -> {id.blank?}
+      validate :password_uppercase, if: -> {id.blank?}
+      validate :password_special_char, if: -> {id.blank?}
+      validate :password_contains_number, if: -> {id.blank?}
 
    def password_uppercase
       if password
