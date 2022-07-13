@@ -12,6 +12,7 @@ export default function LandingPage({ setUser, navigate }) {
    };
 
    const [signUpData, setSignUpData] = useState(newUser);
+   const [errors, setErrors] = useState([])
 
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -27,9 +28,20 @@ export default function LandingPage({ setUser, navigate }) {
          },
          body: JSON.stringify(signUpData),
       })
-         .then((r) => r.json())
-         .then((user) => setUser(user))
-         .then(navigate("findjobs"));
+         .then((r) => {
+            if (r.ok) {
+               r.json().then((user) => setUser(user))
+               .then(navigate("findjobs"))
+            } else {
+               r.json().then((errorData) => setErrors(errorData.errors))
+            }
+         })
+         
+         
+         
+         // r.json())
+         // .then((user) => setUser(user))
+         // .then(navigate("findjobs"));
       // add error handing
    }
 
@@ -164,6 +176,13 @@ export default function LandingPage({ setUser, navigate }) {
                         >
                            Sign Up
                         </Button>
+                        {errors.length > 0 && (
+                           <ul style={{ color: "red" }}>
+                              {errors.map((error) => (
+                                 <li key={error}>{error}</li>
+                              ))}
+                           </ul>
+                        )}
                         <h8> Already Have An Account?</h8>
                         <Button
                            fullWidth

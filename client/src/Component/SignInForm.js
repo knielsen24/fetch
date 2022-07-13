@@ -9,6 +9,7 @@ function SignInForm({ setUser, navigate }) {
    };
 
    const [signInData, setSignInData] = useState(initialSignInData);
+   const [error, setError] = useState([])
 
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -26,12 +27,15 @@ function SignInForm({ setUser, navigate }) {
       })
          .then((r) => {
             if (r.ok) {
-               // need to add an error message if not authorized
-               r.json().then((user) => setUser(user));
+               r.json().then((user) => setUser(user))
+               .then(navigate("findjobs"));
+            } else {
+               r.json().then((errorData) => setError(errorData.error))
             }
          })
-         .then(navigate("findjobs"));
-   };
+      }
+         ;
+console.log(error)
 
    return (
       <>
@@ -84,6 +88,11 @@ function SignInForm({ setUser, navigate }) {
                            />
                         </Stack>
                      </Box>
+                     {error.length > 0 && (
+                        <ul style={{ color: "red" }}>
+                              <li >{error}</li>
+                        </ul>
+                     )}
                      <Button
                         variant="contained"
                         size="small"
