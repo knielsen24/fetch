@@ -2,7 +2,7 @@ import { Stack, TextField, Box, Typography, Paper } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 
-function SignInForm({ setUser, navigate }) {
+function SignInForm({ onSetUser, navigate }) {
    const initialSignInData = {
       email: "",
       password: "",
@@ -27,7 +27,7 @@ function SignInForm({ setUser, navigate }) {
          .then((r) => {
             if (r.ok) {
                // need to add an error message if not authorized
-               r.json().then((user) => setUser(user));
+               r.json().then((user) => onSetUser(user));
             }
          })
          .then(navigate("findjobs"));

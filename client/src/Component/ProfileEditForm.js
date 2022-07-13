@@ -35,7 +35,7 @@ function ProfileEditForm({
 
    const handleChange = (e) => {
       const { name, value } = e.target;
-      setUpdateUserData({ ...updateUserData, [name]: value });
+      setUpdateUserData((values) => ({ ...values, [name]: value }));
    };
 
    console.log(updateUserData);
@@ -52,7 +52,7 @@ function ProfileEditForm({
       //    body: JSON.stringify(updateUserData),
       // })
       //    .then((r) => r.json())
-      //    // .then((user) => setUser(user))
+      //    // .then((user) => onSetUser(user))
       //    // .then(navigate("findjobs"));
       // // add error handing
    }
