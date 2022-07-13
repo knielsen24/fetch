@@ -10,14 +10,14 @@ import ProfilePage from "./Component/ProfilePage";
 import CompanyPage from "./Component/CompanyPage";
 
 function App() {
-   const [user, setUser] = useState("");
+   const [user, setUser] = useState([]);
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
 
    const onRenderCompany = (company) => {
       setRenderCompany(company);
    };
-   const onSetUser = (user) => setUser(user)
+   const onSetUser = (user) => setUser(user);
 
    useEffect(() => {
       fetch("/findjobs")
@@ -57,8 +57,6 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
-
-
    let { jobListingId } = useParams();
    let navigate = useNavigate();
 
@@ -71,7 +69,7 @@ function App() {
                element={
                   user ? null : (
                      <LandingPage
-                     onSetUser={onSetUser}
+                        onSetUser={onSetUser}
                         navigate={navigate}
                         user={user}
                      />

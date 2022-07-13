@@ -4,7 +4,7 @@ import JobCard from "./JobCard";
 import ProfileFeature from "./ProfileFeature";
 
 function ProfilePage({ jobPostings, user, handleDeleteProfile }) {
-
+   console.log(user)
    let renderJobCards;
 
    if (jobPostings) {

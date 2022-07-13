@@ -54,15 +54,12 @@ function ProfileFeature({ user, handleDeleteProfile }) {
                   <Typography>{user.email}</Typography>
                   <Typography>{user.resume}</Typography>
                   {/* Edit/Delete Modal*/}
-                  <>
-                     <ProfileEditForm
-                        {...user}
-                     />
-                     <ProfileDeleteModal
-                        handleDeleteProfile={handleDeleteProfile}
-                        // userId={id}
-                     />
-                  </>
+
+                  <ProfileEditForm {...user} />
+                  <ProfileDeleteModal
+                     handleDeleteProfile={handleDeleteProfile}
+                     // userId={id}
+                  />
                </Stack>
             </Box>
          </Box>
