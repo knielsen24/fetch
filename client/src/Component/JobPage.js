@@ -15,7 +15,7 @@ export default function JobPage({ jobPostings, user }) {
 
    if (jobPostings) {
       renderJobCards = jobPostings.map((post) => {
-         return <JobCard key={post.id} {...post} handleClick={handleClick} />;
+         return <JobCard key={post.id} {...post} handleClick={handleClick} user={user} />;
       });
    }
 

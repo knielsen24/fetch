@@ -10,14 +10,15 @@ import ProfilePage from "./Component/ProfilePage";
 import CompanyPage from "./Component/CompanyPage";
 
 function App() {
-   const [user, setUser] = useState([]);
+   const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
 
    const onRenderCompany = (company) => {
       setRenderCompany(company);
    };
-   const onSetUser = (user) => setUser(user);
+
+   const onSetUser = (updateUser) => setUser(updateUser);
 
    useEffect(() => {
       fetch("/findjobs")
@@ -87,12 +88,15 @@ function App() {
             <Route
                path="profile"
                element={
-                  <ProfilePage
-                     user={user}
-                     jobPostings={jobs}
-                     handleProfilePage={handleProfilePage}
-                     handleDeleteProfile={handleDeleteProfile}
-                  />
+                  user ? (
+                     <ProfilePage
+                        user={user}
+                        jobPostings={jobs}
+                        onSetUser={onSetUser}
+                        handleProfilePage={handleProfilePage}
+                        handleDeleteProfile={handleDeleteProfile}
+                     />
+                  ) : null
                }
             ></Route>
             <Route

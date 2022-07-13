@@ -3,7 +3,7 @@ import ProfileDeleteModal from "./ProfileDeleteModal";
 import AccountBox from "@mui/icons-material/AccountBox";
 import ProfileEditForm from "./ProfileEditForm";
 
-function ProfileFeature({ user, handleDeleteProfile }) {
+function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
    // set default profile picture to profile icon
 
    return (
@@ -55,10 +55,10 @@ function ProfileFeature({ user, handleDeleteProfile }) {
                   <Typography>{user.resume}</Typography>
                   {/* Edit/Delete Modal*/}
 
-                  <ProfileEditForm {...user} />
+                  <ProfileEditForm {...user} onSetUser={onSetUser}/>
                   <ProfileDeleteModal
                      handleDeleteProfile={handleDeleteProfile}
-                     // userId={id}
+
                   />
                </Stack>
             </Box>

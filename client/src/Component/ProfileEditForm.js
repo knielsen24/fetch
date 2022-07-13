@@ -18,7 +18,7 @@ function ProfileEditForm({
    email,
    image_url,
    resume,
-   handleEditProfile,
+   onSetUser,
 }) {
    const initialUserData = {
       first_name: first_name,
@@ -35,26 +35,31 @@ function ProfileEditForm({
 
    const handleChange = (e) => {
       const { name, value } = e.target;
-      setUpdateUserData((values) => ({ ...values, [name]: value }));
+      setUpdateUserData({ ...updateUserData, [name]: value });
    };
-
-   console.log(updateUserData);
 
    function handleSubmit(e) {
       e.preventDefault();
-      console.log(updateUserData);
+      const newUserData = {
+         first_name: updateUserData.first_name,
+         last_name: updateUserData.last_name,
+         email: updateUserData.email,
+         image_url: updateUserData.image_url,
+      };
 
-      // fetch(`/users/${userId}`, {
-      //    method: "PATCH",
-      //    headers: {
-      //       "Content-Type": "application/json",
-      //    },
-      //    body: JSON.stringify(updateUserData),
-      // })
-      //    .then((r) => r.json())
-      //    // .then((user) => onSetUser(user))
-      //    // .then(navigate("findjobs"));
-      // // add error handing
+      console.log(newUserData);
+
+      fetch(`/users/${userId}`, {
+         method: "PATCH",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify(updateUserData),
+      })
+         .then((r) => r.json())
+         // .then((user) => onSetUser(user))
+         // .then(navigate("findjobs"));
+      // add error handing
    }
 
    return (
@@ -83,27 +88,38 @@ function ProfileEditForm({
                         alignItems={"center"}
                         justifyContent={"center"}
                      >
+                        <label>First Name</label>
                         <TextField
                            size="small"
                            fullWidth
                            id="first_name"
                            name="first_name"
-                           defaultValue={first_name}
+                           value={updateUserData.first_name}
                         />
+                        <label>Last Name</label>
                         <TextField
                            size="small"
                            fullWidth
                            id="last_name"
                            name="last_name"
-                           defaultValue={last_name}
+                           value={updateUserData.last_name}
                         />
+                        <label>Email</label>
                         <TextField
                            size="small"
                            fullWidth
                            type="email"
                            id="email"
                            name="email"
-                           defaultValue={email}
+                           value={updateUserData.email}
+                        />
+                        <label>image_url</label>
+                        <TextField
+                           size="small"
+                           fullWidth
+                           id="image_url"
+                           name="image_url"
+                           value={updateUserData.image_url}
                         />
                      </Stack>
                   </Box>
@@ -111,10 +127,9 @@ function ProfileEditForm({
                      <Button onClick={handleClose}>Cancel</Button>
                      <Button
                         autoFocus
-                        color="error"
+                        type="submit"
                         onClick={() => {
                            handleClose();
-                           // handleEditProfile(userId);
                         }}
                      >
                         Update Profile

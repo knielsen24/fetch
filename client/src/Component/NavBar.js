@@ -174,7 +174,7 @@ export default function NavBar({ user, handleSignOut, handleProfilePage }) {
                   <Box sx={{ mt: 7 }} />
                   <TextField
                      onChange={changeHandler}
-                     onSubmit={submitHandler}
+                     // onSubmit={submitHandler}
                      fullWidth
                      size="small"
                      id="filled-search"
