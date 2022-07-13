@@ -54,7 +54,8 @@ function App() {
    const handleDeleteProfile = (id) => {
       fetch(`/users/${id}`, {
          method: "DELETE",
-      }).then(handleSignOut());
+      });
+      handleSignOut();
       // render a 'Sorry to see you go message'
    };
 

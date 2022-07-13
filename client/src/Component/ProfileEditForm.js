@@ -57,8 +57,7 @@ function ProfileEditForm({
          body: JSON.stringify(updateUserData),
       })
          .then((r) => r.json())
-         // .then((user) => onSetUser(user))
-         // .then(navigate("findjobs"));
+         .then((user) => onSetUser(user))
       // add error handing
    }
 

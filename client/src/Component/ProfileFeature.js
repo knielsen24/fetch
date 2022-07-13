@@ -58,7 +58,7 @@ function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
                   <ProfileEditForm {...user} onSetUser={onSetUser}/>
                   <ProfileDeleteModal
                      handleDeleteProfile={handleDeleteProfile}
-
+                     userId={user.id}
                   />
                </Stack>
             </Box>
