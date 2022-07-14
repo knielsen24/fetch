@@ -66,7 +66,7 @@ function App() {
 
    return (
       <>
-         <NavBar user={user} handleSignOut={handleSignOut} onHandleSearch={onHandleSearch} />
+         <NavBar user={user} handleSignOut={handleSignOut} onHandleSearch={onHandleSearch} jobPostings={jobs} />
          <Routes>
             <Route
                path="/"

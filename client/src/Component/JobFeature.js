@@ -30,8 +30,6 @@ export default function JobFeature({
    onRenderCompany
 }) {
 
-   console.log(company_id)
-
    const navigate = useNavigate()
 
    const [like, setLike] = useState(false);
@@ -46,7 +44,7 @@ export default function JobFeature({
    useEffect(() => {
       fetch(`/companies/${company_id}`)
       .then(r => r.json())
-      .then(r => onRenderCompany(r)) 
+      .then(r => onRenderCompany(r))
    })
 
    const handleClickThrough = () =>{

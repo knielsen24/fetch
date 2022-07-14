@@ -22,6 +22,7 @@ export default function NavBar({
    handleSignOut,
    handleProfilePage,
    onHandleSearch,
+   jobPostings,
 }) {
    const [anchorEl, setAnchorEl] = useState(null);
    const open = Boolean(anchorEl);
@@ -178,32 +179,29 @@ export default function NavBar({
                   >
                      <Box sx={{ width: "50vw" }}>
                         <Box />
-                        {/* <Autocomplete
-                     freeSolo
-                     id="free-solo-2-demo"
-                     disableClearable
-                     options={top100Films.map((option) => option.title)}
-                     renderInput={(params) => (
-                        <TextField
-                           {...params}
-                           label="Search input"
-                           InputProps={{
-                              ...params.InputProps,
-                              type: "search",
-                           }}
-                        />
-                     )}
-                  /> */}
-
-                        <TextField
-                           fullWidth
-                           size="small"
-                           id="filled-search"
-                           label="...snag your dream job"
-                           type="search"
-                           name="position"
-                           variant="outlined"
-                           sx={{ margin: "auto" }}
+                        <Autocomplete
+                           freeSolo
+                           id="free-solo-2-demo"
+                           disableClearable
+                           options={jobPostings.map(
+                              (option) => option.position
+                           )}
+                           renderInput={(params) => (
+                              <TextField
+                                 {...params}
+                                 label="...fetch your dream job"
+                                 InputProps={{
+                                    ...params.InputProps,
+                                    type: "search",
+                                 }}
+                                 fullWidth
+                                 size="small"
+                                 id="filled-search"
+                                 name="position"
+                                 variant="outlined"
+                                 sx={{ margin: "auto" }}
+                              />
+                           )}
                         />
                      </Box>
                      <Box>
