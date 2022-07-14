@@ -42,7 +42,7 @@ function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
                                     <BusinessIcon/>
                                 </ListItemIcon>
                                 <ListItemText
-                                primary={'silly'}
+                                primary={'null'}
                                 secondary="Resume"
                                 >
                                 </ListItemText>

@@ -14,6 +14,8 @@ function ProfilePage({user, handleDeleteProfile, onSetUser }) {
          .then((data) => setAppliedJobs(data));
    }, []);
 
+   console.log(appliedJobs)
+
    let renderProfileJobs
 
    if (appliedJobs)
