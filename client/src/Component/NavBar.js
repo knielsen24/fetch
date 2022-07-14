@@ -16,8 +16,7 @@ import {
    MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-
-// add responsiveness to navbar to have menu bar
+import NavBarSearch from "./NavBarSearch";
 
 export default function NavBar({
    user,
@@ -26,7 +25,7 @@ export default function NavBar({
    onHandleSearch,
    jobPostings,
 }) {
-   const handleChangeSearch = (e) => onHandleSearch(e.target.value);
+   // const handleChangeSearch = (e) => onHandleSearch(e.target.value);
    const pages = [
       "Find Jobs",
       "Company Reviews",
@@ -175,55 +174,10 @@ export default function NavBar({
                   </Stack>
                </Stack>
                <Divider fullWidth />
-
-               <form
-                  onChange={handleChangeSearch}
-                  // onSubmit={handleSubmitSearch}
-               >
-                  <Box
-                     display={"flex"}
-                     columnGap={"10px"}
-                     alignItems={"center"}
-                     justifyContent={"center"}
-                  >
-                     <Box sx={{ width: "50vw" }}>
-                        <Box />
-                        <Autocomplete
-                           freeSolo
-                           id="free-solo"
-                           disableClearable
-                           options={jobPostings.map((job) => job.position)}
-                           renderInput={(params) => (
-                              <TextField
-                                 // onChange={handleChangeSearch}
-                                 {...params}
-                                 label="...fetch your dream job"
-                                 InputProps={{
-                                    ...params.InputProps,
-                                    type: "search",
-                                 }}
-                                 fullWidth
-                                 size="small"
-                                 id="filled-search"
-                                 name="position"
-                                 variant="outlined"
-                                 sx={{ margin: "auto" }}
-                              />
-                           )}
-                        />
-                     </Box>
-                     <Box>
-                        <Button
-                           disableElevation
-                           variant="contained"
-                           size="small"
-                           type="submit"
-                        >
-                           Fetch jobs
-                        </Button>
-                     </Box>
-                  </Box>
-               </form>
+               <NavBarSearch
+                  jobPostings={jobPostings}
+                  onHandleSearch={onHandleSearch}
+               />
             </AppBar>
          </Stack>
          <Divider fullWidth />
