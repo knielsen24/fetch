@@ -2,22 +2,24 @@ import React, { useState } from "react";
 import { Box, Stack } from "@mui/material";
 import JobCard from "./JobCard";
 import ProfileFeature from "./ProfileFeature";
+import AppliedToJobs from "./AppliedToJobs";
 
 function ProfilePage({ jobPostings, user, handleDeleteProfile, onSetUser }) {
-   let renderJobCards;
+   // let renderJobCards;
 
-   if (jobPostings) {
-      renderJobCards = jobPostings.map((post) => {
-         return <JobCard key={post.id} {...post} />;
-      });
-   }
-
+   // if (jobPostings) {
+   //    renderJobCards = jobPostings.map((post) => {
+   //       return <JobCard key={post.id} {...post} />;
+   //    });
+   // }
+   
    return (
       <div>
          <Stack direction="row" spacing={10}>
-            <Stack style={{ maxHeight: 700, overflow: "auto" }}>
+            <AppliedToJobs user={user}/>
+            {/* <Stack style={{ maxHeight: 700, overflow: "auto" }}>
                {renderJobCards}
-            </Stack>
+            </Stack> */}
             <ProfileFeature
                handleDeleteProfile={handleDeleteProfile}
                user={user}
