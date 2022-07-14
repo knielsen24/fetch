@@ -9,6 +9,7 @@ import {
    Box,
    Menu,
    MenuItem,
+   Autocomplete,
    Button,
 } from "@mui/material";
 
@@ -192,6 +193,22 @@ export default function NavBar({
                   justifyContent={"space-between"}
                >
                   <Box sx={{ mt: 7 }} />
+                  {/* <Autocomplete
+                     freeSolo
+                     id="free-solo-2-demo"
+                     disableClearable
+                     options={top100Films.map((option) => option.title)}
+                     renderInput={(params) => (
+                        <TextField
+                           {...params}
+                           label="Search input"
+                           InputProps={{
+                              ...params.InputProps,
+                              type: "search",
+                           }}
+                        />
+                     )}
+                  /> */}
                   <form
                      onChange={handleChangeSearch}
                      onSubmit={handleSubmitSearch}
