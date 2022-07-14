@@ -18,7 +18,9 @@ function App() {
 
    const onRenderCompany = (company_id) => setRenderCompany(company_id);
    const onSetUser = (updateUser) => setUser(updateUser);
-   const onHandleSearch = (newSearch) => setSearchValue(newSearch);
+   const onHandleSearch = (newSearch) => {
+      console.log(newSearch)
+      setSearchValue(newSearch)};
 
    const filteredJobs = jobs.filter((job) =>
       job.position.toLowerCase().includes(searchValue.toLowerCase())

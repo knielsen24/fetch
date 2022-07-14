@@ -2,16 +2,9 @@ import React, { useState } from "react";
 import { TextField, Box, Autocomplete, Button } from "@mui/material";
 
 function NavBarSearch({ jobPostings, onHandleSearch }) {
-   // const [search, setSearch] = useState("");
+   const [value, setValue] = useState("");
 
-   const handleClick = (e) => {
-      onHandleSearch(e.target.value);
-   };
-
-   const onHandleChange = (e) => {
-      console.log(e.target.value)
-   }
-
+   // console.log(value)
    //We need the value from the textfield to be passed into the on click.
    // The onclick value is passed up to app to change state for the search
 
@@ -44,7 +37,8 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                         name="position"
                         variant="outlined"
                         sx={{ margin: "auto" }}
-                        onChange={onHandleChange}
+                        // onChange={(e)=>setValue(e.target.value)}
+                        onClick={(e)=>onHandleSearch(e.target.value)}
                      />
                   )}
                />
@@ -54,7 +48,7 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                   disableElevation
                   variant="contained"
                   size="small"
-                  onClick={()=>handleClick}
+                  onClick={()=>onHandleSearch(value)}
                >
                   Fetch jobs
                </Button>
