@@ -88,7 +88,7 @@ function NavBarUserDropDown({ user, handleProfilePage, handleSignOut }) {
       </Link>
    );
 
-   return <div>{user ? dropDownMenu : signInLink}</div>;
+   return <>{user ? dropDownMenu : signInLink}</>;
 }
 
 export default NavBarUserDropDown;

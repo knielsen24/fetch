@@ -27,7 +27,7 @@ function App() {
       fetch("/findjobs")
          .then((r) => r.json())
          .then((data) => setJobs(data));
-   }, [jobs]);
+   }, []);
 
    useEffect(() => {
       fetch("/me").then((r) => {
@@ -47,7 +47,6 @@ function App() {
          .then(navigate("/"));
    };
 
-   // How are we searching for list of jobs(user id)
    const handleProfilePage = (id) => {
       fetch(`/users/${id}/applications`)
          .then((r) => r.json())
@@ -62,9 +61,9 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
-   // const filteredJobs = jobs.filter((job) =>
-   //    job.position.toLowerCase().includes(search.toLowerCase())
-   // );
+   const filteredJobs = jobs.filter((job) =>
+      job.position.toLowerCase().includes(search.toLowerCase())
+   );
 
    return (
       <>
@@ -101,7 +100,7 @@ function App() {
                   user ? (
                      <ProfilePage
                         user={user}
-                        jobPostings={jobs}
+                        jobPostings={filteredJobs}
                         onSetUser={onSetUser}
                         handleProfilePage={handleProfilePage}
                         handleDeleteProfile={handleDeleteProfile}
@@ -113,7 +112,7 @@ function App() {
                path="findjobs"
                element={
                   <JobPage
-                     jobPostings={jobs}
+                     jobPostings={filteredJobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
                   />
