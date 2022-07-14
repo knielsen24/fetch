@@ -38,7 +38,7 @@ export default function NavBar({
                      <div></div>
                      <Link
                         component={RouterLink}
-                        to="/"
+                        to={user ? "/findjobs" : "/"}
                         underline="never"
                         fontFamily={"sans-serif"}
                         color={"primary"}
