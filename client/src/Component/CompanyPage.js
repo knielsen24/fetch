@@ -7,14 +7,16 @@ import BusinessIcon from '@mui/icons-material/Business';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import PhoneIcon from '@mui/icons-material/Phone';
 import Card from './Card';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 export default function CompanyPage({name, num_of_employees, phone, address, email, image, first_review, first_reviewer, job_postings}) {
 
     
 
-    const reviewText = first_review.review_text
-    const reviewer = `${first_reviewer.first_name} ${first_reviewer.last_name}`
+    let reviewText = first_review ? first_review.review_text : "This Company has no reviews"
+    let reviewer = first_reviewer ? `${first_reviewer.first_name} ${first_reviewer.last_name}` : 'Be the first one!'
+    let defaultIcon = first_review ? first_review.image_url : <AccountCircleIcon />
 
     const mainContainerStyle = 'silly'
     // const stackStyle = sx={{direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}}
@@ -23,12 +25,12 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
     const featureStyle = 'silly'
 
 
-    let renderJobPostings
+    let renderJobPostings;
 
-        // if (job_postings) {
-        //   renderJobPostings = job_postings.map(job => {
-        //         return <Card id={job.id}
-        //                 {...job} /> })
+        if (job_postings) {
+          renderJobPostings = job_postings.map(job => {
+                return <Card id={job.id}
+                        {...job} /> })}
 
 
     return(
@@ -48,7 +50,10 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
             <Stack direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}>
                 <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto'}}>
                     <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto'}}>
+                    <Divider sx={{marginBottom: '20px', color:'white'}} />
+                    <Stack spacing={4}>
                     {renderJobPostings}
+                    </Stack>
                     </Box>
                 </Box>
                 <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto', }}>
@@ -70,7 +75,7 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
                                  </ListItem>
                                 <ListItem alignItems='flex-start'>
                                     <ListItemAvatar  >
-                                        <Avatar src={first_reviewer.image_url} alt='User' />
+                                        <Avatar src={defaultIcon} alt='User' />
                                     </ListItemAvatar>
                                     <ListItemText
                                      primary={reviewText}
