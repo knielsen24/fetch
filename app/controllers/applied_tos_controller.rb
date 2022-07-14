@@ -1,9 +1,8 @@
 class AppliedTosController < ApplicationController
-   skip_before_action :authorize
+   skip_before_action :authorize, except: :index
 
    def index
-      application = AppliedTo.where(user_id: params[:id])
-      render json: application
+      render json: @current_user.job_postings
    end
 
    def create

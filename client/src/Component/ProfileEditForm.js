@@ -68,8 +68,6 @@ function ProfileEditForm({
          <Button
             disableElevation
             variant="contained"
-            fullWidth
-            size="small"
             onClick={handleClickOpen}
          >
             Edit Profile
