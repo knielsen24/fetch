@@ -8,6 +8,7 @@ import JobPage from "./Component/JobPage";
 import ReviewForm from "./Component/ReviewForm";
 import ProfilePage from "./Component/ProfilePage";
 import CompanyPage from "./Component/CompanyPage";
+import AboutUs from "./Component/AboutUs";
 
 function App() {
    const [user, setUser] = useState(null);
@@ -123,6 +124,7 @@ function App() {
                path="company"
                element={<CompanyPage {...renderCompany} />}
             />
+            <Route path="aboutus"  element={<AboutUs/>}/>
          </Routes>
          <Footer />
       </>
