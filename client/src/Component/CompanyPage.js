@@ -61,7 +61,7 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
                     <Box sx={{width: '40vw', height: "75vh", bgcolor:'white', position:'relative', margin:'auto', borderBottomLeftRadius: '8px'}}>
                     <Paper  elevation={0} sx={{marginTop:'2vw', height:'100%', bgcolor:'snow'}}>
                         <Stack spacing={0} alignItems={'center'} justifyContent={'center'} >
-                             <Image duration={0} shift={0}  src={image} fit='cover' showLoading='true' height={'20vh'} />
+                             <Image duration={0} shift={0}  src={image} fit='cover' showLoading='false' height={'20vh'} />
                              <Paper elevation={0} sx={{background:'rgba(0, 133, 255, 1)', width:'40vw', height: '5vh', borderRadius: 0, textAlign: 'center'}}>
                              <Typography color={'whitesmoke'} variant='h4'>{name}</Typography> 
                              </Paper>

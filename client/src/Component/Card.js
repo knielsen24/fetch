@@ -12,14 +12,9 @@ export default function Card({
    created_at,
    updated_at,
 }) {
-   console.log(startCase(position));
-
-   // const capitalize = (word) => startCase()
-
    return (
       <>
          <JobCard elevation={3}>
-            {/* When on profile we do not want Click event handler */}
             <CardContent>
                <Typography>{startCase(position)}</Typography>
                <Typography>{job_type}</Typography>
