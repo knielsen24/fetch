@@ -27,7 +27,6 @@ function ProfileEditForm({
       image_url: image_url,
    };
 
-   console.log(id);
    const [updateUserData, setUpdateUserData] = useState(initialUserData);
    const [open, setOpen] = useState(false);
    const [error, setError] = useState([]);

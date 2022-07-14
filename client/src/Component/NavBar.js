@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import NavBarUserDropDown from "./NavBarUserDropDown";
 import {
    AppBar,
    Stack,
@@ -14,8 +15,6 @@ import {
 } from "@mui/material";
 
 // add responsiveness to navbar to have menu bar
-// we should consider refactoring the dropdown menu as it's own component to clean up the navbar
-// If we refactor, user needs to be passed down as props
 
 export default function NavBar({
    user,
@@ -24,92 +23,7 @@ export default function NavBar({
    onHandleSearch,
    jobPostings,
 }) {
-   const [anchorEl, setAnchorEl] = useState(null);
-   const open = Boolean(anchorEl);
-   const handleClick = (e) => setAnchorEl(e.currentTarget);
-   const handleClose = () => setAnchorEl(false);
-
    const handleChangeSearch = (e) => onHandleSearch(e.target.value);
-  
-   const capFirstLetter = (firstName) =>
-      firstName[0].toUpperCase() + firstName.slice(1);
-
-   // when the user is signed in it renders dropDownMenu
-   // when the user is signed out it renders signInLink
-   const dropDownMenu = (
-      <>
-         <Link
-            underline="hover"
-            color={"black"}
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-         >
-            {user ? capFirstLetter(user.first_name) : null}
-         </Link>
-         <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-               "aria-labelledby": "basic-button",
-            }}
-         >
-            <MenuItem
-               component={RouterLink}
-               to="/profile"
-               onClick={() => {
-                  handleClose();
-                  handleProfilePage(user.id);
-               }}
-            >
-               Profile
-            </MenuItem>
-            <MenuItem
-               component={RouterLink}
-               to="/myjobs"
-               onClick={() => {
-                  handleClose();
-               }}
-            >
-               My Jobs
-            </MenuItem>
-            <MenuItem
-               component={RouterLink}
-               to="/myreviews"
-               onClick={() => {
-                  handleClose();
-               }}
-            >
-               My Reviews
-            </MenuItem>
-            {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
-            {/* css needs polishing */}
-            <Divider fullWidth />
-            <MenuItem
-               onClick={() => {
-                  handleSignOut();
-                  handleClose();
-               }}
-            >
-               Sign Out
-            </MenuItem>
-         </Menu>
-      </>
-   );
-
-   const signInLink = (
-      <Link
-         component={RouterLink}
-         to="/signin"
-         underline="hover"
-         color={"black"}
-      >
-         Sign In
-      </Link>
-   );
 
    return (
       <>
@@ -151,8 +65,11 @@ export default function NavBar({
                      </Link>
                   </Stack>
                   <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
-                     {/* conditional render on user state */}
-                     {user ? dropDownMenu : signInLink}
+                     <NavBarUserDropDown
+                        user={user}
+                        handleProfilePage={handleProfilePage}
+                        handleSignOut={handleSignOut}
+                     />
                      <Divider orientation="vertical" />
                      <Link component="button" underline="hover" color={"black"}>
                         Employers / Post Jobs
@@ -177,9 +94,7 @@ export default function NavBar({
                            freeSolo
                            id="free-solo"
                            disableClearable
-                           options={jobPostings.map(
-                              (job) => job.position
-                           )}
+                           options={jobPostings.map((job) => job.position)}
                            renderInput={(params) => (
                               <TextField
                                  {...params}

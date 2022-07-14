@@ -72,7 +72,7 @@ function App() {
             user={user}
             handleSignOut={handleSignOut}
             onHandleSearch={onHandleSearch}
-            // jobPostings={jobs}
+            jobPostings={jobs}
          />
          <Routes>
             <Route
