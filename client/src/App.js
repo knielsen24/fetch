@@ -21,6 +21,10 @@ function App() {
 
    const onSetUser = (updateUser) => setUser(updateUser);
    const onHandleSearch = (newSearch) => setSearch(newSearch)
+   console.log(search)
+
+   let { jobListingId } = useParams();
+   let navigate = useNavigate();
 
    useEffect(() => {
       fetch("/findjobs")
@@ -61,10 +65,8 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
+   const filteredJobs = jobs.filter((job) => job.position.toLowerCase().includes(search.toLowerCase()))
 
-
-   let { jobListingId } = useParams();
-   let navigate = useNavigate();
 
    return (
       <>
@@ -96,7 +98,7 @@ function App() {
                   user ? (
                      <ProfilePage
                         user={user}
-                        jobPostings={jobs}
+                        jobPostings={filteredJobs}
                         onSetUser={onSetUser}
                         handleProfilePage={handleProfilePage}
                         handleDeleteProfile={handleDeleteProfile}
@@ -108,7 +110,7 @@ function App() {
                path="findjobs"
                element={
                   <JobPage
-                     jobPostings={jobs}
+                     jobPostings={filteredJobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
                   />
