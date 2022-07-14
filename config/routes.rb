@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get "/users/:id/applications", to: "applied_tos#index"
   post "/applied_tos", to: "applied_tos#create"
+  delete "/applied_tos/:id", to: "applied_tos#destroy"
 
   get "/companies/:id", to: "companies#show"
 

@@ -2,7 +2,7 @@ class AppliedTosController < ApplicationController
    skip_before_action :authorize, except: :index
 
    def index
-      render json: @current_user.job_postings
+      render json: @current_user.job_postings, serializer: AppliedToWithIdSerializer
    end
 
    def create
@@ -10,11 +10,14 @@ class AppliedTosController < ApplicationController
       render json: application
    end
 
-#  def destroy
-#      application = AppliedTo.find(params[:id])
-#      application.delete
-#      head :no_content
-#  end
+ def destroy
+   #   application = AppliedTo.where(job_posting_id: params[:id], user_id: )
+     application = @current_user.job_posting.find_by(job_posting_id: params[:id])
+     application.delete
+     head :no_content
+
+
+ end
 
    private
 
