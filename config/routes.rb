@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get "/companies/:id", to: "companies#show"
 
-  post "/searchjobs", to: "search#index"
+#   post "/searchjobs", to: "search#index"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
