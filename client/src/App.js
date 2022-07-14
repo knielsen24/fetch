@@ -20,6 +20,11 @@ function App() {
    const onSetUser = (updateUser) => setUser(updateUser);
    const onHandleSearch = (newSearch) => setSearchValue(newSearch);
 
+   const filteredJobs = jobs.filter((job) =>
+      job.position.toLowerCase().includes(searchValue.toLowerCase())
+   );
+
+
    const navigate = useNavigate();
    let { jobListingId } = useParams();
 
@@ -61,21 +66,18 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
-   const onSearchClick = (newSearch) => {
-      console.log(newSearch);
-      setSearchValue(newSearch)
-   };
+   // const onSearchClick = (newSearch) => {
+   //    console.log(newSearch);
+   //    setSearchValue(newSearch)
+   // };
 
-   const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(searchValue.toLowerCase())
-   );
 
    return (
       <>
          <NavBar
             user={user}
             handleSignOut={handleSignOut}
-            onSearchClick={onSearchClick}
+            onHandleSearch={onHandleSearch}
             jobPostings={jobs}
          />
          <Routes>

@@ -23,6 +23,7 @@ export default function NavBar({
    handleSignOut,
    handleProfilePage,
    jobPostings,
+   onHandleSearch,
    onSearchClick,
 }) {
    // const handleChangeSearch = (e) => onHandleSearch(e.target.value);
@@ -177,6 +178,7 @@ export default function NavBar({
                <NavBarSearch
                   jobPostings={jobPostings}
                   onSearchClick={onSearchClick}
+                  onHandleSearch={onHandleSearch}
                />
             </AppBar>
          </Stack>
