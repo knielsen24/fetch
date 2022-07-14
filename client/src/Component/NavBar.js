@@ -95,6 +95,7 @@ export default function NavBar({
                            options={jobPostings.map((job) => job.position)}
                            renderInput={(params) => (
                               <TextField
+                                 // onChange={handleChangeSearch}
                                  {...params}
                                  label="...fetch your dream job"
                                  InputProps={{
