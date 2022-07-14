@@ -100,7 +100,6 @@ function App() {
                   user ? (
                      <ProfilePage
                         user={user}
-                        jobPostings={filteredJobs}
                         onSetUser={onSetUser}
                         handleProfilePage={handleProfilePage}
                         handleDeleteProfile={handleDeleteProfile}
