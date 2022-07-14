@@ -21,41 +21,16 @@ export default function NavBar({
    user,
    handleSignOut,
    handleProfilePage,
-   onSetSearch,
+   onHandleSearch,
 }) {
    const [anchorEl, setAnchorEl] = useState(null);
-   const [search, setSearch] = useState("");
 
    const open = Boolean(anchorEl);
 
    const handleClick = (e) => setAnchorEl(e.currentTarget);
    const handleClose = () => setAnchorEl(false);
 
-   const handleChangeSearch = (e) => {
-      const { name, value } = e.target;
-      setSearch({ ...search, [name]: value });
-   };
-
-   console.log(search);
-
-   const handleSubmitSearch = (e) => {
-      e.preventDefault();
-      const newSearch = search.position;
-
-      console.log(newSearch);
-      fetch("/searchjobs", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(newSearch),
-      })
-         .then((r) => r.json())
-         .then((data) => console.log(data));
-      // onSubmit do we need to make another fetch request.
-      // do we fitler on the frontend or backend...?
-      // create search controller using where method params[:name]
-   };
+   const handleChangeSearch = (e) => onHandleSearch(e.target.value);
 
    const capFirstLetter = (firstName) =>
       firstName[0].toUpperCase() + firstName.slice(1);
@@ -240,3 +215,23 @@ export default function NavBar({
       </>
    );
 }
+
+
+   // const handleSubmitSearch = (e) => {
+   //    e.preventDefault();
+   //    const newSearch = search.position;
+
+   //    console.log(newSearch);
+   //    fetch("/searchjobs", {
+   //       method: "POST",
+   //       headers: {
+   //          "Content-Type": "application/json",
+   //       },
+   //       body: JSON.stringify(newSearch),
+   //    })
+   //       .then((r) => r.json())
+   //       .then((data) => console.log(data));
+   //    // onSubmit do we need to make another fetch request.
+   //    // do we fitler on the frontend or backend...?
+   //    // create search controller using where method params[:name]
+   // };

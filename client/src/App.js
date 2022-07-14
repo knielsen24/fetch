@@ -12,6 +12,7 @@ import CompanyPage from "./Component/CompanyPage";
 function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
+   const [search, setSearch] = useState("");
    const [renderCompany, setRenderCompany] = useState();
 
    const onRenderCompany = (company) => {
@@ -19,6 +20,7 @@ function App() {
    };
 
    const onSetUser = (updateUser) => setUser(updateUser);
+   const onHandleSearch = (newSearch) => setSearch(newSearch)
 
    useEffect(() => {
       fetch("/findjobs")
@@ -59,16 +61,14 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
-   const handleSearchFilter = () => {
 
-   }
 
    let { jobListingId } = useParams();
    let navigate = useNavigate();
 
    return (
       <>
-         <NavBar user={user} handleSignOut={handleSignOut} />
+         <NavBar user={user} handleSignOut={handleSignOut} onHandleSearch={onHandleSearch} />
          <Routes>
             <Route
                path="/"
