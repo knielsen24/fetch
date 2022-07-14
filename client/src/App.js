@@ -18,7 +18,7 @@ function App() {
 
    const onRenderCompany = (company_id) => setRenderCompany(company_id);
    const onSetUser = (updateUser) => setUser(updateUser);
-   const onHandleSearch = (newSearch) => setSearch(newSearch);
+   // const onHandleSearch = (newSearch) => setSearch(newSearch);
 
    const navigate = useNavigate();
    let { jobListingId } = useParams();
@@ -61,6 +61,11 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
+   const onSearchClick = (newSearch) => {
+      console.log(newSearch);
+      setSearch(newSearch);
+   };
+
    const filteredJobs = jobs.filter((job) =>
       job.position.toLowerCase().includes(search.toLowerCase())
    );
@@ -70,7 +75,8 @@ function App() {
          <NavBar
             user={user}
             handleSignOut={handleSignOut}
-            onHandleSearch={onHandleSearch}
+            // onHandleSearch={onHandleSearch}
+            onSearchClick={onSearchClick}
             jobPostings={jobs}
          />
          <Routes>

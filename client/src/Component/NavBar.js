@@ -24,6 +24,7 @@ export default function NavBar({
    handleProfilePage,
    onHandleSearch,
    jobPostings,
+   onSearchClick,
 }) {
    // const handleChangeSearch = (e) => onHandleSearch(e.target.value);
    const pages = [
@@ -177,6 +178,7 @@ export default function NavBar({
                <NavBarSearch
                   jobPostings={jobPostings}
                   onHandleSearch={onHandleSearch}
+                  onSearchClick={onSearchClick}
                />
             </AppBar>
          </Stack>
