@@ -7,6 +7,8 @@ function NavBarSearch({ jobPostings, onHandleSearch, onSearchClick }) {
       onHandleSearch(e.target.value);
    };
 
+   // add state hear from search back
+   // have handleClick in App grab value of state from here
    return (
       <>
          <Box
