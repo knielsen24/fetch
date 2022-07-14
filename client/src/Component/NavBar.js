@@ -29,6 +29,13 @@ export default function NavBar({
    const handleClose = () => setAnchorEl(false);
 
    const handleChangeSearch = (e) => onHandleSearch(e.target.value);
+   // const handleSubmitSearch = (e) => {
+   //    e.preventDefault()
+   //    console.log(e.target.value)
+   //    const searchInput = e.target.calue
+   //    onHandleSearch(searchInput)
+   // };
+
    const capFirstLetter = (firstName) =>
       firstName[0].toUpperCase() + firstName.slice(1);
 
@@ -217,22 +224,3 @@ export default function NavBar({
       </>
    );
 }
-
-// const handleSubmitSearch = (e) => {
-//    e.preventDefault();
-//    const newSearch = search.position;
-
-//    console.log(newSearch);
-//    fetch("/searchjobs", {
-//       method: "POST",
-//       headers: {
-//          "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(newSearch),
-//    })
-//       .then((r) => r.json())
-//       .then((data) => console.log(data));
-//    // onSubmit do we need to make another fetch request.
-//    // do we fitler on the frontend or backend...?
-//    // create search controller using where method params[:name]
-// };
