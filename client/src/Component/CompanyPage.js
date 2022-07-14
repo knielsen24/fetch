@@ -1,25 +1,35 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { Stack, Box, Paper, Typography, Divider, List, ListItemAvatar, ListItemIcon, ListItemText, ListItem } from '@mui/material';
-import { bgcolor } from '@mui/system';
+import { Stack, Box, Paper, Typography, Divider, List, ListItemAvatar, ListItemIcon, ListItemText, ListItem, Avatar } from '@mui/material';
 import Image from 'mui-image'
 import EmailIcon from '@mui/icons-material/Email';
 import BusinessIcon from '@mui/icons-material/Business';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import PhoneIcon from '@mui/icons-material/Phone';
+import Card from './Card';
 
 
-export default function CompanyPage({name, num_of_employees, phone, address, email, image}) {
+export default function CompanyPage({name, num_of_employees, phone, address, email, image, first_review, first_reviewer, job_postings}) {
 
     
 
-    console.log(name)
+    const reviewText = first_review.review_text
+    const reviewer = `${first_reviewer.first_name} ${first_reviewer.last_name}`
 
     const mainContainerStyle = 'silly'
     // const stackStyle = sx={{direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}}
     const subContainerStyle = 'silly'
     const cardStyle = 'silly'
     const featureStyle = 'silly'
+
+
+    let renderJobPostings
+
+        // if (job_postings) {
+        //   renderJobPostings = job_postings.map(job => {
+        //         return <Card id={job.id}
+        //                 {...job} /> })
+
 
     return(
 
@@ -38,6 +48,7 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
             <Stack direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}>
                 <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto'}}>
                     <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto'}}>
+                    {renderJobPostings}
                     </Box>
                 </Box>
                 <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto', }}>
@@ -51,28 +62,22 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
                              </Paper>
                              <List>
                                 <ListItem alignItems='flex-start'>
-                                <ListItemText primary={"What Emplyees Are Saying"}
+                                <ListItemText primary={`What People Are Saying About ${name}`}
                                                 primaryTypographyProps={{
-                                                    fontSize: 24
+                                                    fontSize: 18
                                                 }}
                                     /> 
                                  </ListItem>
                                 <ListItem alignItems='flex-start'>
-                                    <ListItemAvatar alt='User' src={image}>
+                                    <ListItemAvatar  >
+                                        <Avatar src={first_reviewer.image_url} alt='User' />
                                     </ListItemAvatar>
                                     <ListItemText
-                                     primary={'stuff'}
-                                     secondary={'name'}
+                                     primary={reviewText}
+                                     secondary={reviewer}
                                     />     
                                 </ListItem>
-                                <ListItem alignItems='flex-start'>
-                                    <ListItemAvatar alt='User' src={image}>
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                     primary={'stuff'}
-                                     secondary={'name'}
-                                    />    
-                                </ListItem>
+                           
                              </List>
                              <Box sx={{width:'37vw', margin:'auto'}}>
                              </Box>

@@ -185,17 +185,14 @@ export default function NavBar({
                   </Stack>
                </Stack>
                <Divider fullWidth />
-               <Stack
-                  direction={"row"}
-                  spacing={36}
-                  alignItems={"center"}
-                  justifyContent={"space-between"}
-               >
-                  <Box sx={{ mt: 7 }} />
+            
                   <form
                      onChange={handleChangeSearch}
                      onSubmit={handleSubmitSearch}
-                  >
+                  >  
+                  <Box display={'flex'} columnGap={'10px'} alignItems={'center'} justifyContent={'center'}>
+
+                     <Box  sx={{width: "50vw"}}>
                      <TextField
                         fullWidth
                         size="small"
@@ -204,9 +201,11 @@ export default function NavBar({
                         type="search"
                         name="position"
                         variant="outlined"
+                        sx={{margin: "auto" }}
                      />
+                     </Box>
+                     <Box>
                      <Button
-                        fullWidth
                         disableElevation
                         variant="contained"
                         size="small"
@@ -214,9 +213,10 @@ export default function NavBar({
                      >
                         Fetch jobs
                      </Button>
+                     </Box>
+                     </Box>
                   </form>
-                  <Box />
-               </Stack>
+                  
             </AppBar>
          </Stack>
          <Divider fullWidth />

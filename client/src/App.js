@@ -13,10 +13,17 @@ function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
+   const navigate = useNavigate();
 
-   const onRenderCompany = (company) => {
-      setRenderCompany(company);
-   };
+
+   const onRenderCompany = (company_id) => setRenderCompany(company_id)
+   
+
+      
+
+   
+
+   console.log(renderCompany)
 
    const onSetUser = (updateUser) => setUser(updateUser);
 
@@ -64,7 +71,6 @@ function App() {
    }
 
    let { jobListingId } = useParams();
-   let navigate = useNavigate();
 
    return (
       <>

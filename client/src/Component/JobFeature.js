@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
    Stack,
    Card,
@@ -43,13 +43,14 @@ export default function JobFeature({
    const handleOpen = () => setOpen(true);
    const handleClose = () => setOpen(false);
 
-   const clickThroughHandler = () => {
-
+   useEffect(() => {
       fetch(`/companies/${company_id}`)
       .then(r => r.json())
-      .then(r => onRenderCompany(r))
-      .then(navigate("/company"))
+      .then(r => onRenderCompany(r)) 
+   })
 
+   const handleClickThrough = () =>{
+      navigate("/company")
    }
 
    const handleCreateApplication = () => {
@@ -76,7 +77,7 @@ export default function JobFeature({
                      {position}
                   </Typography>
                   <Link
-                     onClick={clickThroughHandler}
+                     onClick={handleClickThrough}
                      underline="never"
                      fontFamily={"sans-serif"}
                      color={"primary"}
