@@ -15,7 +15,7 @@ import {
    Menu,
    MenuItem,
 } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu'
+import MenuIcon from "@mui/icons-material/Menu";
 
 // add responsiveness to navbar to have menu bar
 
@@ -27,11 +27,16 @@ export default function NavBar({
    jobPostings,
 }) {
    const handleChangeSearch = (e) => onHandleSearch(e.target.value);
-   const pages = ['Find Jobs', 'Company Reviews', 'Find Salaries', 'Employers / Post Jobs']
+   const pages = [
+      "Find Jobs",
+      "Company Reviews",
+      "Find Salaries",
+      "Employers / Post Jobs",
+   ];
 
    const [anchorElNav, setAnchorElNav] = useState(null);
-   const handleOpenNavMenu = (event) => { setAnchorElNav(event.currentTarget) };
-   const handleCloseNavMenu = () => { setAnchorElNav(null) };
+   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
+   const handleCloseNavMenu = () => setAnchorElNav(null);
 
    return (
       <>
@@ -46,18 +51,12 @@ export default function NavBar({
                   <Stack direction={"row"} spacing={4} alignItems={"center"}>
                      {/* div... has a purpose */}
                      <div></div>
-                     {/* <Link
-                        component={RouterLink}
-                        to="/"
-                        underline="never"
-                        fontFamily={"sans-serif"}
-                        color={"primary"}
-                        fontSize={36}
-                        sx={{ textDecoration: "none" }}
+                     <Box
+                        sx={{
+                           flexGrow: 1,
+                           display: { xs: "flex", md: "none" },
+                        }}
                      >
-                        fetch
-                     </Link> */}
-                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                            size="large"
                            aria-label="account of current user"
@@ -72,18 +71,18 @@ export default function NavBar({
                            id="menu-appbar"
                            anchorEl={anchorElNav}
                            anchorOrigin={{
-                              vertical: 'bottom',
-                              horizontal: 'left',
+                              vertical: "bottom",
+                              horizontal: "left",
                            }}
                            keepMounted
                            transformOrigin={{
-                              vertical: 'top',
-                              horizontal: 'left',
+                              vertical: "top",
+                              horizontal: "left",
                            }}
                            open={Boolean(anchorElNav)}
                            onClose={handleCloseNavMenu}
                            sx={{
-                              display: { xs: 'block', md: 'none' },
+                              display: { xs: "block", md: "none" },
                            }}
                         >
                            <MenuItem onClick={handleCloseNavMenu}>
@@ -93,17 +92,31 @@ export default function NavBar({
                                  underline="hover"
                                  color={"black"}
                               >
-                                 <Typography textAlign="center">Find Jobs</Typography>
+                                 <Typography textAlign="center">
+                                    Find Jobs
+                                 </Typography>
                               </Link>
                            </MenuItem>
                            <MenuItem onClick={handleCloseNavMenu}>
-                              <Link component="button" underline="hover" color={"black"}>
-                                 <Typography textAlign="center">Company Reviews</Typography>
+                              <Link
+                                 component="button"
+                                 underline="hover"
+                                 color={"black"}
+                              >
+                                 <Typography textAlign="center">
+                                    Company Reviews
+                                 </Typography>
                               </Link>
                            </MenuItem>
                            <MenuItem onClick={handleCloseNavMenu}>
-                              <Link component="button" underline="hover" color={"black"}>
-                                 <Typography textAlign="center">Find Salaries</Typography>
+                              <Link
+                                 component="button"
+                                 underline="hover"
+                                 color={"black"}
+                              >
+                                 <Typography textAlign="center">
+                                    Find Salaries
+                                 </Typography>
                               </Link>
                            </MenuItem>
                         </Menu>
@@ -119,7 +132,12 @@ export default function NavBar({
                      >
                         fetch
                      </Link>
-                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                     <Box
+                        sx={{
+                           flexGrow: 1,
+                           display: { xs: "none", md: "flex" },
+                        }}
+                     >
                         <Link
                            component={RouterLink}
                            to="/findjobs"
@@ -128,10 +146,18 @@ export default function NavBar({
                         >
                            Find Jobs
                         </Link>
-                        <Link component="button" underline="hover" color={"black"}>
+                        <Link
+                           component="button"
+                           underline="hover"
+                           color={"black"}
+                        >
                            Company Reviews
                         </Link>
-                        <Link component="button" underline="hover" color={"black"}>
+                        <Link
+                           component="button"
+                           underline="hover"
+                           color={"black"}
+                        >
                            Find Salaries
                         </Link>
                      </Box>
@@ -152,7 +178,7 @@ export default function NavBar({
 
                <form
                   onChange={handleChangeSearch}
-               // onSubmit={handleSubmitSearch}
+                  // onSubmit={handleSubmitSearch}
                >
                   <Box
                      display={"flex"}
