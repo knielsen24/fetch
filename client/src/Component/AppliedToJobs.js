@@ -1,22 +1,19 @@
-import React, {useState,  useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 
-export default function AppliedToJobs({user}) {
+export default function AppliedToJobs({ user }) {
+   const [appliedJobs, setAppliedJobs] = useState([]);
 
-const [appliedJobs, setAppliedJobs] = useState([])
+   // const renderProfileJobs = appliedJobs.map(application => {
+   //     return application.job_posting
+   // })
 
-const renderProfileJobs = appliedJobs.map(application => {
-    return application.job_posting
-})
+   console.log(appliedJobs)
 
-console.log(renderProfileJobs)
+   useEffect(() => {
+      fetch(`/users/${user.id}/applications`)
+         .then((r) => r.json())
+         .then((data) => setAppliedJobs(data));
+   }, []);
 
-    useEffect(() => {
-        fetch(`/users/${user.id}/applications`)
-           .then((r) => r.json())
-           .then((data) => setAppliedJobs(data));
-     }, []);
-
-  return (
-    <div>AppliedToJobs</div>
-  )
+   return <div>AppliedToJobs</div>;
 }

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
    end
 
    def render_record_not_found(exception)
-   render json: {error: "#{exception.model} not found"}, status: :not_found
+      render json: {error: "#{exception.model} not found"}, status: :not_found
    end
 
 end

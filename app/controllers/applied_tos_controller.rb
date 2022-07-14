@@ -1,8 +1,8 @@
 class AppliedTosController < ApplicationController
-   skip_before_action :authorize
+   skip_before_action :authorize, except: :index
 
    def index
-      render json: applied_to_filter
+      render json: @current_user.job_postings
    end
 
    def create
@@ -20,12 +20,6 @@ class AppliedTosController < ApplicationController
 
    def application_params
       params.permit(:user_id, :job_posting_id)
-   end
-
-   def applied_to_filter
-      user = User.find(params[:id])
-      application = user.applied_to.map { |post| post.job_posting }
-      application
    end
 
 end
