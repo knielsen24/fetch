@@ -26,12 +26,12 @@ function ProfilePage({ jobPostings, user, handleDeleteProfile, onSetUser }) {
          >
          <Stack direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}>
             <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto'}}>
-               <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto', overflow: 'auto'}}>
+               <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto', overflow: 'hidden', overflowY: 'scroll'}}>
                   <Divider sx={{marginBottom: '20px', color:'white'}} />
                      <Box width={'40vw'}>
                      <Stack alignContent={'center'} justifyContent={'center'} spacing={4}>
                         {renderJobCards}
-                        
+
                      </Stack>
                      </Box>
                </Box>

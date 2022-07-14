@@ -37,8 +37,8 @@ export default function JobCard({
 
    return (
       <div>
-         
-            <Card elevation={5} sx={{width: '39vw', margin:'auto', borderStyle: 'solid', borderWidth: 'thin' }}>
+
+            <Card elevation={5} sx={{width: '37vw', margin:'auto', borderStyle: 'solid', borderWidth: 'thin' }}>
                <CardContent onClick={() => handleClick(id)}>
                   <Typography variant="h6">{startCase(position)}</Typography>
                   <Typography>{company_name}</Typography>
