@@ -12,6 +12,8 @@ import {
    Button,
    IconButton,
    Typography,
+   Menu,
+   MenuItem,
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu'
 
@@ -25,87 +27,7 @@ export default function NavBar({
    jobPostings,
 }) {
    const handleChangeSearch = (e) => onHandleSearch(e.target.value);
-   const capFirstLetter = (firstName) =>
-      firstName[0].toUpperCase() + firstName.slice(1);
-
    const pages = ['Find Jobs', 'Company Reviews', 'Find Salaries', 'Employers / Post Jobs']
-
-   // when the user is signed in it renders dropDownMenu
-   // when the user is signed out it renders signInLink
-   const dropDownMenu = (
-      <>
-         <Link
-            underline="hover"
-            color={"black"}
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-         >
-            {user ? capFirstLetter(user.first_name) : null}
-         </Link>
-         <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-               "aria-labelledby": "basic-button",
-            }}
-         >
-            <MenuItem
-               component={RouterLink}
-               to="/profile"
-               onClick={() => {
-                  handleClose();
-                  handleProfilePage(user.id);
-               }}
-            >
-               Profile
-            </MenuItem>
-            <MenuItem
-               component={RouterLink}
-               to="/myjobs"
-               onClick={() => {
-                  handleClose();
-               }}
-            >
-               My Jobs
-            </MenuItem>
-            <MenuItem
-               component={RouterLink}
-               to="/myreviews"
-               onClick={() => {
-                  handleClose();
-               }}
-            >
-               My Reviews
-            </MenuItem>
-            {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
-            {/* css needs polishing */}
-            <Divider fullWidth />
-            <MenuItem
-               onClick={() => {
-                  handleSignOut();
-                  handleClose();
-               }}
-            >
-               Sign Out
-            </MenuItem>
-         </Menu>
-      </>
-   );
-
-   const signInLink = (
-      <Link
-         component={RouterLink}
-         to="/signin"
-         underline="hover"
-         color={"black"}
-      >
-         Sign In
-      </Link>
-   );
 
    const [anchorElNav, setAnchorElNav] = useState(null);
    const handleOpenNavMenu = (event) => { setAnchorElNav(event.currentTarget) };
