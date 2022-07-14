@@ -8,24 +8,20 @@ import JobPage from "./Component/JobPage";
 import ReviewForm from "./Component/ReviewForm";
 import ProfilePage from "./Component/ProfilePage";
 import CompanyPage from "./Component/CompanyPage";
+import AboutUs from "./Component/AboutUs";
 
 function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
+   const [search, setSearch] = useState("");
    const [renderCompany, setRenderCompany] = useState();
-   const navigate = useNavigate();
-
 
    const onRenderCompany = (company_id) => setRenderCompany(company_id)
-   
-
-      
-
-   
-
-   console.log(renderCompany)
-
    const onSetUser = (updateUser) => setUser(updateUser);
+   const onHandleSearch = (newSearch) => setSearch(newSearch)
+
+   const navigate = useNavigate();
+   let { jobListingId } = useParams();
 
    useEffect(() => {
       fetch("/findjobs")
@@ -66,15 +62,11 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
-   const handleSearchFilter = () => {
-      
-   }
-
-   let { jobListingId } = useParams();
+   const filteredJobs = jobs.filter((job) => job.position.toLowerCase().includes(search.toLowerCase()))
 
    return (
       <>
-         <NavBar user={user} handleSignOut={handleSignOut} />
+         <NavBar user={user} handleSignOut={handleSignOut} onHandleSearch={onHandleSearch} />
          <Routes>
             <Route
                path="/"
@@ -102,7 +94,7 @@ function App() {
                   user ? (
                      <ProfilePage
                         user={user}
-                        jobPostings={jobs}
+                        jobPostings={filteredJobs}
                         onSetUser={onSetUser}
                         handleProfilePage={handleProfilePage}
                         handleDeleteProfile={handleDeleteProfile}
@@ -114,7 +106,7 @@ function App() {
                path="findjobs"
                element={
                   <JobPage
-                     jobPostings={jobs}
+                     jobPostings={filteredJobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
                   />
@@ -127,6 +119,7 @@ function App() {
                path="company"
                element={<CompanyPage {...renderCompany} />}
             />
+            <Route path="aboutus"  element={<AboutUs/>}/>
          </Routes>
          <Footer />
       </>
@@ -134,3 +127,6 @@ function App() {
 }
 
 export default App;
+
+
+// password !1234A
