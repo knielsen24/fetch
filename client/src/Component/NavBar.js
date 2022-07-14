@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import NavBarUserDropDown from "./NavBarUserDropDown";
 import {
    AppBar,
    Stack,
@@ -7,107 +8,35 @@ import {
    Divider,
    Link,
    Box,
-   Menu,
-   MenuItem,
    Autocomplete,
    Button,
+   IconButton,
+   Typography,
+   Menu,
+   MenuItem,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 // add responsiveness to navbar to have menu bar
-// we should consider refactoring the dropdown menu as it's own component to clean up the navbar
-// If we refactor, user needs to be passed down as props
 
 export default function NavBar({
    user,
    handleSignOut,
    handleProfilePage,
    onHandleSearch,
+   jobPostings,
 }) {
-   const [anchorEl, setAnchorEl] = useState(null);
-   const open = Boolean(anchorEl);
-   const handleClick = (e) => setAnchorEl(e.currentTarget);
-   const handleClose = () => setAnchorEl(false);
-
    const handleChangeSearch = (e) => onHandleSearch(e.target.value);
-   const capFirstLetter = (firstName) =>
-      firstName[0].toUpperCase() + firstName.slice(1);
+   const pages = [
+      "Find Jobs",
+      "Company Reviews",
+      "Find Salaries",
+      "Employers / Post Jobs",
+   ];
 
-   // when the user is signed in it renders dropDownMenu
-   // when the user is signed out it renders signInLink
-   const dropDownMenu = (
-      <>
-         <Link
-            underline="hover"
-            color={"black"}
-            aria-controls={open ? "basic-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-         >
-            {user ? capFirstLetter(user.first_name) : null}
-         </Link>
-         <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-               "aria-labelledby": "basic-button",
-            }}
-         >
-            <MenuItem
-               component={RouterLink}
-               to="/profile"
-               onClick={() => {
-                  handleClose();
-                  handleProfilePage(user.id);
-               }}
-            >
-               Profile
-            </MenuItem>
-            <MenuItem
-               component={RouterLink}
-               to="/myjobs"
-               onClick={() => {
-                  handleClose();
-               }}
-            >
-               My Jobs
-            </MenuItem>
-            <MenuItem
-               component={RouterLink}
-               to="/myreviews"
-               onClick={() => {
-                  handleClose();
-               }}
-            >
-               My Reviews
-            </MenuItem>
-            {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
-            {/* css needs polishing */}
-            <Divider fullWidth />
-            <MenuItem
-               onClick={() => {
-                  handleSignOut();
-                  handleClose();
-               }}
-            >
-               Sign Out
-            </MenuItem>
-         </Menu>
-      </>
-   );
-
-   const signInLink = (
-      <Link
-         component={RouterLink}
-         to="/signin"
-         underline="hover"
-         color={"black"}
-      >
-         Sign In
-      </Link>
-   );
+   const [anchorElNav, setAnchorElNav] = useState(null);
+   const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
+   const handleCloseNavMenu = () => setAnchorElNav(null);
 
    return (
       <>
@@ -122,9 +51,79 @@ export default function NavBar({
                   <Stack direction={"row"} spacing={4} alignItems={"center"}>
                      {/* div... has a purpose */}
                      <div></div>
+                     <Box
+                        sx={{
+                           flexGrow: 1,
+                           display: { xs: "flex", md: "none" },
+                        }}
+                     >
+                        <IconButton
+                           size="large"
+                           aria-label="account of current user"
+                           aria-controls="menu-appbar"
+                           aria-haspopup="true"
+                           onClick={handleOpenNavMenu}
+                           color="inherit"
+                        >
+                           <MenuIcon />
+                        </IconButton>
+                        <Menu
+                           id="menu-appbar"
+                           anchorEl={anchorElNav}
+                           anchorOrigin={{
+                              vertical: "bottom",
+                              horizontal: "left",
+                           }}
+                           keepMounted
+                           transformOrigin={{
+                              vertical: "top",
+                              horizontal: "left",
+                           }}
+                           open={Boolean(anchorElNav)}
+                           onClose={handleCloseNavMenu}
+                           sx={{
+                              display: { xs: "block", md: "none" },
+                           }}
+                        >
+                           <MenuItem onClick={handleCloseNavMenu}>
+                              <Link
+                                 component={RouterLink}
+                                 to="/findjobs"
+                                 underline="hover"
+                                 color={"black"}
+                              >
+                                 <Typography textAlign="center">
+                                    Find Jobs
+                                 </Typography>
+                              </Link>
+                           </MenuItem>
+                           <MenuItem onClick={handleCloseNavMenu}>
+                              <Link
+                                 component="button"
+                                 underline="hover"
+                                 color={"black"}
+                              >
+                                 <Typography textAlign="center">
+                                    Company Reviews
+                                 </Typography>
+                              </Link>
+                           </MenuItem>
+                           <MenuItem onClick={handleCloseNavMenu}>
+                              <Link
+                                 component="button"
+                                 underline="hover"
+                                 color={"black"}
+                              >
+                                 <Typography textAlign="center">
+                                    Find Salaries
+                                 </Typography>
+                              </Link>
+                           </MenuItem>
+                        </Menu>
+                     </Box>
                      <Link
                         component={RouterLink}
-                        to="/"
+                        to={user ? "/findjobs" : "/"}
                         underline="never"
                         fontFamily={"sans-serif"}
                         color={"primary"}
@@ -133,24 +132,42 @@ export default function NavBar({
                      >
                         fetch
                      </Link>
-                     <Link
-                        component={RouterLink}
-                        to="/findjobs"
-                        underline="hover"
-                        color={"black"}
+                     <Box
+                        sx={{
+                           flexGrow: 1,
+                           display: { xs: "none", md: "flex" },
+                        }}
                      >
-                        Find Jobs
-                     </Link>
-                     <Link component="button" underline="hover" color={"black"}>
-                        Company Reviews
-                     </Link>
-                     <Link component="button" underline="hover" color={"black"}>
-                        Find Salaries
-                     </Link>
+                        <Link
+                           component={RouterLink}
+                           to="/findjobs"
+                           underline="hover"
+                           color={"black"}
+                        >
+                           Find Jobs
+                        </Link>
+                        <Link
+                           component="button"
+                           underline="hover"
+                           color={"black"}
+                        >
+                           Company Reviews
+                        </Link>
+                        <Link
+                           component="button"
+                           underline="hover"
+                           color={"black"}
+                        >
+                           Find Salaries
+                        </Link>
+                     </Box>
                   </Stack>
                   <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
-                     {/* conditional render on user state */}
-                     {user ? dropDownMenu : signInLink}
+                     <NavBarUserDropDown
+                        user={user}
+                        handleProfilePage={handleProfilePage}
+                        handleSignOut={handleSignOut}
+                     />
                      <Divider orientation="vertical" />
                      <Link component="button" underline="hover" color={"black"}>
                         Employers / Post Jobs
@@ -171,32 +188,28 @@ export default function NavBar({
                   >
                      <Box sx={{ width: "50vw" }}>
                         <Box />
-                        {/* <Autocomplete
-                     freeSolo
-                     id="free-solo-2-demo"
-                     disableClearable
-                     options={top100Films.map((option) => option.title)}
-                     renderInput={(params) => (
-                        <TextField
-                           {...params}
-                           label="Search input"
-                           InputProps={{
-                              ...params.InputProps,
-                              type: "search",
-                           }}
-                        />
-                     )}
-                  /> */}
-
-                        <TextField
-                           fullWidth
-                           size="small"
-                           id="filled-search"
-                           label="...snag your dream job"
-                           type="search"
-                           name="position"
-                           variant="outlined"
-                           sx={{ margin: "auto" }}
+                        <Autocomplete
+                           freeSolo
+                           id="free-solo"
+                           disableClearable
+                           options={jobPostings.map((job) => job.position)}
+                           renderInput={(params) => (
+                              <TextField
+                                 // onChange={handleChangeSearch}
+                                 {...params}
+                                 label="...fetch your dream job"
+                                 InputProps={{
+                                    ...params.InputProps,
+                                    type: "search",
+                                 }}
+                                 fullWidth
+                                 size="small"
+                                 id="filled-search"
+                                 name="position"
+                                 variant="outlined"
+                                 sx={{ margin: "auto" }}
+                              />
+                           )}
                         />
                      </Box>
                      <Box>
@@ -217,22 +230,3 @@ export default function NavBar({
       </>
    );
 }
-
-// const handleSubmitSearch = (e) => {
-//    e.preventDefault();
-//    const newSearch = search.position;
-
-//    console.log(newSearch);
-//    fetch("/searchjobs", {
-//       method: "POST",
-//       headers: {
-//          "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(newSearch),
-//    })
-//       .then((r) => r.json())
-//       .then((data) => console.log(data));
-//    // onSubmit do we need to make another fetch request.
-//    // do we fitler on the frontend or backend...?
-//    // create search controller using where method params[:name]
-// };

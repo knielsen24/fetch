@@ -13,11 +13,31 @@ export default function JobCard({
 }) {
    // set conidtion for user.
    // if user ? null : handle
+
+   // const profileJobCard = (
+   //    <CardContent>
+   //       <Typography>{position}</Typography>
+   //       <Typography>{company_name}</Typography>
+   //       <Typography>{location}</Typography>
+   //       <Typography>${compensation}</Typography>
+   //       <Typography>{job_type}</Typography>
+   //    </CardContent>
+   // );
+
+   // const jobCard = (
+   //    <CardContent onClick={() => handleClick(id)}>
+   //       <Typography>{position}</Typography>
+   //       <Typography>{company_name}</Typography>
+   //       <Typography>{location}</Typography>
+   //       <Typography>${compensation}</Typography>
+   //       <Typography>{job_type}</Typography>
+   //    </CardContent>
+   // );
+
    return (
       <div>
          <Stack>
             <Card elevation={3}>
-               {/* When on profile we do not want Click event handler */}
                <CardContent onClick={() => handleClick(id)}>
                   <Typography>{position}</Typography>
                   <Typography>{company_name}</Typography>
