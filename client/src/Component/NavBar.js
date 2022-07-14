@@ -22,7 +22,6 @@ export default function NavBar({
    user,
    handleSignOut,
    handleProfilePage,
-   onHandleSearch,
    jobPostings,
    onSearchClick,
 }) {
@@ -177,7 +176,6 @@ export default function NavBar({
                <Divider fullWidth />
                <NavBarSearch
                   jobPostings={jobPostings}
-                  onHandleSearch={onHandleSearch}
                   onSearchClick={onSearchClick}
                />
             </AppBar>

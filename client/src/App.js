@@ -13,12 +13,12 @@ import AboutUs from "./Component/AboutUs";
 function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
-   const [search, setSearch] = useState("");
    const [renderCompany, setRenderCompany] = useState();
+   const [searchValue, setSearchValue] = useState("")
 
    const onRenderCompany = (company_id) => setRenderCompany(company_id);
    const onSetUser = (updateUser) => setUser(updateUser);
-   // const onHandleSearch = (newSearch) => setSearch(newSearch);
+   const onHandleSearch = (newSearch) => setSearchValue(newSearch);
 
    const navigate = useNavigate();
    let { jobListingId } = useParams();
@@ -63,11 +63,11 @@ function App() {
 
    const onSearchClick = (newSearch) => {
       console.log(newSearch);
-      setSearch(newSearch);
+      setSearchValue(newSearch)
    };
 
    const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(search.toLowerCase())
+      job.position.toLowerCase().includes(searchValue.toLowerCase())
    );
 
    return (
@@ -75,7 +75,6 @@ function App() {
          <NavBar
             user={user}
             handleSignOut={handleSignOut}
-            // onHandleSearch={onHandleSearch}
             onSearchClick={onSearchClick}
             jobPostings={jobs}
          />

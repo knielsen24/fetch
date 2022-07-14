@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { TextField, Box, Autocomplete, Button } from "@mui/material";
 
-function NavBarSearch({ jobPostings, onHandleSearch, onSearchClick }) {
+function NavBarSearch({ jobPostings, onSearchClick }) {
+   // const [search, setSearch] = useState("");
+
    const handleChangeSearch = (e) => {
-      console.log(e.target.value);
-      onHandleSearch(e.target.value);
+      setSearch(e.target.value);
    };
 
    // add state hear from search back
@@ -39,6 +40,7 @@ function NavBarSearch({ jobPostings, onHandleSearch, onSearchClick }) {
                         variant="outlined"
                         sx={{ margin: "auto" }}
                         onChange={handleChangeSearch}
+                        onClick={handleChangeSearch}
                      />
                   )}
                />
@@ -48,7 +50,7 @@ function NavBarSearch({ jobPostings, onHandleSearch, onSearchClick }) {
                   disableElevation
                   variant="contained"
                   size="small"
-                  onClick={(e)=>onSearchClick(e.target.value)}
+                  onClick={()=>onSearchClick(search)}
                >
                   Fetch jobs
                </Button>
