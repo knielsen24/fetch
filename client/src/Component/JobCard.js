@@ -1,5 +1,6 @@
 import React from "react";
 import { Stack, Card, CardContent, Typography } from "@mui/material";
+import startCase from "lodash.startcase";
 
 export default function JobCard({
    id,
@@ -36,17 +37,16 @@ export default function JobCard({
 
    return (
       <div>
-         <Stack>
-            <Card elevation={3}>
+         
+            <Card elevation={5} sx={{width: '39vw', margin:'auto', borderStyle: 'solid', borderWidth: 'thin' }}>
                <CardContent onClick={() => handleClick(id)}>
-                  <Typography>{position}</Typography>
+                  <Typography variant="h6">{startCase(position)}</Typography>
                   <Typography>{company_name}</Typography>
                   <Typography>{location}</Typography>
                   <Typography>${compensation}</Typography>
                   <Typography>{job_type}</Typography>
                </CardContent>
             </Card>
-         </Stack>
       </div>
    );
 }
