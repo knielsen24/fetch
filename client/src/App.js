@@ -16,9 +16,9 @@ function App() {
    const [search, setSearch] = useState("");
    const [renderCompany, setRenderCompany] = useState();
 
-   const onRenderCompany = (company_id) => setRenderCompany(company_id)
+   const onRenderCompany = (company_id) => setRenderCompany(company_id);
    const onSetUser = (updateUser) => setUser(updateUser);
-   const onHandleSearch = (newSearch) => setSearch(newSearch)
+   const onHandleSearch = (newSearch) => setSearch(newSearch);
 
    const navigate = useNavigate();
    let { jobListingId } = useParams();
@@ -27,7 +27,7 @@ function App() {
       fetch("/findjobs")
          .then((r) => r.json())
          .then((data) => setJobs(data));
-   }, []);
+   }, [jobs]);
 
    useEffect(() => {
       fetch("/me").then((r) => {
@@ -62,11 +62,18 @@ function App() {
       // render a 'Sorry to see you go message'
    };
 
-   const filteredJobs = jobs.filter((job) => job.position.toLowerCase().includes(search.toLowerCase()))
+   // const filteredJobs = jobs.filter((job) =>
+   //    job.position.toLowerCase().includes(search.toLowerCase())
+   // );
 
    return (
       <>
-         <NavBar user={user} handleSignOut={handleSignOut} onHandleSearch={onHandleSearch} jobPostings={jobs} />
+         <NavBar
+            user={user}
+            handleSignOut={handleSignOut}
+            onHandleSearch={onHandleSearch}
+            // jobPostings={jobs}
+         />
          <Routes>
             <Route
                path="/"
@@ -94,7 +101,7 @@ function App() {
                   user ? (
                      <ProfilePage
                         user={user}
-                        jobPostings={filteredJobs}
+                        jobPostings={jobs}
                         onSetUser={onSetUser}
                         handleProfilePage={handleProfilePage}
                         handleDeleteProfile={handleDeleteProfile}
@@ -106,7 +113,7 @@ function App() {
                path="findjobs"
                element={
                   <JobPage
-                     jobPostings={filteredJobs}
+                     jobPostings={jobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
                   />
@@ -119,7 +126,7 @@ function App() {
                path="company"
                element={<CompanyPage {...renderCompany} />}
             />
-            <Route path="aboutus"  element={<AboutUs/>}/>
+            <Route path="aboutus" element={<AboutUs />} />
          </Routes>
          <Footer />
       </>
@@ -127,6 +134,5 @@ function App() {
 }
 
 export default App;
-
 
 // password !1234A

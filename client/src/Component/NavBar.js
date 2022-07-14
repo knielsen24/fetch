@@ -30,13 +30,7 @@ export default function NavBar({
    const handleClose = () => setAnchorEl(false);
 
    const handleChangeSearch = (e) => onHandleSearch(e.target.value);
-   // const handleSubmitSearch = (e) => {
-   //    e.preventDefault()
-   //    console.log(e.target.value)
-   //    const searchInput = e.target.calue
-   //    onHandleSearch(searchInput)
-   // };
-
+  
    const capFirstLetter = (firstName) =>
       firstName[0].toUpperCase() + firstName.slice(1);
 
@@ -181,10 +175,10 @@ export default function NavBar({
                         <Box />
                         <Autocomplete
                            freeSolo
-                           id="free-solo-2-demo"
+                           id="free-solo"
                            disableClearable
                            options={jobPostings.map(
-                              (option) => option.position
+                              (job) => job.position
                            )}
                            renderInput={(params) => (
                               <TextField
