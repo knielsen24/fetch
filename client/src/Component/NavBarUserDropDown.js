@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Divider, Link, Menu, MenuItem } from "@mui/material";
+import startCase from 'lodash.startcase';
 
 function NavBarUserDropDown({ user, handleProfilePage, handleSignOut }) {
    const [anchorEl, setAnchorEl] = useState(null);
    const open = Boolean(anchorEl);
    const handleClick = (e) => setAnchorEl(e.currentTarget);
    const handleClose = () => setAnchorEl(false);
-
-   const capFirstLetter = (firstName) =>
-      firstName[0].toUpperCase() + firstName.slice(1);
 
    // when the user is signed in it renders dropDownMenu
    // when the user is signed out it renders signInLink
@@ -23,7 +21,7 @@ function NavBarUserDropDown({ user, handleProfilePage, handleSignOut }) {
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
          >
-            {user ? capFirstLetter(user.first_name) : null}
+            {user ? startCase(user.first_name) : null}
          </Link>
          <Menu
             id="basic-menu"

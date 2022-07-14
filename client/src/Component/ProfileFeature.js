@@ -1,69 +1,74 @@
-import { Stack, Box, Typography, IconButton } from "@mui/material";
+import React from "react";
+import { Stack, Box, Paper, Typography, Divider, List, ListItemAvatar, ListItemIcon, ListItemText, ListItem } from '@mui/material';
+import Image from "mui-image";
 import ProfileDeleteModal from "./ProfileDeleteModal";
-import AccountBox from "@mui/icons-material/AccountBox";
 import ProfileEditForm from "./ProfileEditForm";
+import EmailIcon from '@mui/icons-material/Email';
+import BusinessIcon from '@mui/icons-material/Business';
+import startCase from "lodash.startcase";
+
 
 function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
    // set default profile picture to profile icon
 
    return (
-      <div>
-         <Box
-            sx={{
-               width: 350,
-               height: 525,
-               backgroundColor: "white",
-               borderRadius: "8px",
-            }}
-         >
-            <Box
-               display={"flex"}
-               alignItems={"center"}
-               justifyContent={"center"}
-               sx={{
-                  color: "white",
-                  background: "rgba(0, 224, 255, 1)",
-                  width: 350,
-                  height: 50,
-                  borderTopLeftRadius: "8px",
-                  borderTopRightRadius: "8px",
-                  borderBottomLeftRadius: "0px",
-                  borderBottomRightRadius: "0px",
-                  marginBottom: 3,
-               }}
-            >
-               <h3>{user.first_name + " " + user.last_name}</h3>
-            </Box>
-            <Box sx={{ width: 300, margin: "auto" }}>
-               <Stack
-                  spacing={2.5}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-               >
-                  <IconButton
-                     size="large"
-                     aria-label="account of current user"
-                     aria-controls="menu-appbar"
-                     aria-haspopup="true"
-                     // onClick={handleMenu}
-                     color="inherit"
-                  >
-                     <AccountBox fontSize="large" />
-                  </IconButton>
-                  <Typography>{user.image_url}</Typography>
-                  <Typography>{user.email}</Typography>
-                  <Typography>{user.resume}</Typography>
-                  {/* Edit/Delete Modal*/}
 
+                        <Stack spacing={3} alignItems={'center'} justifyContent={'center'} >
+                             <Image duration={0} shift={0}  src={user.image_url} fit='cover' showLoading='false' height={'20vh'} />
+                             <Paper elevation={0} sx={{background:'rgba(0, 133, 255, 1)', width:'40vw', height: '5vh', borderRadius: 0, textAlign: 'center'}}>
+                             <Typography color={'whitesmoke'} variant='h4'>{startCase(user.first_name + " " + user.last_name)}</Typography> 
+                             </Paper>
+                             <Box sx={{width:'37vw', margin:'auto'}}>
+                             </Box>
+                             <List>
+                             
+                      
+                                <ListItem>
+                                <ListItemIcon>
+                                    <EmailIcon/>
+                                </ListItemIcon>
+                                <ListItemText
+                                primary={user.email}
+                                secondary="Email"
+                                >
+                                </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                <ListItemIcon>
+                                    <BusinessIcon/>
+                                </ListItemIcon>
+                                <ListItemText
+                                primary={'silly'}
+                                secondary="Resume"
+                                >
+                                </ListItemText>
+                                </ListItem>
+
+                             </List>
+                     
                   <ProfileEditForm {...user} onSetUser={onSetUser} />
                   <ProfileDeleteModal
                      handleDeleteProfile={handleDeleteProfile}
                      userId={user.id}
                   />
-               </Stack>
-            </Box>
-         </Box>
-      </div>
+                  
+                           
+
+
+
+
+                        </Stack>
+                  
+
+
+
+
+
+
+
+
+         
+          
    );
 }
 
