@@ -6,6 +6,7 @@ import ProfileEditForm from "./ProfileEditForm";
 import EmailIcon from '@mui/icons-material/Email';
 import BusinessIcon from '@mui/icons-material/Business';
 import startCase from "lodash.startcase";
+import ResumeUpload from './ResumeUpload'
 
 
 function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
@@ -47,21 +48,20 @@ function ProfileFeature({ user, handleDeleteProfile, onSetUser }) {
                                 </ListItemText>
                                 </ListItem>
                              </List>
-                             
-                  <Stack margin={'auto'} spacing={2} direction={'row'} alignItems={'center'} justifyContent={'space-evenly'}>
-                     
+                    
+                  <Stack margin={'auto'} spacing={2} direction={'row'} alignItems={'center'} justifyContent={'space-between'} sx={{position: "absolute", top: '70vh', right: 25}}>
+                  <ResumeUpload {...user} onSetUser={onSetUser} />  
                   <ProfileEditForm {...user} onSetUser={onSetUser} />
                   <ProfileDeleteModal
                      handleDeleteProfile={handleDeleteProfile}
                      userId={user.id}
                   />
-                  
+                  </Stack>
                            
 
 
 
 
-                        </Stack>
                         </Stack>
                         </Box>
                   

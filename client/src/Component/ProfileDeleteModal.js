@@ -17,8 +17,9 @@ function ProfileDeleteModal({ userId, handleDeleteProfile }) {
    return (
       <>
          <Button
+            color="error"
             disableElevation
-            variant="contained"
+           
             onClick={handleClickOpen}
          >
             Delete Profile

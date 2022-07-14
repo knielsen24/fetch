@@ -67,7 +67,6 @@ function ProfileEditForm({
       <>
          <Button
             disableElevation
-            variant="contained"
             onClick={handleClickOpen}
          >
             Edit Profile
