@@ -11,7 +11,10 @@ import {
    MenuItem,
    Autocomplete,
    Button,
+   IconButton,
+   Typography,
 } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu'
 
 // add responsiveness to navbar to have menu bar
 // we should consider refactoring the dropdown menu as it's own component to clean up the navbar
@@ -31,6 +34,8 @@ export default function NavBar({
    const handleChangeSearch = (e) => onHandleSearch(e.target.value);
    const capFirstLetter = (firstName) =>
       firstName[0].toUpperCase() + firstName.slice(1);
+
+   const pages = ['Find Jobs', 'Company Reviews', 'Find Salaries', 'Employers / Post Jobs']
 
    // when the user is signed in it renders dropDownMenu
    // when the user is signed out it renders signInLink
@@ -109,6 +114,10 @@ export default function NavBar({
       </Link>
    );
 
+   const [anchorElNav, setAnchorElNav] = useState(null);
+   const handleOpenNavMenu = (event) => { setAnchorElNav(event.currentTarget) };
+   const handleCloseNavMenu = () => { setAnchorElNav(null) };
+
    return (
       <>
          <Stack direction={"column"} spacing={3}>
@@ -122,6 +131,68 @@ export default function NavBar({
                   <Stack direction={"row"} spacing={4} alignItems={"center"}>
                      {/* div... has a purpose */}
                      <div></div>
+                     {/* <Link
+                        component={RouterLink}
+                        to="/"
+                        underline="never"
+                        fontFamily={"sans-serif"}
+                        color={"primary"}
+                        fontSize={36}
+                        sx={{ textDecoration: "none" }}
+                     >
+                        fetch
+                     </Link> */}
+                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton
+                           size="large"
+                           aria-label="account of current user"
+                           aria-controls="menu-appbar"
+                           aria-haspopup="true"
+                           onClick={handleOpenNavMenu}
+                           color="inherit"
+                        >
+                           <MenuIcon />
+                        </IconButton>
+                        <Menu
+                           id="menu-appbar"
+                           anchorEl={anchorElNav}
+                           anchorOrigin={{
+                              vertical: 'bottom',
+                              horizontal: 'left',
+                           }}
+                           keepMounted
+                           transformOrigin={{
+                              vertical: 'top',
+                              horizontal: 'left',
+                           }}
+                           open={Boolean(anchorElNav)}
+                           onClose={handleCloseNavMenu}
+                           sx={{
+                              display: { xs: 'block', md: 'none' },
+                           }}
+                        >
+                           <MenuItem onClick={handleCloseNavMenu}>
+                              <Link
+                                 component={RouterLink}
+                                 to="/findjobs"
+                                 underline="hover"
+                                 color={"black"}
+                              >
+                                 <Typography textAlign="center">Find Jobs</Typography>
+                              </Link>
+                           </MenuItem>
+                           <MenuItem onClick={handleCloseNavMenu}>
+                              <Link component="button" underline="hover" color={"black"}>
+                                 <Typography textAlign="center">Company Reviews</Typography>
+                              </Link>
+                           </MenuItem>
+                           <MenuItem onClick={handleCloseNavMenu}>
+                              <Link component="button" underline="hover" color={"black"}>
+                                 <Typography textAlign="center">Find Salaries</Typography>
+                              </Link>
+                           </MenuItem>
+                        </Menu>
+                     </Box>
                      <Link
                         component={RouterLink}
                         to="/"
@@ -133,20 +204,22 @@ export default function NavBar({
                      >
                         fetch
                      </Link>
-                     <Link
-                        component={RouterLink}
-                        to="/findjobs"
-                        underline="hover"
-                        color={"black"}
-                     >
-                        Find Jobs
-                     </Link>
-                     <Link component="button" underline="hover" color={"black"}>
-                        Company Reviews
-                     </Link>
-                     <Link component="button" underline="hover" color={"black"}>
-                        Find Salaries
-                     </Link>
+                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Link
+                           component={RouterLink}
+                           to="/findjobs"
+                           underline="hover"
+                           color={"black"}
+                        >
+                           Find Jobs
+                        </Link>
+                        <Link component="button" underline="hover" color={"black"}>
+                           Company Reviews
+                        </Link>
+                        <Link component="button" underline="hover" color={"black"}>
+                           Find Salaries
+                        </Link>
+                     </Box>
                   </Stack>
                   <Stack direction={"row"} spacing={2} sx={{ mr: 2 }}>
                      {/* conditional render on user state */}
@@ -161,7 +234,7 @@ export default function NavBar({
 
                <form
                   onChange={handleChangeSearch}
-                  // onSubmit={handleSubmitSearch}
+               // onSubmit={handleSubmitSearch}
                >
                   <Box
                      display={"flex"}
