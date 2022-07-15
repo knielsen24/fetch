@@ -26,9 +26,9 @@ function App() {
       setSearchValue(newSearch.toLowerCase());
    };
 
-   const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(searchValue)
-   );
+   // const filteredJobs = jobs.filter((job) =>
+   //    job.position.toLowerCase().includes(searchValue)
+   // );
 
    let offset = 0;
    const loadMoreJobs = () => {
@@ -140,7 +140,7 @@ function App() {
                path="findjobs"
                element={
                   <JobPage
-                     jobPostings={filteredJobs}
+                     jobPostings={jobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
                   />
