@@ -15,18 +15,24 @@ function App() {
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
    const [searchValue, setSearchValue] = useState("");
+   const [featuredJob, setFeaturedJob] = useState(jobs[0])
 
    const navigate = useNavigate();
    let { jobListingId } = useParams();
 
    const onRenderCompany = (company_id) => setRenderCompany(company_id);
    const onSetUser = (updateUser) => setUser(updateUser);
-   const onHandleSearch = (newSearch) =>
+   const onHandleSearch = (newSearch) => {
       setSearchValue(newSearch.toLowerCase());
+   };
+
+   const onFeaturedCard = (firstJob) => {
+      setFeaturedJob(firstJob)
+   }
 
    const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(searchValue))
-   
+      job.position.toLowerCase().includes(searchValue)
+   );
 
    useEffect(() => {
       fetch("/findjobs")
@@ -34,6 +40,7 @@ function App() {
          .then((data) => {
             console.log(data);
             setJobs(data);
+            setFeaturedJob(data[0])
          });
    }, []);
 
@@ -118,6 +125,8 @@ function App() {
                      jobPostings={filteredJobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
+                     featuredJob={featuredJob}
+                     onFeaturedCard={onFeaturedCard}
                   />
                }
             />
