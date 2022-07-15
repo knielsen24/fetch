@@ -9,9 +9,15 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
    // const allOptions = []
 
    const removeDuplicates = (value, index, self) => {
-      return self.indexOf(value) === index
-   }
-   const allPositions = jobPostings.map((job) => startCase(job.position)).filter(removeDuplicates)
+      return self.indexOf(value) === index;
+   };
+
+   let allPositions;
+
+   if (jobPostings)
+      allPositions = jobPostings
+         .map((job) => startCase(job.position))
+         .filter(removeDuplicates);
 
    function handleSubmit(e) {
       e.preventDefault();
@@ -21,7 +27,10 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
 
    return (
       <>
-         <form onSubmit={handleSubmit} onChange={(e)=> setValue(e.target.value)}>
+         <form
+            onSubmit={handleSubmit}
+            onChange={(e) => setValue(e.target.value)}
+         >
             <Box
                display={"flex"}
                columnGap={"10px"}
@@ -34,7 +43,6 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                      freeSolo
                      id="free-solo"
                      autoSelect
-
                      options={allPositions}
                      // options={uniqueJobs.forEach((element) => element)}
                      renderInput={(params) => (

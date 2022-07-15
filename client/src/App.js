@@ -22,9 +22,9 @@ function App() {
       console.log(newSearch)
       setSearchValue(newSearch.toLowerCase())};
 
-   const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(searchValue)
-   );
+   // const filteredJobs = jobs.filter((job) =>
+   //    job.position.toLowerCase().includes(searchValue)
+   // );
 
    const navigate = useNavigate();
    let { jobListingId } = useParams();
