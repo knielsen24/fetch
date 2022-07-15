@@ -3,7 +3,8 @@ class JobPostingsController < ApplicationController
    skip_before_action :authorize
 
    def index
-      render json: job_posting_batches
+      render json: JobPosting.all.limit(20)
+      # render json: job_posting_batches
    end
 
    def show

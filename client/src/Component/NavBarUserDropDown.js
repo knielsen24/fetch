@@ -42,7 +42,7 @@ function NavBarUserDropDown({ user, handleProfilePage, handleSignOut }) {
             >
                Profile
             </MenuItem>
-            <MenuItem
+            {/* <MenuItem
                component={RouterLink}
                to="/myjobs"
                onClick={() => {
@@ -59,7 +59,7 @@ function NavBarUserDropDown({ user, handleProfilePage, handleSignOut }) {
                }}
             >
                My Reviews
-            </MenuItem>
+            </MenuItem> */}
             {/* <MenuItem component={RouterLink} to="/settings">Settings</MenuItem> */}
             {/* css needs polishing */}
             <Divider fullWidth />

@@ -14,25 +14,27 @@ function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
-   const [searchValue, setSearchValue] = useState("")
-
-   const onRenderCompany = (company_id) => setRenderCompany(company_id);
-   const onSetUser = (updateUser) => setUser(updateUser);
-   const onHandleSearch = (newSearch) => {
-      console.log(newSearch)
-      setSearchValue(newSearch.toLowerCase())};
-
-   // const filteredJobs = jobs.filter((job) =>
-   //    job.position.toLowerCase().includes(searchValue)
-   // );
+   const [searchValue, setSearchValue] = useState("");
 
    const navigate = useNavigate();
    let { jobListingId } = useParams();
 
+   const onRenderCompany = (company_id) => setRenderCompany(company_id);
+   const onSetUser = (updateUser) => setUser(updateUser);
+   const onHandleSearch = (newSearch) =>
+      setSearchValue(newSearch.toLowerCase());
+
+   const filteredJobs = jobs.filter((job) =>
+      job.position.toLowerCase().includes(searchValue)
+   );
+
    useEffect(() => {
       fetch("/findjobs")
          .then((r) => r.json())
-         .then((data) => setJobs(data));
+         .then((data) => {
+            console.log(data);
+            setJobs(data);
+         });
    }, []);
 
    useEffect(() => {
@@ -66,12 +68,6 @@ function App() {
       handleSignOut();
       // render a 'Sorry to see you go message'
    };
-
-   // const onSearchClick = (newSearch) => {
-   //    console.log(newSearch);
-   //    setSearchValue(newSearch)
-   // };
-
 
    return (
       <>
@@ -119,7 +115,7 @@ function App() {
                path="findjobs"
                element={
                   <JobPage
-                     jobPostings={jobs}
+                     jobPostings={filteredJobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
                   />

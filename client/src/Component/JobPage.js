@@ -4,7 +4,7 @@ import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
 export default function JobPage({ jobPostings, user, onRenderCompany }) {
-   const [featuredJob, setFeaturedJob] = useState([]);
+   const [featuredJob, setFeaturedJob] = useState(jobPostings[0]);
 
    const handleClick = (id) => {
       const clickedJob = jobPostings.find((job) => job.id === id);
@@ -14,7 +14,7 @@ export default function JobPage({ jobPostings, user, onRenderCompany }) {
    let renderJobCards;
 
    if (jobPostings) {
-      setFeaturedJob(jobPostings[0])
+      // setFeaturedJob(jobPostings[0])
       renderJobCards = jobPostings.map((post) => {
          return (
             <JobCard
