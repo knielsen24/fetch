@@ -43,6 +43,12 @@ export default function LandingPage({ onSetUser, navigate }) {
       // add error handing
    }
 
+   const ratio = 1.1
+
+   const imgWidth = (num) => 223.92 / num
+   const imgHeight = (num) => 294.4 / num
+
+
    return (
       <>
          <div
@@ -52,32 +58,31 @@ export default function LandingPage({ onSetUser, navigate }) {
                backgroundRepeat: "no-repeat",
                backgroundPosition: "fixed",
                height: "80vh",
+               display: 'flex'
             }}
-         />
-         <Stack
+>
+   
+            <Stack
             direction={"row"}
             alignItems={"center"}
             justifyContent={"space-evenly"}
-            spacing={18}
+            spacing={10}
             sx={{
                margin: "auto",
-               position: "absolute",
-               top: "14.5rem",
-               left: "11vw",
             }}
          >
             <img
-               style={{ width: "223.92px", height: "294.4px" }}
+               style={{ width: `${imgWidth(ratio)}px`, height: `${imgHeight(ratio)}px` }}
                src="https://i.imgur.com/xYnM8Y6.png"
                alt="create an account"
             />
             <img
-               style={{ width: "223.92px", height: "294.4px" }}
+               style={{ width: `${imgWidth(ratio)}px`, height: `${imgHeight(ratio)}px` }}
                src="https://i.imgur.com/1NjO9rf.png"
                alt="create an account"
             />
             <img
-               style={{ width: "223.92px", height: "294.4px" }}
+               style={{ width: `${imgWidth(ratio)}px`, height: `${imgHeight(ratio)}px` }}
                src="https://i.imgur.com/PHXOSF9.png"
                alt="create an account"
             />
@@ -202,6 +207,7 @@ export default function LandingPage({ onSetUser, navigate }) {
                </form>
             </Box>
          </Stack>
+         </div>
       </>
    );
 }

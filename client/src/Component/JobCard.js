@@ -12,41 +12,25 @@ export default function JobCard({
    user,
    handleClick,
 }) {
-   // set conidtion for user.
-   // if user ? null : handle
-
-   // const profileJobCard = (
-   //    <CardContent>
-   //       <Typography>{position}</Typography>
-   //       <Typography>{company_name}</Typography>
-   //       <Typography>{location}</Typography>
-   //       <Typography>${compensation}</Typography>
-   //       <Typography>{job_type}</Typography>
-   //    </CardContent>
-   // );
-
-   // const jobCard = (
-   //    <CardContent onClick={() => handleClick(id)}>
-   //       <Typography>{position}</Typography>
-   //       <Typography>{company_name}</Typography>
-   //       <Typography>{location}</Typography>
-   //       <Typography>${compensation}</Typography>
-   //       <Typography>{job_type}</Typography>
-   //    </CardContent>
-   // );
-
    return (
       <div>
-
-            <Card elevation={5} sx={{width: '37vw', margin:'auto', borderStyle: 'solid', borderWidth: 'thin' }}>
-               <CardContent onClick={() => handleClick(id)}>
-                  <Typography variant="h6">{startCase(position)}</Typography>
-                  <Typography>{company_name}</Typography>
-                  <Typography>{location}</Typography>
-                  <Typography>${compensation}</Typography>
-                  <Typography>{job_type}</Typography>
-               </CardContent>
-            </Card>
+         <Card
+            elevation={5}
+            sx={{
+               width: "37vw",
+               margin: "auto",
+               borderStyle: "solid",
+               borderWidth: "thin",
+            }}
+         >
+            <CardContent onClick={() => handleClick(id)}>
+               <Typography variant="h6">{startCase(position)}</Typography>
+               <Typography>{company_name}</Typography>
+               <Typography>{location}</Typography>
+               <Typography>${compensation}</Typography>
+               <Typography>{job_type}</Typography>
+            </CardContent>
+         </Card>
       </div>
    );
 }

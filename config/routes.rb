@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
 #   post "/searchjobs", to: "search#index"
 
+  delete "/profile/deletejob/:id", to: "applied_tos#delete"
+
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

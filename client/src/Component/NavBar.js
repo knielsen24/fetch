@@ -41,14 +41,15 @@ export default function NavBar({
    return (
       <>
          <Stack direction={"column"} spacing={3}>
-            <AppBar elevation={0} position="static" color="">
+            <AppBar display={'flex'} elevation={0} position="static" color="">
                <Stack
+                  
                   direction={"row"}
                   alignItems={"center"}
                   justifyContent={"space-between"}
                   marginTop={2}
                >
-                  <Stack direction={"row"} spacing={4} alignItems={"center"}>
+                  <Stack direction={"row"} spacing={6} alignItems={"center"} justifyContent={'center'}>
                      {/* div... has a purpose */}
                      <div></div>
                      <Box
@@ -97,9 +98,11 @@ export default function NavBar({
                                  </Typography>
                               </Link>
                            </MenuItem>
+                           
                            <MenuItem onClick={handleCloseNavMenu}>
                               <Link
-                                 component="button"
+                                 component={RouterLink}
+                                 to="/findjobs"
                                  underline="hover"
                                  color={"black"}
                               >
@@ -143,20 +146,27 @@ export default function NavBar({
                            to="/findjobs"
                            underline="hover"
                            color={"black"}
+                           marginRight={6}
                         >
                            Find Jobs
                         </Link>
                         <Link
-                           component="button"
+                            component={RouterLink}
+                            to="/findjobs"
                            underline="hover"
                            color={"black"}
+                           marginRight={6}
+
                         >
                            Company Reviews
                         </Link>
                         <Link
-                           component="button"
+                               component={RouterLink}
+                               to="/findjobs"
                            underline="hover"
                            color={"black"}
+                           marginRight={6}
+
                         >
                            Find Salaries
                         </Link>
@@ -169,13 +179,13 @@ export default function NavBar({
                         handleSignOut={handleSignOut}
                      />
                      <Divider orientation="vertical" />
-                     <Link component="button" underline="hover" color={"black"}>
+                     <Link component="button" underline="hover" color={"black"} marginRight={6}>
                         Employers / Post Jobs
                      </Link>
                   </Stack>
                </Stack>
                <Divider fullWidth />
-               <NavBarSearch
+               <NavBarSearch 
                   jobPostings={jobPostings}
                   onSearchClick={onSearchClick}
                   onHandleSearch={onHandleSearch}

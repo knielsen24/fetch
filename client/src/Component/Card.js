@@ -14,7 +14,7 @@ export default function Card({
 }) {
    return (
       <>
-         <JobCard elevation={3}>
+         <JobCard elevation={5} sx={{width: '37vw', borderStyle: 'solid', borderWidth: 'thin', minWidth: "375px", maxWidth: "400px" }}>
             <CardContent>
                <Typography>{startCase(position)}</Typography>
                <Typography>{job_type}</Typography>
