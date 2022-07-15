@@ -15,10 +15,6 @@ export default function JobPage({ jobPostings, user, onRenderCompany }) {
       setFeaturedJob(clickedJob);
    };
 
-
-
-
-
    let renderJobCards;
 
    if (jobPostings) {
