@@ -1,25 +1,27 @@
 import React, { useState } from "react";
 import { TextField, Box, Autocomplete, Button } from "@mui/material";
+import startCase from "lodash.startcase";
 
 function NavBarSearch({ jobPostings, onHandleSearch }) {
    const [value, setValue] = useState("");
 
-   console.log(value);
-   //We need the value from the textfield to be passed into the on click.
-   // The onclick value is passed up to app to change state for the search
+   console.log(jobPostings);
+   // const allOptions = []
 
-   const handleChange = (e) => {
-      setValue(e.target.value);
-   };
+   const removeDuplicates = (value, index, self) => {
+      return self.indexOf(value) === index
+   }
+   const allPositions = jobPostings.map((job) => startCase(job.position)).filter(removeDuplicates)
 
    function handleSubmit(e) {
       e.preventDefault();
-      onHandleSearch(value)
+      console.log(value);
+      onHandleSearch(value.toLowerCase());
    }
-   
+
    return (
       <>
-         <form onSubmit={handleSubmit} onChange={handleChange}>
+         <form onSubmit={handleSubmit} onChange={(e)=> setValue(e.target.value)}>
             <Box
                display={"flex"}
                columnGap={"10px"}
@@ -31,10 +33,13 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                   <Autocomplete
                      freeSolo
                      id="free-solo"
+                     autoSelect
                      disableClearable
-                     options={jobPostings.map((job) => job.position)}
+                     options={allPositions}
+                     // options={uniqueJobs.forEach((element) => element)}
                      renderInput={(params) => (
                         <TextField
+                           id={params.id}
                            {...params}
                            label="...fetch your dream job"
                            InputProps={{
@@ -43,11 +48,11 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                            }}
                            fullWidth
                            size="small"
-                           id="filled-search"
+                           // id="filled-search"
                            name="position"
                            variant="outlined"
                            sx={{ margin: "auto" }}
-                           value=""
+                           value={value}
                         />
                      )}
                   />

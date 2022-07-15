@@ -20,12 +20,11 @@ function App() {
    const onSetUser = (updateUser) => setUser(updateUser);
    const onHandleSearch = (newSearch) => {
       console.log(newSearch)
-      setSearchValue(newSearch)};
+      setSearchValue(newSearch.toLowerCase())};
 
    const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(searchValue.toLowerCase())
+      job.position.toLowerCase().includes(searchValue)
    );
-
 
    const navigate = useNavigate();
    let { jobListingId } = useParams();
