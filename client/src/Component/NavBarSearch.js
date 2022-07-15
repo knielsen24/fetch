@@ -27,7 +27,12 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
    const handleSubmit = (e) => {
       e.preventDefault();
       console.log(searchValue);
-      onHandleSearch(searchValue.toLowerCase());
+      if (searchValue.search){
+         onHandleSearch(searchValue.search.toLowerCase());
+      }
+      else {
+
+      }
    };
 
    return (
