@@ -50,6 +50,8 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                      freeSolo
                      id="free-solo"
                      autoSelect
+                     clearOnBlur
+                     selectOnFocus
                      // disableClearable
                      options={allPositions}
                      renderInput={(params) => (
@@ -69,6 +71,8 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                            variant="outlined"
                            sx={{ margin: "auto" }}
                            value={searchValue}
+                           // input values
+
                         />
                      )}
                   />
