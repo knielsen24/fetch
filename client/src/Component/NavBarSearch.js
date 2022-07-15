@@ -16,7 +16,7 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                alignItems={"center"}
                justifyContent={"center"}
             >
-               <Box sx={{ width: "50vw" }}>
+               <Box margin={2} sx={{ width: "50vw" }}>
                   <Box />
                   <Autocomplete
                      freeSolo

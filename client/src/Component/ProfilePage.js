@@ -40,7 +40,7 @@ function ProfilePage({user, handleProfilePage, handleDeleteProfile, onSetUser })
          <Stack direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}>
             <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto'}}>
                <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto', overflow: 'hidden', overflowY: 'scroll'}}>
-                  <Divider sx={{marginBottom: '20px', color:'white'}} />
+               <div sx={{ marginBottom: '20px', color: 'white' }} />
                      <Box width={'40vw'}>
                      <Stack alignContent={'center'} justifyContent={'center'} spacing={4}>
                         {renderProfileJobs}
@@ -50,7 +50,7 @@ function ProfilePage({user, handleProfilePage, handleDeleteProfile, onSetUser })
                </Box>
             </Box>
             <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto' }}>
-               <Divider sx={{marginBottom: '10px', color:'white'}} />
+            <div sx={{ marginBottom: '20px', color: 'white' }} />
                   <Box sx={{width: '40vw', height: "75vh", bgcolor:'white', position:'relative', margin:'auto', borderBottomLeftRadius: '8px'}}>
                      <Paper elevation={5} sx={{marginTop:'2vw', height:'100%', bgcolor:'white', borderStyle: 'solid', borderWidth: 'thin'}}>
                         <ProfileFeature

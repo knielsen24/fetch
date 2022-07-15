@@ -45,12 +45,17 @@ function SignInForm({ onSetUser, navigate }) {
                backgroundRepeat: "no-repeat",
                backgroundPosition: "fixed",
                height: "80vh",
+               display: 'flex'
             }}
-         />
+         >
 
          <Stack
-            spacing={12}
-            sx={{ position: "absolute", top: "14.5rem", left: "38.5vw" }}
+            alignItems={"center"}
+            justifyContent={"center"}
+            spacing={10}
+            sx={{
+               margin: "auto",
+            }}
          >
             <form onChange={handleChange} onSubmit={handleSubmit}>
                <Paper variant="outlined" sx={{ width: 400, height: 325 }}>
@@ -110,6 +115,7 @@ function SignInForm({ onSetUser, navigate }) {
                </Paper>
             </form>
          </Stack>
+         </div>
       </>
    );
 }

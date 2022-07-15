@@ -8,6 +8,7 @@ export default function Footer() {
          <Divider fullWidth />
 
          <div
+            display={'flex'}
             sx={{ position: "sticky", bottom: 0, left: 0, right: 0 }}
             elevation={0}
          >

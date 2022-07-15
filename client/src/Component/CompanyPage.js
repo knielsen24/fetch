@@ -48,31 +48,25 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
             }}
          >
             <Stack direction={'row'} margin={'auto'} spacing={4} alignItems={'center'} justifyContent={'center'}>
-                <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto'}}>
+                <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto' }}>
                     <Box sx={{width: '40vw', height: "80vh", bgcolor:'white', position:'relative', margin:'auto'}}>
-                    <Divider sx={{marginBottom: '20px', color:'white'}} />
+                    <div sx={{ marginBottom: '20px', color: 'white' }} />
                     <Stack spacing={4}>
                     {renderJobPostings}
                     </Stack>
                     </Box>
                 </Box>
-                <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto', }}>
-                <Divider sx={{marginBottom: '10px', color:'white'}} />
-                    <Box sx={{width: '40vw', height: "75vh", bgcolor:'white', position:'relative', margin:'auto', borderBottomLeftRadius: '8px'}}>
-                    <Paper  elevation={0} sx={{marginTop:'2vw', height:'100%', bgcolor:'snow'}}>
+                <Box sx={{width: '45vw', height: "80vh", bgcolor:'white', margin:'auto',  }}>
+                <div sx={{ marginBottom: '20px', color: 'white' }} />
+                    <Box sx={{width: '40vw', height: "75vh", bgcolor:'white', position:'relative', margin:'auto', borderBottomLeftRadius: '8px', }}>
+                    <Paper  elevation={5} sx={{marginTop:'2vw', height:'100%', bgcolor:'white', borderStyle: 'solid', borderWidth: 'thin'}}>
                         <Stack spacing={0} alignItems={'center'} justifyContent={'center'} >
                              <Image duration={0} shift={0}  src={image} fit='cover' showLoading='false' height={'20vh'} />
                              <Paper elevation={0} sx={{background:'rgba(0, 133, 255, 1)', width:'40vw', height: '5vh', borderRadius: 0, textAlign: 'center'}}>
                              <Typography color={'whitesmoke'} variant='h4'>{name}</Typography> 
                              </Paper>
-                             <List>
-                                <ListItem alignItems='flex-start'>
-                                <ListItemText primary={`What People Are Saying About ${name}`}
-                                                primaryTypographyProps={{
-                                                    fontSize: 18
-                                                }}
-                                    /> 
-                                 </ListItem>
+                             <List sx={{padding: 0}}>
+                               
                                 <ListItem alignItems='flex-start'>
                                     <ListItemAvatar  >
                                         <Avatar src={defaultIcon} alt='User' />
@@ -86,7 +80,7 @@ export default function CompanyPage({name, num_of_employees, phone, address, ema
                              </List>
                              <Box sx={{width:'37vw', margin:'auto'}}>
                              </Box>
-                             <List>
+                             <List >
                              <ListItem>
                                 <ListItemIcon>
                                     <EmojiPeopleIcon/>

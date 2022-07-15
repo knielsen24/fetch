@@ -14,6 +14,7 @@ import { Dialog, DialogTitle, IconButton } from "@mui/material";
 import FavoriteBorderSharpIcon from "@mui/icons-material/FavoriteBorderSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
+import startCase from "lodash.startcase";
 
 export default function JobFeature({
    id,
@@ -64,18 +65,18 @@ export default function JobFeature({
 
    return (
       <div>
-         <Stack>
-            <Card>
+         <Stack >
+            <Card elevation={0} >
                <CardContent>
                   <Typography variant="h5" fontWeight={600}>
-                     {position}
+                     {startCase(position)}
                   </Typography>
                   <Link
                      onClick={handleClickThrough}
                      underline="never"
                      fontFamily={"sans-serif"}
                      color={"primary"}
-                     fontSize={36}
+                     fontSize={18}
                      sx={{ textDecoration: "none" }}
                   >
                      {company_name}
