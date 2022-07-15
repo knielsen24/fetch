@@ -119,7 +119,7 @@ function App() {
                path="findjobs"
                element={
                   <JobPage
-                     jobPostings={filteredJobs}
+                     jobPostings={jobs}
                      onRenderCompany={onRenderCompany}
                      user={user}
                   />
