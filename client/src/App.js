@@ -9,30 +9,52 @@ import ReviewForm from "./Component/ReviewForm";
 import ProfilePage from "./Component/ProfilePage";
 import CompanyPage from "./Component/CompanyPage";
 import AboutUs from "./Component/AboutUs";
+import axios from "axios";
 
 function App() {
    const [user, setUser] = useState(null);
    const [jobs, setJobs] = useState([]);
    const [renderCompany, setRenderCompany] = useState();
-   const [searchValue, setSearchValue] = useState("")
+   const [searchValue, setSearchValue] = useState("");
+   const navigate = useNavigate();
+   let { jobListingId } = useParams();
 
    const onRenderCompany = (company_id) => setRenderCompany(company_id);
    const onSetUser = (updateUser) => setUser(updateUser);
    const onHandleSearch = (newSearch) => {
-      console.log(newSearch)
-      setSearchValue(newSearch.toLowerCase())};
+      console.log(newSearch);
+      setSearchValue(newSearch.toLowerCase());
+   };
 
    const filteredJobs = jobs.filter((job) =>
       job.position.toLowerCase().includes(searchValue)
    );
 
-   const navigate = useNavigate();
-   let { jobListingId } = useParams();
+   let offset = 0;
+   const loadMoreJobs = () => {
+      axios.get(`/findjobs`).then(({ data }) => {
+         const newJobs = [];
+         data.forEach((job) => newJobs.push(job))
+         setJobs(oldJobs => [...oldJobs, ...newJobs]);
+      });
+      offset += 10;
+   };
+
+   const handleScroll = (e) => {
+      console.log("top: ", e.target.documentElement.scrollTop);
+      console.log("win:", window.innerHeight);
+      console.log("Height: ", e.target.documentElement.scrollHeight);
+      if (
+         window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+         e.target.documentElement.scrollHeight
+      ) {
+         loadMoreJobs();
+      }
+   };
 
    useEffect(() => {
-      fetch("/findjobs")
-         .then((r) => r.json())
-         .then((data) => setJobs(data));
+      loadMoreJobs();
+      // window.addEventListener("scroll", handleScroll);
    }, []);
 
    useEffect(() => {
@@ -71,7 +93,6 @@ function App() {
    //    console.log(newSearch);
    //    setSearchValue(newSearch)
    // };
-
 
    return (
       <>

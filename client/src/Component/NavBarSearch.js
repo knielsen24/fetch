@@ -34,7 +34,7 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                      freeSolo
                      id="free-solo"
                      autoSelect
-
+                     disableClearable
                      options={allPositions}
                      // options={uniqueJobs.forEach((element) => element)}
                      renderInput={(params) => (
@@ -47,7 +47,6 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                               type: "search",
                            }}
                            fullWidth
-                           disableClearable
                            size="small"
                            // id="filled-search"
                            name="position"
