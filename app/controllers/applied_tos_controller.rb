@@ -2,7 +2,8 @@ class AppliedTosController < ApplicationController
    skip_before_action :authorize, except: :index
 
    def index
-      render json: @current_user.job_postings, serializer: AppliedToWithIdSerializer
+      render json: @current_user.job_postings
+      # , serializer: AppliedToWithIdSerializer
    end
 
    def create

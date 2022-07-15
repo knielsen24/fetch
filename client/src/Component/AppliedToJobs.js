@@ -12,6 +12,7 @@ export default function AppliedToJobs({
     user,
  }) {
 
+
     const handleDeleteApplication = (id, user) => {
         fetch(`http://localhost:4000/applied_tos/${id}`, {
            method: "DELETE",
