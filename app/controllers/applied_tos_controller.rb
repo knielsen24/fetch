@@ -7,14 +7,14 @@ class AppliedTosController < ApplicationController
 
    def create
       application = AppliedTo.create!(application_params)
-      render json: application
+      render json: {error: "thems big"}
    end
 
-#  def destroy
-#      application = AppliedTo.find(params[:id])
-#      application.delete
-#      head :no_content
-#  end
+ def destroy
+     application = AppliedTo.find(params[:id])
+     application.delete
+     head :no_content
+ end
 
    private
 

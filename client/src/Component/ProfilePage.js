@@ -4,7 +4,7 @@ import { Box, Stack, Divider, Paper, Button } from "@mui/material";
 import ProfileFeature from "./ProfileFeature";
 import AppliedToJobs from "./AppliedToJobs";
 
-function ProfilePage({user, handleDeleteProfile, onSetUser }) {
+function ProfilePage({user, handleProfilePage, handleDeleteProfile, onSetUser }) {
 
    const [appliedJobs, setAppliedJobs] = useState([]);
 
@@ -13,6 +13,8 @@ function ProfilePage({user, handleDeleteProfile, onSetUser }) {
          .then((r) => r.json())
          .then((data) => setAppliedJobs(data));
    }, []);
+
+   
 
    console.log(appliedJobs)
 
