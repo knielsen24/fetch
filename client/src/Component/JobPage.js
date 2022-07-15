@@ -14,7 +14,6 @@ export default function JobPage({ jobPostings, user, onRenderCompany }) {
    let renderJobCards;
 
    if (jobPostings) {
-      // setFeaturedJob(jobPostings[0])
       renderJobCards = jobPostings.map((post) => {
          return (
             <JobCard
@@ -51,7 +50,7 @@ export default function JobPage({ jobPostings, user, onRenderCompany }) {
             <Box display={'flex'} sx={{ width: '45vw', height: "80vh", bgcolor: 'white', margin: 'auto' }}>
                <div sx={{ marginBottom: '10px', color: 'white' }} />
                <Box sx={{ width: '40vw', height: "75vh", bgcolor: 'white', margin: 'auto', borderBottomLeftRadius: '8px' }}>
-                  
+
                   <Paper elevation={5} sx={{ margin: 'auto', height: '100%', bgcolor: 'white', borderStyle: 'solid', borderWidth: 'thin' }}>
                      <JobFeature
                         {...featuredJob}
