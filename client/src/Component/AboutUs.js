@@ -12,14 +12,19 @@ export default function AboutUs() {
         margin={4}
         variant='h2'
         fontFamily='TimesNewRomanPS-BoldItalicMT'> About Us </Typography>
-      <Stack direction= 'row' spacing={17} justifyContent="center"  marginBottom={5} >
-        <Card variant="outlined" sx={{ width: 365, height: 400 }}>
+      <Stack    
+          direction="row"
+          justifyContent="space-evenly"
+          alignItems="center"
+          spacing={0} marginBottom={5} >
+        <Card alignItems={'center'} justifyContent={'space-evenly'} variant="outlined" sx={{ width: 365, height: 400 }}>
         <Avatar
           alt="Dchan"
           src="/troll.jpeg"
           sx={{ width: 230, height: 230 }}
+          margin={'auto'}
         />
-        <CardContent >
+        <CardContent alignItems={'center'} justifyContent={'center'} >
           <Typography align="center" fontFamily='Palatino-Bold' variant='h6'>  Daniel Chan </Typography>
             <CardActions >
               <Link href="https://github.com/danchan020">

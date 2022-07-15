@@ -25,8 +25,8 @@ function App() {
       setSearchValue(newSearch.toLowerCase());
 
    const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(searchValue)
-   );
+      job.position.toLowerCase().includes(searchValue))
+   
 
    useEffect(() => {
       fetch("/findjobs")

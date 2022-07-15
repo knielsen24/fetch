@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Stack, Divider, Paper } from "@mui/material";
 import JobCard from "./JobCard";
 import JobFeature from "./JobFeature";
 
 export default function JobPage({ jobPostings, user, onRenderCompany }) {
-   const [featuredJob, setFeaturedJob] = useState(jobPostings[0]);
+   const [featuredJob, setFeaturedJob] = useState();
+
+   useEffect(() => {
+      setFeaturedJob(jobPostings[0])
+   },[])
 
    const handleClick = (id) => {
       const clickedJob = jobPostings.find((job) => job.id === id);
       setFeaturedJob(clickedJob);
    };
+
+
+
+
 
    let renderJobCards;
 

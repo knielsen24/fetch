@@ -60,7 +60,7 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
                            // id="filled-search"
                            name="position"
                            variant="outlined"
-                           sx={{ margin: "auto", endAdornment: "none" }}
+                           sx={{ margin: "auto"}}
                            value={value}
                         />
                      )
