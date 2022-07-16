@@ -1,24 +1,18 @@
-import * as React from 'react'
-import { Button } from '@mui/material'
+import * as React from "react";
+import { Button } from "@mui/material";
 
+export default function ResumeUpload({ resume, onSetUser }) {
+    console.log(resume);
 
-export default function ResumeUpload({resume, onSetUser}) {
+    const resumeText = resume ? "Update Your Resume" : "Upload Your Resume";
 
-    console.log(resume)
-
- const resumeText = resume ? 'Update Your Resume' : "Upload Your Resume"
-
-    return(
+    return (
         <>
-        
-        
-        <Button component="label" color="primary">
-            {" "}
-            Upload Your Resume
-            <input type="file" hidden />
-        </Button>
-
+            <Button component="label" color="primary">
+                {" "}
+                Upload Your Resume
+                <input type="file" hidden />
+            </Button>
         </>
-    )
-
+    );
 }

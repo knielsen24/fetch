@@ -11,128 +11,131 @@ import CompanyPage from "./Component/CompanyPage";
 import AboutUs from "./Component/AboutUs";
 
 function App() {
-   const [user, setUser] = useState(null);
-   const [jobs, setJobs] = useState([]);
-   const [renderCompany, setRenderCompany] = useState();
-   const [searchValue, setSearchValue] = useState("");
+    const [user, setUser] = useState(null);
+    const [jobs, setJobs] = useState([]);
+    const [renderCompany, setRenderCompany] = useState();
+    const [searchValue, setSearchValue] = useState("");
 
-   const navigate = useNavigate();
-   let { jobListingId } = useParams();
+    const navigate = useNavigate();
+    let { jobListingId } = useParams();
 
-   const onRenderCompany = (company_id) => setRenderCompany(company_id);
-   const onSetUser = (updateUser) => setUser(updateUser);
-   const onHandleSearch = (newSearch) =>
-      setSearchValue(newSearch.toLowerCase());
+    const onRenderCompany = (company_id) => setRenderCompany(company_id);
+    const onSetUser = (updateUser) => setUser(updateUser);
+    const onHandleSearch = (newSearch) =>
+        setSearchValue(newSearch.toLowerCase());
 
-   const filteredJobs = jobs.filter((job) =>
-      job.position.toLowerCase().includes(searchValue))
-   
+    const filteredJobs = jobs.filter((job) =>
+        job.position.toLowerCase().includes(searchValue)
+    );
 
-   useEffect(() => {
-      fetch("/findjobs")
-         .then((r) => r.json())
-         .then((data) => {
-            console.log(data);
-            setJobs(data);
-         });
-   }, []);
+    useEffect(() => {
+        fetch("/findjobs")
+            .then((r) => r.json())
+            .then((data) => {
+                console.log(data);
+                setJobs(data);
+            });
+    }, []);
 
-   useEffect(() => {
-      fetch("/me").then((r) => {
-         if (r.ok) {
-            r.json().then((user) => setUser(user));
-         }
-      });
-   }, []);
-
-   const handleSignOut = () => {
-      fetch("/logout", { method: "DELETE" })
-         .then((r) => {
+    useEffect(() => {
+        fetch("/me").then((r) => {
             if (r.ok) {
-               setUser(null);
+                r.json().then((user) => setUser(user));
             }
-         })
-         .then(navigate("/"));
-   };
+        });
+    }, []);
 
-   const handleProfilePage = (id) => {
-      fetch(`/users/${id}/applications`)
-         .then((r) => r.json())
-         .then((data) => setJobs(data));
-   };
+    const handleSignOut = () => {
+        fetch("/logout", { method: "DELETE" })
+            .then((r) => {
+                if (r.ok) {
+                    setUser(null);
+                }
+            })
+            .then(navigate("/"));
+    };
 
-   const handleDeleteProfile = (id) => {
-      fetch(`/users/${id}`, {
-         method: "DELETE",
-      });
-      handleSignOut();
-      // render a 'Sorry to see you go message'
-   };
+    const handleProfilePage = (id) => {
+        fetch(`/users/${id}/applications`)
+            .then((r) => r.json())
+            .then((data) => setJobs(data));
+    };
 
-   return (
-      <>
-         <NavBar
-            user={user}
-            handleSignOut={handleSignOut}
-            onHandleSearch={onHandleSearch}
-            jobPostings={jobs}
-         />
-         <Routes>
-            <Route
-               path="/"
-               element={
-                  user ? null : (
-                     <LandingPage
-                        onSetUser={onSetUser}
-                        navigate={navigate}
-                        user={user}
-                     />
-                  )
-               }
+    const handleDeleteProfile = (id) => {
+        fetch(`/users/${id}`, {
+            method: "DELETE",
+        });
+        handleSignOut();
+        // render a 'Sorry to see you go message'
+    };
+
+    return (
+        <>
+            <NavBar
+                user={user}
+                handleSignOut={handleSignOut}
+                onHandleSearch={onHandleSearch}
+                jobPostings={jobs}
             />
-            <Route
-               path="signin"
-               element={
-                  user ? null : (
-                     <SignInForm onSetUser={onSetUser} navigate={navigate} />
-                  )
-               }
-            />
-            <Route
-               path="profile"
-               element={
-                  user ? (
-                     <ProfilePage
-                        user={user}
-                        onSetUser={onSetUser}
-                        handleProfilePage={handleProfilePage}
-                        handleDeleteProfile={handleDeleteProfile}
-                     />
-                  ) : null
-               }
-            ></Route>
-            <Route
-               path="findjobs"
-               element={
-                  <JobPage
-                     jobPostings={filteredJobs}
-                     onRenderCompany={onRenderCompany}
-                     user={user}
-                  />
-               }
-            />
-            <Route path="myjobs" />
-            <Route path="myreviews" />
-            <Route path="companyreviews" />
-            <Route
-               path="company"
-               element={<CompanyPage {...renderCompany} />}
-            />
-            <Route path="aboutus" element={<AboutUs />} />
-         </Routes>
-         <Footer />
-      </>
-   );
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        user ? null : (
+                            <LandingPage
+                                onSetUser={onSetUser}
+                                navigate={navigate}
+                                user={user}
+                            />
+                        )
+                    }
+                />
+                <Route
+                    path="signin"
+                    element={
+                        user ? null : (
+                            <SignInForm
+                                onSetUser={onSetUser}
+                                navigate={navigate}
+                            />
+                        )
+                    }
+                />
+                <Route
+                    path="profile"
+                    element={
+                        user ? (
+                            <ProfilePage
+                                user={user}
+                                onSetUser={onSetUser}
+                                handleProfilePage={handleProfilePage}
+                                handleDeleteProfile={handleDeleteProfile}
+                            />
+                        ) : null
+                    }
+                ></Route>
+                <Route
+                    path="findjobs"
+                    element={
+                        <JobPage
+                            jobPostings={filteredJobs}
+                            onRenderCompany={onRenderCompany}
+                            user={user}
+                        />
+                    }
+                />
+                <Route path="myjobs" />
+                <Route path="myreviews" />
+                <Route path="companyreviews" />
+                <Route
+                    path="company"
+                    element={<CompanyPage {...renderCompany} />}
+                />
+                <Route path="aboutus" element={<AboutUs />} />
+            </Routes>
+            <Footer />
+        </>
+    );
 }
 
 export default App;
