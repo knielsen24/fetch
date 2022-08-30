@@ -15,62 +15,66 @@ export default function AboutUs() {
       <Stack    
           direction="row"
           justifyContent="space-evenly"
-          alignItems="center"
-          spacing={0} marginBottom={5} >
-        <Card alignItems={'center'} justifyContent={'space-evenly'} variant="outlined" sx={{ width: 365, height: 400 }}>
+          spacing={0} marginBottom={5}>
+        <Card variant="outlined" sx={{ width: 365, height: 400, paddingTop: 8 }}>
+          <div align="center" justifyContent="center">
         <Avatar
           alt="Dchan"
-          src="/troll.jpeg"
+          src="/daniel.jpg"
           sx={{ width: 230, height: 230 }}
-          margin={'auto'}
         />
         <CardContent alignItems={'center'} justifyContent={'center'} >
           <Typography align="center" fontFamily='Palatino-Bold' variant='h6'>  Daniel Chan </Typography>
-            <CardActions >
-              <Link href="https://github.com/danchan020">
+            <CardActions  >
+              <Link marginLeft="auto" href="https://github.com/danchan020">
                 <GitHubIcon sx={{ fontSize: "40px" }} style={{color: '#000000'}} />
               </Link>
-              <Link href="https://www.linkedin.com/in/danielchan-/">
+              <Link marginRight="auto" href="https://www.linkedin.com/in/danielchan-/">
                 <LinkedInIcon sx={{ fontSize: "40px" }}  style={{color: '#0e76a8'}}/>
               </Link>
             </CardActions>
         </CardContent>
+          </div>
         </Card>
-        <Card variant="outlined" sx={{ width: 365, height: 400 }}>
+        <Card variant="outlined" sx={{ width: 365, height: 400, paddingTop: 8 }}>
+        <div align="center" justifyContent="center">
         <Avatar
           alt="Cstring"
-          src="/troll3.jpeg"
+          src="/christian.jpeg"
           sx={{ width: 230, height: 230 }}
         />
         <CardContent>
           <Typography align="center" fontFamily='Palatino-Bold' variant='h6'> Christian Stringham </Typography>
           <CardActions>
-            <Link href="https://github.com/cesalt">
+            <Link marginLeft="auto" href="https://github.com/cesalt">
                 <GitHubIcon sx={{ fontSize: "40px" }} style={{color: '#000000'}}/>
             </Link>
-            <Link href="https://www.linkedin.com/in/cesalt/">
+            <Link marginRight="auto" href="https://www.linkedin.com/in/cesalt/">
                 <LinkedInIcon sx={{ fontSize: "40px" }}  style={{color: '#0e76a8'}}/>
             </Link>
           </CardActions>
         </CardContent>
+        </div>
         </Card>
-        <Card variant="outlined" sx={{ width: 365, height: 400 }}>
+        <Card variant="outlined" sx={{ width: 365, height: 400, paddingTop: 8 }}>
+        <div align="center" justifyContent="center">
         <Avatar
           alt="Knielson"
-          src="/troll2.png"
+          src="/kevin.jpeg"
           sx={{ width: 230, height: 230 }}
         />
         <CardContent>
           <Typography align="center" fontFamily='Palatino-Bold' variant='h6'> Kevin Nielsen </Typography>
           <CardActions>
-            <Link href="https://github.com/knielsen24">
+            <Link marginLeft="auto" href="https://github.com/knielsen24">
                 <GitHubIcon sx={{ fontSize: "40px" }} style={{color: '#000000'}}/>
             </Link>
-            <Link href="https://www.linkedin.com/in/kevin-nielsen-se/">
+            <Link marginRight="auto" href="https://www.linkedin.com/in/kevin-nielsen-se/">
                 <LinkedInIcon sx={{ fontSize: "40px" }}  style={{color: '#0e76a8'}}/>
             </Link>
           </CardActions>
         </CardContent>
+        </div>
         </Card>
       </Stack>
       <Typography align="center" marginBottom={5} variant='h6' fontFamily='Palatino-Bold'> 
