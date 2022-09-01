@@ -6,7 +6,6 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
    const [value, setValue] = useState("");
 
    console.log(jobPostings);
-   // const allOptions = []
 
    const removeDuplicates = (value, index, self) => {
       return self.indexOf(value) === index;
@@ -39,33 +38,15 @@ function NavBarSearch({ jobPostings, onHandleSearch }) {
             >
                <Box margin={2} sx={{ width: "50vw" }}>
                   <Box />
-                  <Autocomplete
-                     freeSolo
-                     id="free-solo"
-                     autoSelect
-                     // disableClearable
-                     options={allPositions}
-                     renderInput={(params) => (
                         <TextField
-                           id={params.id}
-                           {...params}
                            label="...fetch your dream job"
-                           InputProps={{
-                              ...params.InputProps,
-                              type: "search",
-                           }}
                            fullWidth
-                           // disableClearable
                            size="small"
-                           // id="filled-search"
                            name="position"
                            variant="outlined"
                            sx={{ margin: "auto"}}
                            value={value}
                         />
-                     )
-                  }
-                  />
                </Box>
                <Box>
                   <Button
